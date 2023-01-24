@@ -1,5 +1,5 @@
 #define s21_size_t unsigned long long
-#define s21_NULL (void *)0
+#define s21_NULL ((void *)0)
 
 void *s21_memchr(const void *str, int c, s21_size_t n);
 int s21_memcmp(const void *str1, const void *str2, s21_size_t n);
