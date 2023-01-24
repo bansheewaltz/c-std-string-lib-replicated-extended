@@ -1,5 +1,5 @@
 #define s21_size_t unsigned long long
-#define s21_NULL (void*)0
+#define s21_NULL (void *)0
 
 void *s21_memchr(const void *str, int c, s21_size_t n);
 int s21_memcmp(const void *str1, const void *str2, s21_size_t n);
@@ -15,7 +15,7 @@ char *s21_strcpy(char *dest, const char *src);
 char *s21_strncpy(char *dest, const char *src, s21_size_t n);
 s21_size_t s21_strcspn(const char *str1, const char *str2);
 char *s21_strerror(int errnum);
-s21_size_t s21_strlen (const char *s);
+s21_size_t s21_strlen(const char *s);
 char *s21_strpbrk(const char *str1, const char *str2);
 char *s21_strrchr(const char *str, int c);
 s21_size_t s21_strspn(const char *str1, const char *str2);

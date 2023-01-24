@@ -15,9 +15,8 @@ clean:
 	rm *.a *.gcda *.gcno *.html unit_test
 
 check:
-	cp ../materials/linters/.clang-format .clang-format
-	clang-format -i *.c *.h
-	rm .clang-format
+	clang-format -style=Google -i *.c *.h
+
 
 s21_string.a : s21_string.c
 	$(CC) -c -o s21_string.o s21_string.c
