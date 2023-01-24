@@ -1,7 +1,9 @@
-.PHONY : all, clean, test, s21_string.a, gcov_report, check, re
+.PHONY : all, clean, test, s21_string.a, gcov_report, check, re, checkmk
 
 CC = gcc -Wall -Werror -Wextra
 OS = $(shell uname -s)
+TEST_CHECK = $(wildcard testing/*.check)
+TEST_C = $(TEST_CHECK:.check=.c)
 ifeq ($(OS), Darwin)
 	OS_FLAGS = -lcheck
 	ifeq ($(shell uname -p), arm)
@@ -14,7 +16,7 @@ endif
 all: s21_string.a test gcov_report
 
 clean:
-	rm -f *.a *.gcda *.gcno *.gcov *.html unit_test
+	rm -f *.{a,gcda,gcno,gcov,html} unit_test testing/*.c
 
 re: clean all
 
@@ -28,7 +30,11 @@ s21_string.a : s21_string.c
 	ranlib s21_string.a
 	rm *.o
 
-test: 
+checkmk: $(TEST_C)
+%.c: %.check
+	checkmk clean_mode=1 $< > $@
+
+test: clean checkmk
 	$(CC) --coverage s21_string.c unittest.c -o unit_test $(OS_FLAGS)
 	./unit_test
 
