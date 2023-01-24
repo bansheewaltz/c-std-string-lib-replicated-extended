@@ -1,19 +1,22 @@
-.PHONY : all, clean, test, s21_string.a, gcov_report, check
+.PHONY : all, clean, test, s21_string.a, gcov_report, check, re
 
 CC = gcc -Wall -Werror -Wextra
 OS = $(shell uname -s)
 ifeq ($(OS), Darwin)
-OS_FLAGS = -D_THREAD_SAFE -I/opt/homebrew/Cellar/check/0.15.2/include -L/opt/homebrew/Cellar/check/0.15.2/lib -lcheck
-# OS_FLAGS = -lcheck
-endif
-ifeq ($(OS),Linux)
-OS_FLAGS = -lcheck -pthread -lcheck_pic -pthread -lrt -lm -lsubunit
+	OS_FLAGS = -lcheck
+	ifeq ($(shell uname -p), arm)
+		OS_FLAGS = -D_THREAD_SAFE -I/opt/homebrew/Cellar/check/0.15.2/include -L/opt/homebrew/Cellar/check/0.15.2/lib -lcheck
+	endif
+else ifeq ($(OS),Linux)
+	OS_FLAGS = -lcheck -pthread -lcheck_pic -pthread -lrt -lm -lsubunit
 endif
 
 all: s21_string.a test gcov_report
 
 clean:
-	rm *.a *.gcda *.gcno *.html unit_test
+	rm -f *.a *.gcda *.gcno *.gcov *.html unit_test
+
+re: clean all
 
 check:
 	clang-format -style=Google -i *.c *.h
