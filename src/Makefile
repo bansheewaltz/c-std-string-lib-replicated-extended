@@ -3,7 +3,8 @@
 CC = gcc -Wall -Werror -Wextra
 OS = $(shell uname -s)
 ifeq ($(OS), Darwin)
-OS_FLAGS = -lcheck
+OS_FLAGS = -D_THREAD_SAFE -I/opt/homebrew/Cellar/check/0.15.2/include -L/opt/homebrew/Cellar/check/0.15.2/lib -lcheck
+# OS_FLAGS = -lcheck
 endif
 ifeq ($(OS),Linux)
 OS_FLAGS = -lcheck -pthread -lcheck_pic -pthread -lrt -lm -lsubunit
