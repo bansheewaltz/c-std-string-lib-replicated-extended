@@ -83,6 +83,45 @@ START_TEST(s21_strspn_test_5) {
   ck_assert_uint_eq(strspn("", ""), s21_strspn("", ""));
 }
 END_TEST
+//-----------------------------s21_memchr test-----------------------------
+
+START_TEST(s21_memchr_test_1) {
+  ck_assert_pstr_eq(memchr("1234567890", '5', 7),
+                    s21_memchr("1234567890", '5', 7));
+}
+END_TEST
+
+START_TEST(s21_memchr_test_2) {
+  ck_assert_pstr_eq(memchr("1234567890", '9', 7),
+                    s21_memchr("1234567890", '9', 7));
+}
+END_TEST
+
+START_TEST(s21_memchr_test_3) {
+  ck_assert_pstr_eq(memchr("1234567890", '1', 7),
+                    s21_memchr("1234567890", '1', 7));
+}
+END_TEST
+
+//-----------------------------s21_strchr test-----------------------------
+
+START_TEST(s21_strchr_test_1) {
+  ck_assert_pstr_eq(strchr("1234567890", '5'),
+                    s21_strchr("1234567890", '5'));
+}
+END_TEST
+
+START_TEST(s21_strchr_test_2) {
+  ck_assert_pstr_eq(strchr("1234", '8'),
+                    s21_strchr("1234", '8'));
+}
+END_TEST
+
+START_TEST(s21_strchr_test_3) {
+  ck_assert_pstr_eq(strchr("1234567890", '1'),
+                    s21_strchr("1234567890", '1'));
+}
+END_TEST
 
 //-----------------------------tests end-----------------------------
 
@@ -109,6 +148,17 @@ Suite *s21_string_suite(void) {
   tcase_add_test(test_case_core, s21_strspn_test_3);
   tcase_add_test(test_case_core, s21_strspn_test_4);
   tcase_add_test(test_case_core, s21_strspn_test_5);
+
+  tcase_add_test(test_case_core, s21_memchr_test_1);
+  tcase_add_test(test_case_core, s21_memchr_test_2);
+  tcase_add_test(test_case_core, s21_memchr_test_3);
+
+  tcase_add_test(test_case_core, s21_strchr_test_1);
+  tcase_add_test(test_case_core, s21_strchr_test_2);
+  tcase_add_test(test_case_core, s21_strchr_test_3);
+
+
+
 
   suite_add_tcase(test_lib, test_case_core);
   return test_lib;

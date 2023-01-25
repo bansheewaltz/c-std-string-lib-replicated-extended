@@ -49,3 +49,19 @@ s21_size_t s21_strspn(const char *str1, const char *str2) {
   }
   return result;
 }
+
+void *s21_memchr(const void *str, int c, s21_size_t n) {
+  size_t i;
+  for(i = 0; i < n; ++i){
+    if(*((char*)str+i) == c) {
+      return (char*)str+i;
+    }
+  }
+  return NULL;
+}
+
+char *s21_strchr(const char *str, int c) {
+  int i;
+  while ((str[i] != '\0') && (str[i] != c)) i++;
+  return c == str[i] ? (char*)str + i : NULL;
+}
