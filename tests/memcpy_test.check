@@ -1,7 +1,4 @@
-#include <stdlib.h>
-#include <string.h>
-
-#include "s21_string.h"
+#include "tests_includes.h"
 
 #test classic
     char *src = "123";
