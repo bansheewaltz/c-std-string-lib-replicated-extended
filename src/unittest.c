@@ -47,9 +47,7 @@ START_TEST(s21_strlen_test_2) {
 }
 END_TEST
 
-START_TEST(s21_strlen_test_3) {
-  ck_assert_uint_eq(strlen(""), s21_strlen(""));
-}
+START_TEST(s21_strlen_test_3) { ck_assert_uint_eq(strlen(""), s21_strlen("")); }
 END_TEST
 
 START_TEST(s21_strlen_test_4) {
