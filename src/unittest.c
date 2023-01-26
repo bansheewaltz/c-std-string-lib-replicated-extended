@@ -14,29 +14,24 @@ START_TEST(s21_memcmp_test_1) {
 END_TEST
 
 START_TEST(s21_memcmp_test_2) {
-  ck_assert_int_ge(memcmp("234567890", "2341", 4),
-                   s21_memcmp("1234567890", "2341", 4));
+  ck_assert_int_eq(memcmp("234567890", "2341", 0),
+                   s21_memcmp("234567890", "2341", 0));
 }
 END_TEST
 
 START_TEST(s21_memcmp_test_3) {
-  ck_assert_int_gt(memcmp("1234567890", "", 1),
-                   s21_memcmp("1234567890", "", 1));
+  ck_assert_int_eq(memcmp("1234567890", "", 2),
+                   s21_memcmp("1234567890", "", 2));
 }
 END_TEST
 
 START_TEST(s21_memcmp_test_4) {
-  ck_assert_int_le(memcmp("", "", 1), s21_memcmp("", "", 1));
+  ck_assert_int_eq(memcmp("", "", 1), s21_memcmp("", "", 1));
 }
 END_TEST
 
 START_TEST(s21_memcmp_test_5) {
-  ck_assert_int_lt(memcmp("", "123", 1), s21_memcmp("", "123", 1));
-}
-END_TEST
-
-START_TEST(s21_memcmp_test_6) {
-  ck_assert_int_ne(memcmp("222", "111", 3), s21_memcmp("111", "222", 3));
+  ck_assert_int_eq(memcmp("", "123", 3), s21_memcmp("", "123", 3));
 }
 END_TEST
 
@@ -49,29 +44,24 @@ START_TEST(s21_strncmp_test_1) {
 END_TEST
 
 START_TEST(s21_strncmp_test_2) {
-  ck_assert_int_ge(strncmp("234567890", "2341", 4),
-                   s21_strncmp("1234567890", "2341", 4));
+  ck_assert_int_eq(strncmp("234567890", "2341", 0),
+                   s21_strncmp("234567890", "2341", 0));
 }
 END_TEST
 
 START_TEST(s21_strncmp_test_3) {
-  ck_assert_int_gt(strncmp("1234567890", "", 1),
+  ck_assert_int_eq(strncmp("1234567890", "", 1),
                    s21_strncmp("1234567890", "", 1));
 }
 END_TEST
 
 START_TEST(s21_strncmp_test_4) {
-  ck_assert_int_le(strncmp("", "", 1), s21_strncmp("", "", 1));
+  ck_assert_int_eq(strncmp("", "", 1), s21_strncmp("", "", 1));
 }
 END_TEST
 
 START_TEST(s21_strncmp_test_5) {
-  ck_assert_int_lt(strncmp("", "123", 1), s21_strncmp("", "123", 1));
-}
-END_TEST
-
-START_TEST(s21_strncmp_test_6) {
-  ck_assert_int_ne(strncmp("222", "111", 3), s21_strncmp("111", "222", 3));
+  ck_assert_int_eq(strncmp("", "123", 3), s21_strncmp("", "123", 3));
 }
 END_TEST
 
@@ -84,28 +74,22 @@ START_TEST(s21_strcmp_test_1) {
 END_TEST
 
 START_TEST(s21_strcmp_test_2) {
-  ck_assert_int_ge(strcmp("234567890", "2341"),
-                   s21_strcmp("1234567890", "2341"));
+  ck_assert_int_eq(strcmp("1234567890", ""), s21_strcmp("1234567890", ""));
 }
 END_TEST
 
 START_TEST(s21_strcmp_test_3) {
-  ck_assert_int_gt(strcmp("1234567890", ""), s21_strcmp("1234567890", ""));
+  ck_assert_int_eq(strcmp("", ""), s21_strcmp("", ""));
 }
 END_TEST
 
 START_TEST(s21_strcmp_test_4) {
-  ck_assert_int_le(strcmp("", ""), s21_strcmp("", ""));
+  ck_assert_int_eq(strcmp("", "123"), s21_strcmp("", "123"));
 }
 END_TEST
 
 START_TEST(s21_strcmp_test_5) {
-  ck_assert_int_lt(strcmp("", "123"), s21_strcmp("", "123"));
-}
-END_TEST
-
-START_TEST(s21_strcmp_test_6) {
-  ck_assert_int_ne(strcmp("222", "111"), s21_strcmp("111", "222"));
+  ck_assert_int_eq(strcmp("222", ""), s21_strcmp("222", ""));
 }
 END_TEST
 
@@ -202,21 +186,18 @@ Suite *s21_string_suite(void) {
   tcase_add_test(test_case_core, s21_memcmp_test_3);
   tcase_add_test(test_case_core, s21_memcmp_test_4);
   tcase_add_test(test_case_core, s21_memcmp_test_5);
-  tcase_add_test(test_case_core, s21_memcmp_test_6);
 
   tcase_add_test(test_case_core, s21_strncmp_test_1);
   tcase_add_test(test_case_core, s21_strncmp_test_2);
   tcase_add_test(test_case_core, s21_strncmp_test_3);
   tcase_add_test(test_case_core, s21_strncmp_test_4);
   tcase_add_test(test_case_core, s21_strncmp_test_5);
-  tcase_add_test(test_case_core, s21_strncmp_test_6);
 
   tcase_add_test(test_case_core, s21_strcmp_test_1);
   tcase_add_test(test_case_core, s21_strcmp_test_2);
   tcase_add_test(test_case_core, s21_strcmp_test_3);
   tcase_add_test(test_case_core, s21_strcmp_test_4);
   tcase_add_test(test_case_core, s21_strcmp_test_5);
-  tcase_add_test(test_case_core, s21_strcmp_test_6);
 
   tcase_add_test(test_case_core, s21_strcspn_test_1);
   tcase_add_test(test_case_core, s21_strcspn_test_2);
