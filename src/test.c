@@ -9,20 +9,10 @@ char *s21_strchr(const char *str, int c);
 
 
 int main() {
-    char str[] = "12678j90";
-    
-    if(strchr(str, '!') != NULL ){
-        printf("good\n");
-        //printf("%s\n", strchr(str, '5'));
-
-    
-    }else if(s21_strchr(str, '5') != NULL)
-    {
-        printf("Why?\n");
-        
-    }else{
-        printf("not good\n");
-    }
+  int i;
+  for(i=0; i <= 133; ++i) {
+    printf("%d : %s\n", i, strerror(i));
+  }
 }
 
 char *s21_strchr(const char *str, int c) {

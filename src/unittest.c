@@ -122,6 +122,64 @@ START_TEST(s21_strchr_test_3) {
                     s21_strchr("1234567890", '1'));
 }
 END_TEST
+//-----------------------------s21_strrchr test-----------------------------
+
+START_TEST(s21_strrchr_test_1) {
+  ck_assert_pstr_eq(strchr("1534567890", '5'),
+                    s21_strchr("1534567890", '5'));
+}
+END_TEST
+
+START_TEST(s21_strrchr_test_2) {
+  ck_assert_pstr_eq(strchr("1834", '8'),
+                    s21_strchr("1834", '8'));
+}
+END_TEST
+
+START_TEST(s21_strrchr_test_3) {
+  ck_assert_pstr_eq(strchr("234567890", '1'),
+                    s21_strchr("234567890", '1'));
+}
+END_TEST
+//-----------------------------s21_strstr test-----------------------------
+
+START_TEST(s21_strstr_test_1) {
+  ck_assert_pstr_eq(strstr("Hello my old friend", "old"),
+                    s21_strstr("Hello my old friend", "old"));
+}
+END_TEST
+
+START_TEST(s21_strstr_test_2) {
+  ck_assert_pstr_eq(strstr("1978 year i'm was 18", "8"),
+                    s21_strstr("1978 year i'm was 18", "8"));
+}
+END_TEST
+
+START_TEST(s21_strstr_test_3) {
+  ck_assert_pstr_eq(strstr("You love me???", "can"),
+                    s21_strstr("You love me???", "can"));
+}
+END_TEST
+
+//-----------------------------s21_strerror test-----------------------------
+
+START_TEST(s21_strerror_test_1) {
+  ck_assert_pstr_eq(strerror(0),
+                    s21_strerror(0));
+}
+END_TEST
+
+START_TEST(s21_strerror_test_2) {
+  ck_assert_pstr_eq(strerror(1),
+                    s21_strerror(1));
+}
+END_TEST
+
+START_TEST(s21_strerror_test_3) {
+  ck_assert_pstr_eq(strerror(2),
+                    s21_strerror(2));
+}
+END_TEST
 
 //-----------------------------tests end-----------------------------
 
@@ -157,8 +215,18 @@ Suite *s21_string_suite(void) {
   tcase_add_test(test_case_core, s21_strchr_test_2);
   tcase_add_test(test_case_core, s21_strchr_test_3);
 
+  tcase_add_test(test_case_core, s21_strrchr_test_1);
+  tcase_add_test(test_case_core, s21_strrchr_test_2);
+  tcase_add_test(test_case_core, s21_strrchr_test_3);
 
+  tcase_add_test(test_case_core, s21_strstr_test_1);
+  tcase_add_test(test_case_core, s21_strstr_test_2);
+  tcase_add_test(test_case_core, s21_strstr_test_3);
 
+  tcase_add_test(test_case_core, s21_strerror_test_1);
+  tcase_add_test(test_case_core, s21_strerror_test_2);
+  tcase_add_test(test_case_core, s21_strerror_test_3);
+  
 
   suite_add_tcase(test_lib, test_case_core);
   return test_lib;
