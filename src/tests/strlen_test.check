@@ -9,5 +9,5 @@
 #test t3
     ck_assert_uint_eq(strlen(""), s21_strlen(""));
 
-#test t3
+#test t4
     ck_assert_uint_eq(strlen("hi\0there"), s21_strlen("hi\0there"));

@@ -1,19 +1,19 @@
-.PHONY : all, clean, style, re, test, s21_string.a, tests_c, cov_objs, test_bins, cov_report
+.PHONY : all, clean, style, re, test, s21_string.a, tests_c, cov_objs, test_bins, gcov_report
 
 SHELL := /bin/bash
 CC := gcc
 CFLAGS := -Wall -Werror -Wextra -std=c11
-RM := rm -f
+RM := rm -rf
 OS := $(shell uname -s)
 SRC := ../src
 OBJ := ../obj
-TST := ./tests
-BIN := ../build
+TST := tests
+BIN := $(TST)/build
 SRCS := $(wildcard *.c)
 OBJS := $(SRCS:.c=.o)
 CHECKS = $(wildcard $(TST)/*.check)
 TESTSC = $(CHECKS:.check=.c)
-TNAMES = $(shell basename $(CHECKS:%.check=%))
+TNAMES = $(shell basename -a $(CHECKS:%.check=%))
 ifeq ($(OS), Darwin)
 	LDFLAGS = -lcheck
 	ifeq ($(shell uname -p), arm)
@@ -29,8 +29,8 @@ all: s21_string.a
 
 clean:
 	$(RM) *.{out,o,a,gcda,gcno,gcov,html,css}
-	$(RM) $(BIN)/*
-	$(RM) $(OBJ)/*
+	$(RM) $(BIN)
+	$(RM) $(OBJ)
 	$(RM) $(TST)/*.c
 
 re: clean all
@@ -39,20 +39,25 @@ style:
 	clang-format -style=Google -i *.[ch]
 
 s21_string.a: clean
+	mkdir $(OBJ)
 	cd $(OBJ) && $(CC) $(CFLAGS) $(LDFLAGS) -c $(SRC)/*.c
 	ar rsc $@ $(OBJ)/*
 	ranlib $@
 
-test: clean tests_c cov_objs test_bins cov_report
+test: clean tests_c cov_objs test_bins gcov_report
 
 tests_c: $(TESTSC)
 %.c: %.check
 	checkmk clean_mode=1 $< > $@
-cov_objs: $(OBJS)
+cov_objs:
+	mkdir $(OBJ)
+	$(MAKE) $(OBJS)
 s21_%.o: s21_%.c
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -c -o $(OBJ)/$@ $<
 	-$(CC) $(CFLAGS) $(LDFLAGS) -c -o $(OBJ)/$*_test.o $(TST)/$*_test.c 2>/dev/null
-test_bins: $(TNAMES)
+test_bins:
+	mkdir $(BIN)
+	$(MAKE) $(TNAMES)
 %_test:
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_$*.o
 # functions that have dependencies on other functions:
@@ -61,11 +66,11 @@ strcspn_test:#                               |test_exe |test_o     |function_o  
 strspn_test:
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strspn.o $(OBJ)/s21_strlen.o
 
-cov_report:
+gcov_report:
 	$(foreach file, $(TNAMES), $(BIN)/$(file);)
 	mv $(OBJ)/*.{gcno,gcda} .
-	gcovr -r . --html -o cov_report.html
-	open cov_report.html
+	gcovr -r . --html -o gcov_report.html
+	open gcov_report.html
 	$(RM) *.{gcno,gcda}
 
 verter:
