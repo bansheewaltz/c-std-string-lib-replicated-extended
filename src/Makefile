@@ -1,10 +1,10 @@
-.PHONY : all, clean, style, re, test, s21_string.a, tests_c, objs, test_bins, report
+.PHONY : all, clean, style, re, test, s21_string.a, tests_c, cov_objs, test_bins, cov_report
 
 CC := gcc
 CFLAGS := -Wall -Werror -Wextra -std=c11 -O2
 RM := rm -f
 OS := $(shell uname -s)
-SRC := .
+SRC := ../src
 OBJ := ../obj
 TST := ./tests
 BIN := ../build
@@ -24,29 +24,30 @@ else ifeq ($(OS),Linux)
 endif
 
 
-all: s21_string.a test
+all: s21_string.a
 
 clean:
 	$(RM) *.{out,o,a,gcda,gcno,gcov,html,css}
-	$(RM) $(TST)/*.c
-	$(RM) $(OBJ)/*
 	$(RM) $(BIN)/*
+	$(RM) $(OBJ)/*
+	$(RM) $(TST)/*.c
 
 re: clean all
 
 style:
 	clang-format -style=Google -i *.[ch]
 
-s21_string.a: s21_string.c
-	ar rsc $@ $(OBJ)/s21_*
+s21_string.a: clean
+	cd $(OBJ) && $(CC) $(CFLAGS) $(LDFLAGS) -c $(SRC)/*.c
+	ar rsc $@ $(OBJ)/*
 	ranlib $@
 
-test: clean tests_c objs test_bins report
+test: clean tests_c cov_objs test_bins cov_report
 
 tests_c: $(TESTSC)
 %.c: %.check
 	checkmk clean_mode=1 $< > $@
-objs: $(OBJS)
+cov_objs: $(OBJS)
 s21_%.o: s21_%.c
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -c -o $(OBJ)/$@ $<
 	-$(CC) $(CFLAGS) $(LDFLAGS) -c -o $(OBJ)/$*_test.o $(TST)/$*_test.c 2>/dev/null
@@ -59,9 +60,9 @@ strcspn_test:#                               |test_exe |test_o     |function_o  
 strspn_test:
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strspn.o $(OBJ)/s21_strlen.o
 
-report:
+cov_report:
 	$(foreach file, $(TNAMES), $(BIN)/$(file);)
 	mv $(OBJ)/*.{gcno,gcda} .
-	gcovr -r . --html -o report.html
-	open report.html
+	gcovr -r . --html -o cov_report.html
+	open cov_report.html
 	$(RM) *.{gcno,gcda}
