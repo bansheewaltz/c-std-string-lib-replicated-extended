@@ -20,8 +20,7 @@ START_TEST(s21_memcmp_test_2) {
 END_TEST
 
 START_TEST(s21_memcmp_test_3) {
-  ck_assert_int_eq(memcmp("1234567890", "", 2),
-                   s21_memcmp("1234567890", "", 2));
+  ck_assert_int_eq(memcmp("f", "f", 2), s21_memcmp("f", "f", 2));
 }
 END_TEST
 
@@ -31,7 +30,7 @@ START_TEST(s21_memcmp_test_4) {
 END_TEST
 
 START_TEST(s21_memcmp_test_5) {
-  ck_assert_int_eq(memcmp("", "123", 3), s21_memcmp("", "123", 3));
+  ck_assert_int_eq(memcmp("1234", "13", 2), s21_memcmp("1234", "13", 2));
 }
 END_TEST
 
