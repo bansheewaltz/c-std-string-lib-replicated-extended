@@ -1,7 +1,8 @@
 .PHONY : all, clean, style, re, test, s21_string.a, tests_c, cov_objs, test_bins, cov_report
 
+SHELL := /bin/bash
 CC := gcc
-CFLAGS := -Wall -Werror -Wextra -std=c11 -O2
+CFLAGS := -Wall -Werror -Wextra -std=c11
 RM := rm -f
 OS := $(shell uname -s)
 SRC := ../src
@@ -66,3 +67,6 @@ cov_report:
 	gcovr -r . --html -o cov_report.html
 	open cov_report.html
 	$(RM) *.{gcno,gcda}
+
+verter:
+	cd ../materials/build && bash run.sh
