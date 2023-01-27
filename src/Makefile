@@ -1,33 +1,36 @@
 .PHONY : all, clean, test, s21_string.a, gcov_report, check, re, checkmk
 
-CC := gcc -Wall -Werror -Wextra
+CC := gcc
+CFLAGS := -Wall -Werror -Wextra
 RM := rm -f
 OS := $(shell uname -s)
 SRC := .
 OBJ := ../obj
-TST := ../tests
+TST := ./tests
+BIN := ../build
+SRCS := $(wildcard *.c)
+OBJS := $(SRCS:.c=.o)
 CHECKS = $(wildcard $(TST)/*.check)
 UTESTS = $(CHECKS:.check=.c)
-SRCS := $(wildcard *.c)
-OBJS := $(SRCS:.c=.o) $(CHECKS:.check=.o)
 TNAMES = $(shell basename $(CHECKS:%.check=%))
 ifeq ($(OS), Darwin)
-	OS_FLAGS = -lcheck
+	LDFLAGS = -lcheck
 	ifeq ($(shell uname -p), arm)
-		OS_FLAGS = -D_THREAD_SAFE -I/opt/homebrew/Cellar/check/0.15.2/include \
-		           -L/opt/homebrew/Cellar/check/0.15.2/lib -lcheck
+		LDFLAGS = -D_THREAD_SAFE -I/opt/homebrew/Cellar/check/0.15.2/include \
+		      	  -L/opt/homebrew/Cellar/check/0.15.2/lib -lcheck
 	endif
 else ifeq ($(OS),Linux)
-	OS_FLAGS = -lcheck -pthread -lcheck_pic -pthread -lrt -lm -lsubunit
+	LDFLAGS = -lcheck -pthread -lcheck_pic -pthread -lrt -lm -lsubunit
 endif
 
 
-all: s21_string.a test gcov_report
+all: s21_string.a test
 
 clean:
-	$(RM) *.{out,o,gcda,gcno,gcov,html,css}
+	$(RM) *.{out,o,a,gcda,gcno,gcov,html,css}
 	$(RM) $(TST)/*.{c,o,gcno,gcda}
 	$(RM) $(OBJ)/*
+	$(RM) $(BIN)/*
 
 re: clean all
 
@@ -40,53 +43,42 @@ s21_string.a: s21_string.c
 	ranlib s21_string.a
 	rm *.o
 
-sample1: clean checkmk
-	$(CC) $(OS_FLAGS) --coverage -c -o s21_strlen.o s21_strlen.c
-	$(CC) $(OS_FLAGS) -c -o strlen_test.o ../tests/strlen_test.c
-	$(CC) $(OS_FLAGS) --coverage strlen_test.o s21_strlen.o
-	./a.out
-	gcov -f *.gcno
+sample3: clean checkmk
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -c -o $(OBJ)/s21_strlen.o s21_strlen.c
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -c -o $(OBJ)/s21_memcpy.o s21_memcpy.c
+	$(CC) $(CFLAGS) $(LDFLAGS) -c -o $(OBJ)/strlen_test.o $(TST)/strlen_test.c
+	$(CC) $(CFLAGS) $(LDFLAGS) -c -o $(OBJ)/memcpy_test.o $(TST)/memcpy_test.c
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/strlen_test $(OBJ)/strlen_test.o $(OBJ)/s21_strlen.o
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/memcpy_test $(OBJ)/memcpy_test.o $(OBJ)/s21_memcpy.o
+	$(BIN)/strlen_test
+	$(BIN)/memcpy_test
+	mv $(OBJ)/*.{gcno,gcda} .
 	gcovr -r . --html -o report.html
 	open report.html
+	$(RM) *.{gcno,gcda}
 
-sample2: clean checkmk
-	$(CC) $(OS_FLAGS) --coverage -c -o s21_strlen.o s21_strlen.c
-	$(CC) $(OS_FLAGS) --coverage -c -o s21_memcpy.o s21_memcpy.c
-	$(CC) $(OS_FLAGS) -c -o strlen_test.o ../tests/strlen_test.c
-	$(CC) $(OS_FLAGS) -c -o memcpy_test.o ../tests/memcpy_test.c
-	$(CC) $(OS_FLAGS) --coverage -o strlen strlen_test.o s21_strlen.o
-	$(CC) $(OS_FLAGS) --coverage -o memcpy memcpy_test.o s21_memcpy.o
-	./strlen
-	./memcpy
-	gcov -f *.gcno
-	gcovr -r . --html -o report.html
-	open report.html
-
-test: clean checkmk obj move bin gcov
+test: clean checkmk obj bin exe gcov
 
 checkmk: $(UTESTS)
 %.c: %.check
 	checkmk clean_mode=1 $< > $@
 obj: $(OBJS)
-%_test.o: %.c
-	$(CC) $(OS_FLAGS) -c -o $@ $<
-%.o: %.c
-	$(CC) $(OS_FLAGS) --coverage -c -o $(OBJ)/$@ $<
-move:
-	mv $(TST)/*.o $(OBJ)
+s21_%.o: s21_%.c
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -c -o $(OBJ)/$@ $<
+	-$(CC) $(CFLAGS) $(LDFLAGS) -c -o $(OBJ)/$*_test.o $(TST)/$*_test.c 2>/dev/null
 bin: $(TNAMES)
 %_test:
-	$(CC) $(OS_FLAGS) --coverage -o $(OBJ)/$@ $(OBJ)/$@.o $(OBJ)/s21_$*.o
-	$(OBJ)/$@
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_$*.o
 # functions that has dependencies on other functions
-strcspn_test:#                      |test_exe |test_o     |testing_function    |dependency
-	$(CC) $(OS_FLAGS) --coverage -o $(OBJ)/$@ $(OBJ)/$@.o $(OBJ)/s21_strcspn.o $(OBJ)/s21_strlen.o
-	$(OBJ)/$@
+strcspn_test:#                               |test_exe |test_o     |function_o          |dependent_functions
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strcspn.o $(OBJ)/s21_strlen.o
 strspn_test:
-	$(CC) $(OS_FLAGS) --coverage -o $(OBJ)/$@ $(OBJ)/$@.o $(OBJ)/s21_strspn.o $(OBJ)/s21_strlen.o
-	$(OBJ)/$@
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strspn.o $(OBJ)/s21_strlen.o
+exe:
+	 $(foreach file, $(TNAMES), ../build/$(file);)
 
 gcov:
-	cd $(OBJ) && gcov -f *.gcno
-	cd $(OBJ) && gcovr -r ../src --html -o report.html
-	open $(OBJ)/report.html
+	mv $(OBJ)/*.{gcno,gcda} .
+	gcovr -r . --html -o report.html
+	open report.html
+	$(RM) *.{gcno,gcda}
