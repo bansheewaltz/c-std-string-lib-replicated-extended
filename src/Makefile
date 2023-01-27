@@ -1,4 +1,4 @@
-.PHONY : all, clean, test, s21_string.a, gcov_report, check, re, checkmk
+.PHONY : all, clean, style, re, test, s21_string.a, gcov, checkmk, obj, bin exe
 
 CC := gcc
 CFLAGS := -Wall -Werror -Wextra
@@ -28,7 +28,7 @@ all: s21_string.a test
 
 clean:
 	$(RM) *.{out,o,a,gcda,gcno,gcov,html,css}
-	$(RM) $(TST)/*.{c,o,gcno,gcda}
+	$(RM) $(TST)/*.c
 	$(RM) $(OBJ)/*
 	$(RM) $(BIN)/*
 
