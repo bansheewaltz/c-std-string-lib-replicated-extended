@@ -43,20 +43,6 @@ s21_string.a: s21_string.c
 	ranlib s21_string.a
 	rm *.o
 
-sample3: clean checkmk
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -c -o $(OBJ)/s21_strlen.o s21_strlen.c
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -c -o $(OBJ)/s21_memcpy.o s21_memcpy.c
-	$(CC) $(CFLAGS) $(LDFLAGS) -c -o $(OBJ)/strlen_test.o $(TST)/strlen_test.c
-	$(CC) $(CFLAGS) $(LDFLAGS) -c -o $(OBJ)/memcpy_test.o $(TST)/memcpy_test.c
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/strlen_test $(OBJ)/strlen_test.o $(OBJ)/s21_strlen.o
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/memcpy_test $(OBJ)/memcpy_test.o $(OBJ)/s21_memcpy.o
-	$(BIN)/strlen_test
-	$(BIN)/memcpy_test
-	mv $(OBJ)/*.{gcno,gcda} .
-	gcovr -r . --html -o report.html
-	open report.html
-	$(RM) *.{gcno,gcda}
-
 test: clean checkmk obj bin exe gcov
 
 checkmk: $(UTESTS)
