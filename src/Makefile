@@ -66,7 +66,7 @@ test_bins:
 %_test:
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_$*.o
 # functions that have dependencies on other functions:
-strcspn_test:#                               |test_exe |test_o     |function_o          |dependent_functions
+strcspn_test:#                               |test_exe |test_o     |function_o          |dependent_functions_o
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strcspn.o $(OBJ)/s21_strlen.o
 strspn_test:
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strspn.o $(OBJ)/s21_strlen.o
@@ -74,7 +74,7 @@ strspn_test:
 gcov_report:
 	$(foreach file, $(TNAMES), $(BIN)/$(file);)
 	mv $(OBJ)/*.{gcno,gcda} .
-	gcovr -r . --html -o gcov_report.html
+	gcovr -r . --html-details -o gcov_report.html
 	open gcov_report.html
 	$(RM) *.{gcno,gcda}
 
