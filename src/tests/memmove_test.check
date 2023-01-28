@@ -1,23 +1,23 @@
 #include "tests_includes.h"
 
-#suite memmcpy
+#suite memmove
 #test classic
     char *src = "123";
     char res[10] = "";
     char exp[10] = "";
 
-    memcpy(exp, src, strlen(src));
-    s21_memcpy(res, src, strlen(src));
+    memmove(exp, src, strlen(src));
+    s21_memmove(res, src, strlen(src));
     ck_assert_str_eq(res, exp);
 
 
-#test dest_full_capacity
+#test res_full_capacity
     char *src = "12345";
     char res[5] = "";
     char exp[5] = "";
 
-    memcpy(exp, src, strlen(src));
-    s21_memcpy(res, src, strlen(src));
+    memmove(exp, src, strlen(src));
+    s21_memmove(res, src, strlen(src));
     ck_assert_str_eq(res, exp);
 
 
@@ -26,8 +26,8 @@
     char res[5] = "";
     char exp[5] = "";
 
-    memcpy(exp, src, strlen(src));
-    s21_memcpy(res, src, strlen(src));
+    memmove(exp, src, strlen(src));
+    s21_memmove(res, src, strlen(src));
     ck_assert_str_eq(res, exp);
 
 
@@ -36,8 +36,8 @@
     char res[5] = "";
     char exp[5] = "";
 
-    memcpy(exp, src, 0);
-    s21_memcpy(res, src, 0);
+    memmove(exp, src, 0);
+    s21_memmove(res, src, 0);
     ck_assert_str_eq(res, exp);
 
 
@@ -46,28 +46,27 @@
     char res[5] = "12345";
     char exp[5] = "12345";
 
-    memcpy(exp, src, strlen(src));
-    s21_memcpy(res, src, strlen(src));
+    memmove(exp, src, strlen(src));
+    s21_memmove(res, src, strlen(src));
     ck_assert_str_eq(res, exp);
 
 
-#test src_add_is_dest
+#test src_eq_dest
     char src[5] = "12345";
     char *res = &src[0];
     char exp[5] = "12345";
 
-    memcpy(src, src, strlen(src));
-    s21_memcpy(res, res, strlen(src));
+    memmove(src, src, strlen(src));
+    s21_memmove(res, res, strlen(src));
     ck_assert_str_eq(res, exp);
 
 
-#test n_gt_src_len
+#test n_gt_len
     char *src = "123";
     char res[5] = "";
     char exp[5] = "";
     int n = 5;
 
-    memcpy(exp, src, n);
-    s21_memcpy(res, src, n);
+    memmove(exp, src, n);
+    s21_memmove(res, src, n);
     ck_assert_str_eq(res, exp);
-

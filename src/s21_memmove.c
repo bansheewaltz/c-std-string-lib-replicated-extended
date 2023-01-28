@@ -7,7 +7,7 @@ void *s21_memmove(void *dest, const void *src, s21_size_t n) {
     char *src0 = (char *)src;
 
     char *tmp = (char *)malloc(sizeof(char) * n);
-    if (tmp) {
+    if (tmp != s21_NULL) {
       s21_memcpy(tmp, src0, n);
       s21_memcpy(dest0, tmp, n);
       free(tmp);

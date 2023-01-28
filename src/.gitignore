@@ -1,6 +1,8 @@
 *
-!*.[ch]
-!Makefile
-!*.check
 !.gitignore
-../.vscode/
+!Makefile
+!*.[ch]
+
+!tests/
+tests/*
+!tests/*.check

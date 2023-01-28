@@ -9,6 +9,7 @@ SRC := ../src# ../ is used for the reasons of convenience and consistency
 OBJ := ../obj
 TST := tests
 BIN := $(TST)/build
+CRP := coverage_report
 # project files
 SRCS := $(wildcard *.c)
 OBJS := $(SRCS:.c=.o)
@@ -35,6 +36,7 @@ all: s21_string.a
 clean:
 	$(RM) *.{out,o,a,gcda,gcno,gcov,html,css}
 	$(RM) $(BIN)
+	$(RM) $(CRP)
 	$(RM) $(OBJ)
 	$(RM) $(TST)/*.c
 
@@ -70,13 +72,15 @@ strcspn_test:#                               |test_exe |test_o     |function_o  
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strcspn.o $(OBJ)/s21_strlen.o
 strspn_test:
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strspn.o $(OBJ)/s21_strlen.o
+memmove_test:
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_memmove.o $(OBJ)/s21_memcpy.o
 
 gcov_report:
+	$(MK) $(CRP)
 	$(foreach file, $(TNAMES), $(BIN)/$(file);)
-	mv $(OBJ)/*.{gcno,gcda} .
-	gcovr -r . --html-details -o gcov_report.html
-	open gcov_report.html
-	$(RM) *.{gcno,gcda}
+	gcovr --html-details --html-self-contained -o $(CRP)/report.html $(OBJ)
+	open $(CRP)/report.html
+	$(RM) $(OBJ)/*.{gcno,gcda}
 
 verter:
 	cd ../materials/build && bash run.sh
