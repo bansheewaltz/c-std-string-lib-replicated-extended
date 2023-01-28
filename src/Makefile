@@ -1,29 +1,34 @@
-.PHONY : all, clean, style, re, test, s21_string.a, tests_c, cov_objs, test_bins, gcov_report
-
-SHELL := /bin/bash
+.PHONY : all, clean, style, re, test, s21_string.a, tests_c, cov_objs, \
+		 test_bins, gcov_report, verter
+# compilation options
 CC := gcc
 CFLAGS := -Wall -Werror -Wextra -std=c11
-RM := rm -rf
-OS := $(shell uname -s)
-SRC := ../src
+LDFLAGS = # will be set based on OS
+# paths
+SRC := ../src# ../ is used for the reasons of convenience and consistency
 OBJ := ../obj
 TST := tests
 BIN := $(TST)/build
+# project files
 SRCS := $(wildcard *.c)
 OBJS := $(SRCS:.c=.o)
-CHECKS = $(wildcard $(TST)/*.check)
-TESTSC = $(CHECKS:.check=.c)
-TNAMES = $(shell basename -a $(CHECKS:%.check=%))
+CHECKS := $(wildcard $(TST)/*.check)
+TESTSC := $(CHECKS:.check=.c)
+TNAMES := $(shell basename -a $(CHECKS:%.check=%))
+# platform dependent stuff
+OS := $(shell uname -s)
 ifeq ($(OS), Darwin)
 	LDFLAGS = -lcheck
-	ifeq ($(shell uname -p), arm)
+	ifeq ($(shell uname -p), arm) # M1+ Mac
 		LDFLAGS = -D_THREAD_SAFE -I/opt/homebrew/Cellar/check/0.15.2/include \
 		      	  -L/opt/homebrew/Cellar/check/0.15.2/lib -lcheck
 	endif
 else ifeq ($(OS),Linux)
 	LDFLAGS = -lcheck -pthread -lcheck_pic -pthread -lrt -lm -lsubunit
 endif
-
+# shell macros
+MK := mkdir -p
+RM := rm -rf
 
 all: s21_string.a
 
@@ -38,25 +43,25 @@ re: clean all
 style:
 	clang-format -style=Google -i *.[ch]
 
-s21_string.a: clean
-	mkdir $(OBJ)
+s21_string.a:
+	$(MK) $(OBJ)
 	cd $(OBJ) && $(CC) $(CFLAGS) $(LDFLAGS) -c $(SRC)/*.c
 	ar rsc $@ $(OBJ)/*
 	ranlib $@
 
-test: clean tests_c cov_objs test_bins gcov_report
+test: tests_c cov_objs test_bins gcov_report
 
 tests_c: $(TESTSC)
 %.c: %.check
 	checkmk clean_mode=1 $< > $@
 cov_objs:
-	mkdir $(OBJ)
+	$(MK) $(OBJ)
 	$(MAKE) $(OBJS)
 s21_%.o: s21_%.c
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -c -o $(OBJ)/$@ $<
-	-$(CC) $(CFLAGS) $(LDFLAGS) -c -o $(OBJ)/$*_test.o $(TST)/$*_test.c 2>/dev/null
+	$(CC) $(CFLAGS) $(LDFLAGS) -c -o $(OBJ)/$*_test.o $(TST)/$*_test.c 2>/dev/null || true
 test_bins:
-	mkdir $(BIN)
+	$(MK) $(BIN)
 	$(MAKE) $(TNAMES)
 %_test:
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_$*.o
