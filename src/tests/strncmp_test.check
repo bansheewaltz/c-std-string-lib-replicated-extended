@@ -2,50 +2,27 @@
 
 #suite strncmp
 #test test1
-    int r1, r2;
-    char s1[10] = "";
-    char s2[10] = "";
-
-    r1 = strncmp(s1, s2,1);
-    r2 =s21_strncmp(s1, s2,1);
-    ck_assert_int_eq(s1, s2);
+   ck_assert_int_eq(strncmp("", "", 5), s21_strncmp("", "", 5));
 
 
 #test test2
-    int r1, r2;
-    char s1[5] = "12345ggg";
-    char s2[5] = "12345ggg";
-
-    r1 = strncmp(s1, s2,3);
-    r2 =s21_strncmp(s1, s2,3);
-    ck_assert_int_eq(s1, s2);
+    ck_assert_int_eq(strncmp("3dd3d", "3dd3d", 5),
+                   s21_strncmp("3dd3d", "3dd3d", 5));
 
 
 #test test3
-    int r1, r2;
-    char s1[10] = "";
-    char s2[10] = "f";
-
-    r1 = strncmp(s1, s2,3);
-    r2 =s21_strncmp(s1, s2,3);
-    ck_assert_int_eq(s1, s2);
+    ck_assert_int_eq(strncmp("3", "3", 2), s21_strncmp("3", "3", 2));
 
 
 #test test4
-    int r1, r2;
-    char s1[10] = "fdsaijf";
-    char s2[10] = "qwrrfgg";
-
-    r1 = strncmp(s1, s2,0);
-    r2 =s21_strncmp(s1, s2,0);
-    ck_assert_int_eq(s1, s2);
-
+   ck_assert_int_eq(strncmp("3dd3sdfgsdd", "dsfg3dd3d", 0),
+                   s21_strncmp("3dd3sdfgsdd", "dsfg3dd3d", 0));
 
 #test test5
-    int r1, r2;
-    char s1[10] = "1234";
-    char s2[10] = "";
+    ck_assert_int_eq(strncmp("1234", "13", 2), s21_strncmp("1234", "13", 2));
 
-    r1 = strncmp(s1, s2,2);
-    r2 =s21_strncmp(s1, s2,2);
-    ck_assert_int_eq(s1, s2);
+#test test6
+    ck_assert_int_eq(strncmp("", "13", 2), s21_strncmp("", "13", 2));
+
+#test test7
+    ck_assert_int_eq(strncmp("1234", "", 2), s21_strncmp("1234", "", 2));
