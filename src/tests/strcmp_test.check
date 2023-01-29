@@ -1,0 +1,51 @@
+#include "tests_includes.h"
+
+#suite strcmp 
+#test test1
+    int r1, r2;
+    char s1[10] = "";
+    char s2[10] = "";
+
+    r1 = strcmp(s1, s2);
+    r2 =s21_strcmp(s1, s2);
+    ck_assert_int_eq(s1, s2);
+
+
+#test test2
+    int r1, r2;
+    char s1[5] = "12345ggg";
+    char s2[5] = "12345ggg";
+
+    r1 = strcmp(s1, s2);
+    r2 =s21_strcmp(s1, s2);
+    ck_assert_int_eq(s1, s2);
+
+
+#test test3
+    int r1, r2;
+    char s1[10] = "";
+    char s2[10] = "f";
+
+    r1 = strcmp(s1, s2);
+    r2 =s21_strcmp(s1, s2);
+    ck_assert_int_eq(s1, s2);
+
+
+#test test4
+    int r1, r2;
+    char s1[10] = "fdsaijf";
+    char s2[10] = "qwrrfgg";
+
+    r1 = strcmp(s1, s2);
+    r2 =s21_strcmp(s1, s2);
+    ck_assert_int_eq(s1, s2);
+
+
+#test test5
+    int r1, r2;
+    char s1[10] = "1234";
+    char s2[10] = "";
+
+    r1 = strcmp(s1, s2);
+    r2 =s21_strcmp(s1, s2);
+    ck_assert_int_eq(s1, s2);
