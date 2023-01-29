@@ -13,8 +13,8 @@
 
 #test res_full_capacity
     char *src = "12345";
-    char res[5] = "";
-    char exp[5] = "";
+    char res[6] = "";
+    char exp[6] = "";
 
     memmove(exp, src, strlen(src));
     s21_memmove(res, src, strlen(src));
@@ -43,8 +43,8 @@
 
 #test empty_to_full_not_terminated
     char *src = "";
-    char res[5] = "12345";
-    char exp[5] = "12345";
+    char res[6] = "12345";
+    char exp[6] = "12345";
 
     memmove(exp, src, strlen(src));
     s21_memmove(res, src, strlen(src));
@@ -52,9 +52,9 @@
 
 
 #test src_eq_dest
-    char src[5] = "12345";
+    char src[6] = "12345";
     char *res = &src[0];
-    char exp[5] = "12345";
+    char exp[6] = "12345";
 
     memmove(src, src, strlen(src));
     s21_memmove(res, res, strlen(src));
