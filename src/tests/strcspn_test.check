@@ -1,0 +1,17 @@
+#include "tests_includes.h"
+
+#suite strcspn
+#test t1
+    ck_assert_uint_eq(strcspn("1234567890", "321"), s21_strcspn("1234567890", "321"));
+
+#test t2
+    ck_assert_uint_eq(strcspn("1234567890", "234"), s21_strcspn("1234567890", "234"));
+
+#test t3
+    ck_assert_uint_eq(strcspn("1234567890", ""), s21_strcspn("1234567890", ""));
+
+#test t4
+    ck_assert_uint_eq(strcspn("", "123"), s21_strcspn("", "123"));
+
+#test t5
+    ck_assert_uint_eq(strcspn("", ""), s21_strcspn("", ""));
