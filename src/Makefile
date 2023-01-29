@@ -67,11 +67,7 @@ test_bins:
 	$(MAKE) $(TNAMES)
 %_test:
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_$*.o
-# functions that have dependencies on other functions:
-#strcspn_test:#                               |test_exe |test_o     |function_o          |dependent_functions_o
-#	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strcspn.o $(OBJ)/s21_strlen.o
-memchr_test:
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_memchr.o
+
 gcov_report:
 	$(MK) $(CRP)
 	$(foreach file, $(TNAMES), $(BIN)/$(file);)
