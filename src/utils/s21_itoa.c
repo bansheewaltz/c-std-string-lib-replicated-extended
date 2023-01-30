@@ -1,0 +1,34 @@
+
+char* s21_itoa(int value, char* result, int base) {
+  if (base < 2 || base > 36) {
+    *result = '\0';
+
+    return result;
+  }
+
+  char* ptr = result;
+  char* ptr1 = result;
+  char tmp_char;
+
+  int tmp_value;
+
+  do {
+    tmp_value = value;
+    value /= base;
+    *ptr++ =
+        "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxy"
+        "z"[35 + (tmp_value - value * base)];
+  } while (value);
+
+  if (tmp_value < 0) {
+    *ptr++ = '-';
+  }
+  *ptr-- = '\0';
+  while (ptr1 < ptr) {
+    tmp_char = *ptr;
+    *ptr-- = *ptr1;
+    *ptr1++ = tmp_char;
+  }
+
+  return result;
+}

@@ -1,0 +1,177 @@
+#include "tests_includes.h"
+
+#suite stprintf
+#test text_only
+    char res[10] = "10";
+    char exp[10] = "10";
+
+    sprintf(exp, "10");
+    s21_sprintf(res, "10");
+
+    ck_assert_str_eq(res, exp);
+
+
+#test text_and_char
+    char res[10] = "10";
+    char exp[10] = "10";
+
+    sprintf(exp, "123%c", 'a');
+    s21_sprintf(res, "123%c", 'a');
+
+    ck_assert_str_eq(res, exp);
+
+
+#test c_char
+    char res[10] = "10";
+    char exp[10] = "10";
+
+    sprintf(exp, "%c", 'n');
+    s21_sprintf(res, "%c", 'n');
+
+    ck_assert_str_eq(res, exp);
+
+
+#test i_int
+    char res[10] = "10";
+    char exp[10] = "10";
+
+    sprintf(exp, "%i", 123);
+    s21_sprintf(res, "%i", 123);
+
+    ck_assert_str_eq(res, exp);
+
+
+#test d_int
+    char res[10] = "10";
+    char exp[10] = "10";
+
+    sprintf(exp, "%d", 123);
+    s21_sprintf(res, "%d", 123);
+
+    ck_assert_str_eq(res, exp);
+
+
+#test o_int
+    char res[30] = "12345678";
+    char exp[30] = "12345678";
+
+    sprintf(exp, "%o", 9);
+    s21_sprintf(res, "%o", 9);
+
+    ck_assert_str_eq(res, exp);
+
+
+#test h_int_to_empty
+    char res[30] = "";
+    char exp[30] = "";
+
+    sprintf(exp, "%x", 17);
+    s21_sprintf(res, "%x", 17);
+
+    ck_assert_str_eq(res, exp);
+
+
+#test x_int
+    char res[30] = "12345678";
+    char exp[30] = "12345678";
+
+    sprintf(exp, "%x", 9);
+    s21_sprintf(res, "%x", 9);
+
+    ck_assert_str_eq(res, exp);
+
+
+#test X_int
+    char res[30] = "12345678";
+    char exp[30] = "12345678";
+
+    sprintf(exp, "%X", 9);
+    s21_sprintf(res, "%X", 9);
+
+    ck_assert_str_eq(res, exp);
+
+
+#test all_int_combination_0
+    char res[30] = "12345678";
+    char exp[30] = "12345678";
+    int n = 0;
+
+    sprintf(exp, "%d%i%o%x%X", n, n, n, n, n);
+    s21_sprintf(res, "%d%i%o%x%X", n, n, n, n, n);
+
+    ck_assert_str_eq(res, exp);
+
+
+#test all_int_combination_9
+    char res[30] = "12345678";
+    char exp[30] = "12345678";
+    int n = 9;
+
+    sprintf(exp, "%d%i%o%x%X", n, n, n, n, n);
+    s21_sprintf(res, "%d%i%o%x%X", n, n, n, n, n);
+
+    ck_assert_str_eq(res, exp);
+
+
+#test all_int_combination_17
+    char res[30] = "12345678";
+    char exp[30] = "12345678";
+    int n = 17;
+
+    sprintf(exp, "%d%i%o%x%X", n, n, n, n, n);
+    s21_sprintf(res, "%d%i%o%x%X", n, n, n, n, n);
+
+    ck_assert_str_eq(res, exp);
+
+
+#test all_int_combination_16
+    char res[30] = "12345678";
+    char exp[30] = "12345678";
+    int n = 16;
+
+    sprintf(exp, "%d%i%o%x%X", n, n, n, n, n);
+    s21_sprintf(res, "%d%i%o%x%X", n, n, n, n, n);
+
+    ck_assert_str_eq(res, exp);
+
+
+#test all_int_combination_8
+    char res[30] = "12345678";
+    char exp[30] = "12345678";
+    int n = 8;
+
+    sprintf(exp, "%d%i%o%x%X", n, n, n, n, n);
+    s21_sprintf(res, "%d%i%o%x%X", n, n, n, n, n);
+
+    ck_assert_str_eq(res, exp);
+
+
+#test all_int_combination_negative
+    char res[30] = "12345678";
+    char exp[30] = "12345678";
+    int n = -17;
+
+    sprintf(exp, "%d%i%o%x%X", n, n, n, n, n);
+    s21_sprintf(res, "%d%i%o%x%X", n, n, n, n, n);
+
+    ck_assert_str_eq(res, exp);
+
+
+#test s_str
+    char res[30] = "12345678";
+    char exp[30] = "12345678";
+
+    sprintf(exp, "%s", "laskdfj");
+    s21_sprintf(res, "%s","laskdfj");
+
+    ck_assert_str_eq(res, exp);
+
+
+#test s_2str
+    char res[30] = "12345678";
+    char exp[30] = "12345678";
+
+    sprintf(exp, "%s%s", "laskdfj", "adfs");
+    s21_sprintf(res, "%s%s", "laskdfj", "adfs");
+
+    ck_assert_str_eq(res, exp);

@@ -1,0 +1,22 @@
+#include "tests_includes.h"
+
+#suite strcat
+#test classic
+    char dest[10] = "123";
+    char src[10] = "456";
+    char *exp = "123456";
+
+    s21_strcat(dest, src);
+    char *res = dest;
+
+    ck_assert_str_eq(res, exp);
+
+#test zero_dest
+    char dest[10] = "";
+    char src[10] = "456";
+    char *exp = "456";
+
+    s21_strcat(dest, src);
+    char *res = dest;
+
+    ck_assert_str_eq(res, exp);
