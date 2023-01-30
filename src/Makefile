@@ -10,6 +10,8 @@ OBJ := ../obj
 TST := tests
 BIN := $(TST)/build
 CRP := coverage_report
+UTL := $(SRC)/utils
+TMP := $(SRC)/tmp# for the case experimenting
 # project files
 SRCS := $(wildcard *.c)
 OBJS := $(SRCS:.c=.o)
@@ -47,7 +49,7 @@ style:
 
 s21_string.a:
 	$(MK) $(OBJ)
-	cd $(OBJ) && $(CC) $(CFLAGS) $(LDFLAGS) -c $(SRC)/*.c
+	cd $(OBJ) && $(CC) $(CFLAGS) $(LDFLAGS) -c $(SRC)/*.c $(UTL)/*c
 	ar rsc $@ $(OBJ)/*
 	ranlib $@
 
@@ -71,9 +73,11 @@ test_bins:
 strcspn_test:#                               |test_exe |test_o     |function_o          |dependent_functions_o
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strcspn.o $(OBJ)/s21_strlen.o
 strspn_test:
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strspn.o $(OBJ)/s21_strlen.o
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strspn.o  $(OBJ)/s21_strlen.o
 memmove_test:
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_memmove.o $(OBJ)/s21_memcpy.o
+sprintf_test:
+	#tmp
 
 gcov_report:
 	$(MK) $(CRP)
@@ -84,3 +88,33 @@ gcov_report:
 
 verter:
 	cd ../materials/build && bash run.sh
+
+
+
+# testing only one specific function with check library
+FNC := sprintf
+testf: s21_string.a
+	clear
+	@$(RM) $(TMP)
+	@$(MK) $(TMP)
+	checkmk clean_mode=1 $(TST)/$(FNC)_test.check > $(TMP)/$(FNC)_test.c
+	cp $(TST)/tests_includes.h $(TMP)
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -c -o $(TMP)/s21_$(FNC).o s21_$(FNC).c
+	$(CC) $(CFLAGS) $(LDFLAGS) -c -o $(TMP)/$(FNC)_test.o $(TMP)/$(FNC)_test.c
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(TMP)/$(FNC)_test s21_string.a $(TMP)/$(FNC)_test.o $(TMP)/s21_$(FNC).o
+	echo && $(TMP)/$(FNC)_test
+	gcovr --html-details --html-self-contained -o $(TMP)/report.html $(TMP)
+# testing specific fucntion with main written in it
+print: s21_string.a
+	clear
+	$(CC) $(CFLAGS) -g -o s21_$(FNC) s21_string.a s21_$(FNC).c && ./s21_$(FNC)
+
+
+# brew installation
+brew: 
+	mkdir -p /opt/goinfre/$$(USER)
+	cd /opt/goinfre/$$(USER) && git clone https://github.com/Homebrew/brew homebrew
+	eval "$$(/opt/goinfre/$$(USER)/homebrew/bin/brew shellenv)"
+	brew update --force --quiet
+	chmod -R go-w "$$(brew --prefix)/share/zsh"
+	
