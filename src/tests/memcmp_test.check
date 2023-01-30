@@ -20,3 +20,7 @@
 
 #test test5
     ck_assert_int_eq(memcmp("1234", "13", 2), s21_memcmp("1234", "13", 2));
+
+#test test6
+   ck_assert_int_eq(memcmp("", "dsfg3dd3d", 3),
+                   s21_memcmp("", "dsfg3dd3d", 3));
