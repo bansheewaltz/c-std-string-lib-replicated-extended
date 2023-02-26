@@ -1,0 +1,177 @@
+#include "tests_includes.h"
+
+#suite special_f_c
+#test to_upper_test1
+  char buff1[] = "are YOU ok?";
+  char buff2[] = "ARE YOU OK?";
+  char *result = s21_to_upper(buff1);
+  ck_assert_str_eq(result, buff2);
+  if (result) {
+    free(result);
+  }
+
+#test to_upper_test2
+  char buff1[] = "";
+  char buff2[] = "";
+  char *result = s21_to_upper(buff1);
+  ck_assert_str_eq(result, buff2);
+  if (result) {
+    free(result);
+  }
+
+#test to_upper_test3
+  char buff1[] = "!!!++";
+  char buff2[] = "!!!++";
+  char *result = s21_to_upper(buff1);
+  ck_assert_str_eq(result, buff2);
+  if (result) {
+    free(result);
+  }
+
+#test to_upper_test4
+  char buff1[] = "1234";
+  char buff2[] = "1234";
+  char *result = s21_to_upper(buff1);
+  ck_assert_str_eq(result, buff2);
+  if (result) {
+    free(result);
+  }
+
+#test to_lower_test1
+  char buff1[] = "are YOU ok?";
+  char buff2[] = "are you ok?";
+  char *result = s21_to_lower(buff1);
+  ck_assert_str_eq(result, buff2);
+  if (result) {
+    free(result);
+  }
+
+#test to_lower_test2
+  char buff1[] = "";
+  char buff2[] = "";
+  char *result = s21_to_lower(buff1);
+  ck_assert_str_eq(result, buff2);
+  if (result) {
+  free(result);
+  }
+
+#test to_lower_test3
+  char buff1[] = "!?";
+  char buff2[] = "!?";
+  char *result = s21_to_lower(buff1);
+  ck_assert_str_eq(result, buff2);
+
+  if (result) {
+    free(result);
+  }
+
+#test to_lower_test4
+  char buff1[] = "112";
+  char buff2[] = "112";
+  char *result = s21_to_lower(buff1);
+  ck_assert_str_eq(result, buff2);
+
+  if (result) {
+    free(result);
+  }
+
+#test insert_test1
+  char buff1[] = "are YOU ok?";
+  char buff2[] = "Yes, I am";
+  char buff3[] = "are YOU ok?Yes, I am";
+  char *result = s21_insert(buff1, buff2, 11);
+  ck_assert_str_eq(result, buff3);
+
+  if (result) {
+    free(result);
+  }
+
+#test insert_test2
+  char buff1[] = "";
+  char buff2[] = "";
+  char *buff3 = NULL;
+  char *result = s21_insert(buff1, buff2, 11);
+  ck_assert_ptr_eq(result, buff3);
+  if (result) {
+    free(result);
+  }
+
+#test insert_test3
+  char buff1[] = "----------";
+  char buff2[] = "+";
+  char buff3[] = "+----------";
+  char *result = s21_insert(buff1, buff2, 0);
+  ck_assert_str_eq(result, buff3);
+  if (result) {
+    free(result);
+  }
+
+#test insert_test4
+  char buff1[] = "areYOU ok?";
+  char buff2[] = " ";
+  char buff3[] = "are YOU ok?";
+  char *result = s21_insert(buff1, buff2, 3);
+  ck_assert_str_eq(result, buff3);
+  if (result) {
+    free(result);
+  }
+
+#test trim_test1
+  char buff1[] = "areYOU ok?";
+  char buff2[] = "";
+  char buff3[] = "areYOU ok?";
+  char *result = s21_trim(buff1, buff2);
+  ck_assert_str_eq(result, buff3);
+  if (result) {
+    free(result);
+  }
+
+#test trim_test2
+  char buff1[] = "  are YOU ok  ?";
+  char buff2[] = " ";
+  char buff3[] = "are YOU ok  ?";
+  char *result = s21_trim(buff1, buff2);
+  ck_assert_str_eq(result, buff3);
+  if (result) {
+    free(result);
+  }
+
+#test trim_test3
+  char buff1[] = "";
+  char buff2[] = "";
+  char *buff3 = "";
+  char *result = s21_trim(buff1, buff2);
+  ck_assert_str_eq(result, buff3);
+  if (result) {
+    free(result);
+  }
+
+#test trim_test4
+  char buff1[] = "areYOU ok !!?";
+  char buff2[] = " ?!!";
+  char buff3[] = "areYOU ok";
+  char *result = s21_trim(buff1, buff2);
+  ck_assert_str_eq(result, buff3);
+  if (result) {
+    free(result);
+  }
+
+#test trim_test5
+  char buff1[] = "areYOU ok?";
+  char buff2[] = "areYOU";
+  char buff3[] = " ok?";
+  char *result = s21_trim(buff1, buff2);
+  ck_assert_str_eq(result, buff3);
+  if (result) {
+    free(result);
+  }
+
+#test trim_test6
+  char buff1[] = "are YOU ok?";
+  char buff2[] = "      ";
+  char buff3[] = "are YOU ok?";
+  char *result = s21_trim(buff1, buff2);
+  ck_assert_str_eq(result, buff3);
+  if (result) {
+    free(result);
+  }
