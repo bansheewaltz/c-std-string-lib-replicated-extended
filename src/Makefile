@@ -76,6 +76,8 @@ strspn_test:
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strspn.o  $(OBJ)/s21_strlen.o
 memmove_test:
 	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_memmove.o $(OBJ)/s21_memcpy.o
+special_f_c_test:
+	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_special_f_c.o $(OBJ)/s21_strlen.o
 sprintf_test:
 	#tmp
 
