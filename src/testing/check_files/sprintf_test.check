@@ -1,6 +1,6 @@
 #include "tests_includes.h"
 
-#suite stprintf
+#suite sprintf
 #test text_only
     char res[10] = "10";
     char exp[10] = "10";
@@ -147,8 +147,8 @@
 
 
 #test all_int_combination_negative
-    char res[30] = "12345678";
-    char exp[30] = "12345678";
+    char res[35] = "12345678";
+    char exp[35] = "12345678";
     int n = -17;
 
     sprintf(exp, "%d%i%o%x%X", n, n, n, n, n);

@@ -1,0 +1,68 @@
+CONFIG := unit_testing
+### some variables and targets are stored in a shared makefile
+include Makefile.common
+# paths
+CHK := $(TST)/check_files
+SRC_B := $(BLD)/src
+T_INC := $(TST)/headers
+COV_REP := $(REPORTS)/coverage_report
+COV_INF := $(BLD)/coverage_info
+# filenames specification
+TST_REPORT := $(REPORTS)/tests_report.txt
+TST_REPORT_R := $(REPORTS)/tests_report_raw.txt
+COV_REPORT := gcov_report.html
+# project files
+T_SRCS := $(SRCS:$(SRC)/s21_%.c=$(SRC_B)/%_test.c)
+T_EXES := $(SRCS:$(SRC)/s21_%.c=$(BIN)/%_test)
+# compilation parameters
+HEADRS += -I$(T_INC)
+LDLIBS += $(shell pkg-config --libs-only-l check)
+LDFLAGS += $(shell pkg-config --libs-only-L check)
+COVFLAGS := --coverage
+
+
+.PHONY: test
+test: $(T_EXES)
+$(BIN)/%_test: $(OBJ)/s21_%.o $(OBJ)/%_test.o | $(COV_INF) $(REPORTS)
+	$(dir_guard)
+	$(CC) $(CFLAGS) $(COVFLAGS) $^ $(LDFLAGS) $(LDLIBS) -o $@
+	-mv $(OBJ)/s21_$*.gcno $(COV_INF) 2> /dev/null
+ifeq ($(DEBUG), 1)
+	-./$@ > /dev/null
+else
+	-(echo && ./$@) | tee -a $(TST_REPORT_R) | sed 's/.*[FE]:.\{1,8\}:/\t/g'
+endif
+	mv $(OBJ)/s21_$*.gcda $(COV_INF)
+
+$(OBJ)/s21_%.o: $(SRC)/s21_%.c | $(OBJ)
+	$(CC) -c $(CFLAGS) $(COVFLAGS) $< -o $@
+
+$(OBJ)/%_test.o: CFLAGS = $(DBGFLAGS) $(WFLAGS) -std=c11 $(HEADRS) $(shell pkg-config --cflags check)
+$(OBJ)/%_test.o: $(SRC_B)/%_test.c | $(OBJ)
+	$(CC) -c $(CFLAGS) $< $(LDFLAGS) $(LDLIBS) -o $@
+
+$(SRC_B)/%_test.c: $(CHK)/%_test.check
+	$(dir_guard)
+	checkmk clean_mode=1 $< > $@
+	$(format_the_file)
+
+
+# directories creation
+$(OBJ):
+	@$(MK) $@
+$(COV_INF):
+	@$(MK) $@
+$(REPORTS):
+	@$(MK) $@
+
+
+.PHONY: gcov_report
+gcov_report: $(T_EXES)
+ifeq (, $(shell which gcovr))
+	$(error "gcovr" tool should be installed)
+endif
+	@$(MK) $(COV_REP)
+	gcovr --html-details --html-self-contained -o $(COV_REP)/$(COV_REPORT) $(COV_INF)
+ifeq ($(OS), macOS)
+	open $(COV_REP)/$(COV_REPORT)
+endif

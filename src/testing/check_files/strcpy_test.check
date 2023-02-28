@@ -1,0 +1,13 @@
+#include "tests_includes.h"
+
+#suite strcpy
+#test classic
+    char *src = "123";
+    char res[10] = "";
+    char exp[10] = "";
+
+    strcpy(exp, src);
+    s21_strcpy(res, src);
+    ck_assert_str_eq(res, exp);
+
+

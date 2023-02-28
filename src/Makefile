@@ -1,122 +1,81 @@
-.PHONY : all, clean, style, re, test, s21_string.a, tests_c, cov_objs, \
-		 test_bins, gcov_report, verter
-# compilation options
-CC := gcc
-CFLAGS := -Wall -Werror -Wextra -std=c11
-LDFLAGS = # will be set based on OS
-# paths
-SRC := ../src# ../ is used for the reasons of convenience and consistency
-OBJ := ../obj
-TST := tests
-BIN := $(TST)/build
-CRP := coverage_report
-UTL := $(SRC)/utils
-TMP := $(SRC)/tmp# for the case experimenting
-# project files
-SRCS := $(wildcard *.c)
-OBJS := $(SRCS:.c=.o)
-CHECKS := $(wildcard $(TST)/*.check)
-TESTSC := $(CHECKS:.check=.c)
-TNAMES := $(shell basename -a $(CHECKS:%.check=%))
-# platform dependent stuff
-OS := $(shell uname -s)
-ifeq ($(OS), Darwin)
-	LDFLAGS = -lcheck
-	ifeq ($(shell uname -p), arm) # M1+ Mac
-		LDFLAGS = -D_THREAD_SAFE -I/opt/homebrew/Cellar/check/0.15.2/include \
-		      	  -L/opt/homebrew/Cellar/check/0.15.2/lib -lcheck
-	endif
-else ifeq ($(OS),Linux)
-	LDFLAGS = -lcheck -pthread -lcheck_pic -pthread -lrt -lm -lsubunit
+CONFIG := release
+### many variables are stored in a shared makefile
+include Makefile.common
+vpath %.c $(SRC) $(UTL)# sets search paths for .c files
+vpath lib%.a $(LIB)
+export
+
+
+.PHONY: all
+all:
+	$(MAKE) lib
+	$(MAKE) test
+	$(MAKE) gcov_report
+ifeq ($(KERNEL), Linux)
+	$(MAKE) memcheck
 endif
-# shell macros
-MK := mkdir -p
-RM := rm -rf
 
-all: s21_string.a
+s21_string.a: $(OBJS)
+	ar -rsc $@ $^
 
+$(OBJ)/%.o: %.c $(HDRS)
+	$(dir_guard)
+	$(CC) -c $(CFLAGS) $< -o $@
+
+.PHONY: clean
 clean:
-	$(RM) *.{out,o,a,gcda,gcno,gcov,html,css}
-	$(RM) $(BIN)
-	$(RM) $(CRP)
-	$(RM) $(OBJ)
-	$(RM) $(TST)/*.c
+	$(RM) $(BUILD)
+	$(RM) $(REPORTS)
+	$(RM) $(LIBNAME).a
 
-re: clean all
-
-style:
-	clang-format -style=Google -i *.[ch]
-
-s21_string.a:
-	$(MK) $(OBJ)
-	cd $(OBJ) && $(CC) $(CFLAGS) $(LDFLAGS) -c $(SRC)/*.c $(UTL)/*c
-	ar rsc $@ $(OBJ)/*
-	ranlib $@
-
-test: tests_c cov_objs test_bins gcov_report
-
-tests_c: $(TESTSC)
-%.c: %.check
-	checkmk clean_mode=1 $< > $@
-cov_objs:
-	$(MK) $(OBJ)
-	$(MAKE) $(OBJS)
-s21_%.o: s21_%.c
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -c -o $(OBJ)/$@ $<
-	$(CC) $(CFLAGS) $(LDFLAGS) -c -o $(OBJ)/$*_test.o $(TST)/$*_test.c 2>/dev/null || true
-test_bins:
-	$(MK) $(BIN)
-	$(MAKE) $(TNAMES)
-%_test:
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_$*.o
-# functions that have dependencies on other functions:
-strcspn_test:#                               |test_exe |test_o     |function_o          |dependent_functions_o
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strcspn.o $(OBJ)/s21_strlen.o
-strspn_test:
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_strspn.o  $(OBJ)/s21_strlen.o
-memmove_test:
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_memmove.o $(OBJ)/s21_memcpy.o
-special_f_c_test:
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(BIN)/$@ $(OBJ)/$@.o $(OBJ)/s21_special_f_c.o $(OBJ)/s21_strlen.o
-sprintf_test:
-	#tmp
-
-gcov_report:
-	$(MK) $(CRP)
-	$(foreach file, $(TNAMES), $(BIN)/$(file);)
-	gcovr --html-details --html-self-contained -o $(CRP)/report.html $(OBJ)
-	open $(CRP)/report.html
-	$(RM) $(OBJ)/*.{gcno,gcda}
-
-verter:
-	cd ../materials/build && bash run.sh
+.PHONY: test gcov_report
+test gcov_report: lib
+ifeq ($(DEBUG), 1)
+	$(MAKE) -f Makefile.unit_testing $@
+endif
+	@$(MAKE) -s -f Makefile.unit_testing $@
 
 
 
-# testing only one specific function with check library
-FNC := sprintf
-testf: s21_string.a
-	clear
-	@$(RM) $(TMP)
-	@$(MK) $(TMP)
-	checkmk clean_mode=1 $(TST)/$(FNC)_test.check > $(TMP)/$(FNC)_test.c
-	cp $(TST)/tests_includes.h $(TMP)
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -c -o $(TMP)/s21_$(FNC).o s21_$(FNC).c
-	$(CC) $(CFLAGS) $(LDFLAGS) -c -o $(TMP)/$(FNC)_test.o $(TMP)/$(FNC)_test.c
-	$(CC) $(CFLAGS) $(LDFLAGS) --coverage -o $(TMP)/$(FNC)_test s21_string.a $(TMP)/$(FNC)_test.o $(TMP)/s21_$(FNC).o
-	echo && $(TMP)/$(FNC)_test
-	gcovr --html-details --html-self-contained -o $(TMP)/report.html $(TMP)
-# testing specific fucntion with main written in it
-print: s21_string.a
-	clear
-	$(CC) $(CFLAGS) -g -o s21_$(FNC) s21_string.a s21_$(FNC).c && ./s21_$(FNC)
+.PHONY: lib
+lib: libs21_string.a
+libs21_string.a: s21_string.a
+	$(MK) $(LIB)
+	cp $< $(LIB)/$@
 
+.PHONY: memcheck
+memcheck: lib
+ifeq (, $(shell which valgrind))
+	$(error "valgrind" should be installed)
+endif
+ifeq ($(DEBUG), 1)
+	$(MAKE) -f Makefile.memcheck $@
+endif
+	$(MAKE) -s -f Makefile.memcheck $@
 
-# brew installation
-brew: 
-	mkdir -p /opt/goinfre/$$(USER)
-	cd /opt/goinfre/$$(USER) && git clone https://github.com/Homebrew/brew homebrew
-	eval "$$(/opt/goinfre/$$(USER)/homebrew/bin/brew shellenv)"
-	brew update --force --quiet
-	chmod -R go-w "$$(brew --prefix)/share/zsh"
-	
+.PHONY: miniverter
+miniverter: clean
+	cd $(SCRIPTS) && bash run_miniverter.sh
+
+.PHONY: re
+re: clean
+	$(MAKE) all
+
+.PHONY: linter
+linter:
+	clang-format -style=Google -i $(shell find . -type f -name '*.h' -o -name '*.c' -o -name '*.cs')
+.PHONY: linter_check
+linter_check:
+	clang-format -style=Google -n $(shell find . -type f -name '*.h' -o -name '*.c' -o -name '*.cs')
+
+.PHONY: container
+container:
+ifeq (, $(shell which docker))
+	$(error "Docker" should be installed)
+endif
+	$(MAKE) clean_build
+	bash $(SCRIPTS)/run_docker_image.sh
+
+.PHONY: brew
+brew:
+	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh

@@ -1,0 +1,53 @@
+CONFIG := memcheck
+### some variables and targets are stored in a shared makefile
+include Makefile.common
+# paths
+CHK := $(TST)/check_files
+SRC_B := $(BLD)/src
+T_INC := $(TST)/headers
+# filenames specification
+TST_REPORT_R := $(REPORTS)/memcheck_report_raw.log
+# project files
+T_SRCS := $(SRCS:$(SRC)/s21_%.c=$(SRC_B)/%_test.c)
+T_EXES := $(SRCS:$(SRC)/s21_%.c=$(BIN)/%_test)
+# compilation parameters
+CK_FORK=no
+HEADRS += -I$(T_INC)
+LDLIBS += $(shell pkg-config --libs-only-l check)
+LDFLAGS += $(shell pkg-config --libs-only-L check)
+# VALGRINDFLAGS := valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s
+VALGRINDFLAGS := valgrind
+
+
+.PHONY: memcheck
+memcheck: $(T_EXES)
+$(OBJ)/%_test.o: DBGFLAGS :=
+$(BIN)/%_test: $(OBJ)/s21_%.o $(OBJ)/%_test.o | $(REPORTS)
+	$(dir_guard)
+	$(CC) $^ $(LDFLAGS) $(LDLIBS) -o $@
+ifeq ($(DEBUG), 1)
+	-$(VALGRINDFLAGS) $@ > /dev/null 2> /dev/null
+else
+	-(echo && $(VALGRINDFLAGS) ./$@) > >(tee -a $(TST_REPORT_R)) 2> >(tee -a $(TST_REPORT_R) | grep -m 2 -e "at exit" -e "ERROR SUMMARY") 
+endif
+
+$(OBJ)/s21_%.o: DBGFLAGS :=
+$(OBJ)/s21_%.o: $(SRC)/s21_%.c | $(OBJ)
+	$(CC) -c $(CFLAGS) $< -o $@
+
+$(OBJ)/%_test.o: DBGFLAGS :=
+$(OBJ)/%_test.o: CFLAGS = $(HEADRS) $(shell pkg-config --cflags check)
+$(OBJ)/%_test.o: $(SRC_B)/%_test.c | $(OBJ)
+	$(CC) -c $(CFLAGS) $< $(LDFLAGS) $(LDLIBS) -o $@
+
+$(SRC_B)/%_test.c: $(CHK)/%_test.check
+	$(dir_guard)
+	checkmk clean_mode=1 $< > $@
+	$(format_the_file)
+
+
+# directories creation
+$(OBJ):
+	@$(MK) $@
+$(REPORTS):
+	@$(MK) $@

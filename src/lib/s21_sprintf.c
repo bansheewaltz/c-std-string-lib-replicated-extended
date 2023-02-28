@@ -100,19 +100,19 @@ int s21_sprintf(char *str, const char *format, ...) {
   return str - str_beginning;
 }
 
-int main() {
-  char string[100] = "1234";
-  // char ch = 'a'`;
-  int i = 29;
-  int *p = &i;
+// int main() {
+//   char string[100] = "1234";
+//   // char ch = 'a'`;
+//   int i = 29;
+//   int *p = &i;
 
-  s21_sprintf(string, "%x", i);
-  puts(string);
-  s21_sprintf(string, "%p", p);
-  puts(string);
+//   s21_sprintf(string, "%x", i);
+//   puts(string);
+//   s21_sprintf(string, "%p", p);
+//   puts(string);
 
-  sprintf(string, "%x", i);
-  puts(string);
-  sprintf(string, "%p", p);
-  puts(string);
-}
+//   sprintf(string, "%x", i);
+//   puts(string);
+//   sprintf(string, "%p", p);
+//   puts(string);
+// }
