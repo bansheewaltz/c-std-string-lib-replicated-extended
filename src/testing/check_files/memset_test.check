@@ -1,14 +1,14 @@
 #include "tests_includes.h"
 
 #suite memset
-#test one_char_x3
+#test n_3_empty_dest
     char str[10] = "";
     char exp[10] = "";
     s21_memset(str, 'a', 3);
     s21_memset(exp, 'a', 3);
     ck_assert_str_eq(str, exp);
 
-#test one_char_xFull
+#test n_Full_empty_dest
     int s = 10;
     char str[10] = "";
     char exp[10] = "";
@@ -16,4 +16,26 @@
     memset(exp, 'a', s - 1);
     ck_assert_str_eq(str, exp);
 
+/* ubuntu compilation error
+test n_0_empty_dest
+    char str[10] = "";
+    char exp[10] = "";
+    s21_memset(str, 'a', 0);
+    memset(exp, 'a', 0);
+    ck_assert_str_eq(str, exp);
 
+
+test n_0
+    char str[10] = "dag";
+    char exp[10] = "dag";
+    s21_memset(str, 'a', 0);
+    memset(exp, 'a', 0);
+    ck_assert_str_eq(str, exp);
+*/
+
+#test n_3
+    char str[10] = "adf";
+    char exp[10] = "adf";
+    s21_memset(str, 'a', 3);
+    memset(exp, 'a', 3);
+    ck_assert_str_eq(str, exp);

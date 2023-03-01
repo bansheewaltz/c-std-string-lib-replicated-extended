@@ -6,8 +6,7 @@
 
 
 #test test2
-    ck_assert_int_eq(memcmp("3dd3d", "3dd3d", 5),
-                   s21_memcmp("3dd3d", "3dd3d", 5));
+    ck_assert_int_eq(memcmp("3dd3d", "3dd3d", 5), s21_memcmp("3dd3d", "3dd3d", 5));
 
 
 #test test3
@@ -15,8 +14,7 @@
 
 
 #test test4
-   ck_assert_int_eq(memcmp("3dd3sdfgsdd", "dsfg3dd3d", 0),
-                   s21_memcmp("3dd3sdfgsdd", "dsfg3dd3d", 0));
+   ck_assert_int_eq(memcmp("3dd3sdfgsdd", "dsfg3dd3d", 0), s21_memcmp("3dd3sdfgsdd", "dsfg3dd3d", 0));
 
 #test test5
     ck_assert_int_eq(memcmp("1234", "13", 2), s21_memcmp("1234", "13", 2));
@@ -24,6 +22,5 @@
 
 /* compilation error
 test bound_exceeds_source_size
-   ck_assert_int_eq(memcmp("", "dsfg3dd3d", 3),
-                   s21_memcmp("", "dsfg3dd3d", 3));
+   ck_assert_int_eq(memcmp("", "dsfg3dd3d", 3), s21_memcmp("", "dsfg3dd3d", 3));
 */

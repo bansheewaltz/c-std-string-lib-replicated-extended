@@ -8,24 +8,22 @@ T_INC := $(TST)/headers
 COV_REP := $(REPORTS)/coverage_report
 COV_INF := $(BLD)/coverage_info
 # filenames specification
-TST_REPORT := $(REPORTS)/tests_report.txt
 TST_REPORT_R := $(REPORTS)/tests_report_raw.txt
 COV_REPORT := gcov_report.html
 # project files
 T_SRCS := $(SRCS:$(SRC)/s21_%.c=$(SRC_B)/%_test.c)
 T_EXES := $(SRCS:$(SRC)/s21_%.c=$(BIN)/%_test)
 # compilation parameters
-HEADRS += -I$(T_INC)
 LDLIBS += $(shell pkg-config --libs-only-l check)
 LDFLAGS += $(shell pkg-config --libs-only-L check)
-COVFLAGS := --coverage
-
+COVFLAG := --coverage
+DEFINES := -DUNIT_TESTING
 
 .PHONY: test
 test: $(T_EXES)
 $(BIN)/%_test: $(OBJ)/s21_%.o $(OBJ)/%_test.o | $(COV_INF) $(REPORTS)
 	$(dir_guard)
-	$(CC) $(CFLAGS) $(COVFLAGS) $^ $(LDFLAGS) $(LDLIBS) -o $@
+	$(CC) $(COVFLAG) $^ $(LDFLAGS) $(LDLIBS) -o $@
 	-mv $(OBJ)/s21_$*.gcno $(COV_INF) 2> /dev/null
 ifeq ($(DEBUG), 1)
 	-./$@ > /dev/null
@@ -34,12 +32,13 @@ else
 endif
 	mv $(OBJ)/s21_$*.gcda $(COV_INF)
 
+$(OBJ)/s21_%.o: CFLAGS = $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(COVFLAG) $(DEFINES) $(INCFLAGS)
 $(OBJ)/s21_%.o: $(SRC)/s21_%.c | $(OBJ)
-	$(CC) -c $(CFLAGS) $(COVFLAGS) $< -o $@
+	$(CC) -c $(CFLAGS) $< -o $@
 
-$(OBJ)/%_test.o: CFLAGS = $(DBGFLAGS) $(WFLAGS) -std=c11 $(HEADRS) $(shell pkg-config --cflags check)
+$(OBJ)/%_test.o: CFLAGS = $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(shell pkg-config --cflags check) -I$(INC) -I$(T_INC)
 $(OBJ)/%_test.o: $(SRC_B)/%_test.c | $(OBJ)
-	$(CC) -c $(CFLAGS) $< $(LDFLAGS) $(LDLIBS) -o $@
+	$(CC) -c $(CFLAGS) $< -o $@
 
 $(SRC_B)/%_test.c: $(CHK)/%_test.check
 	$(dir_guard)

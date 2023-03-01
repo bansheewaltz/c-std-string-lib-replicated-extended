@@ -11,6 +11,26 @@
     ck_assert_str_eq(res, exp);
 
 
+#test n_zero
+    char *src = "123";
+    char res[10] = "";
+    char exp[10] = "";
+
+    memmove(exp, src, 0);
+    s21_memmove(res, src, 0);
+    ck_assert_str_eq(res, exp);
+
+
+#test malloc_fail
+    char *src = "";
+    char res[20000] = "";
+    char exp[20000] = "";
+
+    memmove(exp, src, 10101);
+    s21_memmove(res, src, 10101);
+    ck_assert_str_eq(res, exp);
+
+
 #test res_full_capacity
     char *src = "12345";
     char res[6] = "";

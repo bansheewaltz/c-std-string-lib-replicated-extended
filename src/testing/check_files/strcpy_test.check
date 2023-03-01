@@ -11,3 +11,103 @@
     ck_assert_str_eq(res, exp);
 
 
+#test one_char
+    char *src = "1";
+    char res[10] = "";
+    char exp[10] = "";
+
+    strcpy(exp, src);
+    s21_strcpy(res, src);
+    ck_assert_str_eq(res, exp);
+
+
+#test empty_src
+    char *src = "";
+    char res[10] = "123";
+    char exp[10] = "123";
+
+    strcpy(exp, src);
+    s21_strcpy(res, src);
+    ck_assert_str_eq(res, exp);
+
+
+#test empty_src_empty_dest
+    char *src = "";
+    char res[10] = "";
+    char exp[10] = "";
+
+    strcpy(exp, src);
+    s21_strcpy(res, src);
+    ck_assert_str_eq(res, exp);
+
+
+#test long_test
+    char *src = "alksdfjl;dkasfjl;kasdljf ;af";
+    char res[100] = "l;kasdfjl;kadsjf ";
+    char exp[100] = "l;kasdfjl;kadsjf ";
+
+    strcpy(exp, src);
+    s21_strcpy(res, src);
+    ck_assert_str_eq(res, exp);
+
+
+#test null_terminator_in_middle
+    char *src = "alksdfj\0l;dka\0sfjl;kasdljf ;af";
+    char res[100] = "l;kasdfjl;kadsjf ";
+    char exp[100] = "l;kasdfjl;kadsjf ";
+
+    strcpy(exp, src);
+    s21_strcpy(res, src);
+    ck_assert_str_eq(res, exp);
+
+
+#test full_capacity_minus_1
+    char *src = "123";
+    char res[4] = "";
+    char exp[4] = "";
+
+    strcpy(exp, src);
+    s21_strcpy(res, src);
+    ck_assert_str_eq(res, exp);
+
+
+/* macOS compilation error
+test full_capacity
+    char *src = "123";
+    char res[3] = "";
+    char exp[3] = "";
+
+    strcpy(exp, src);
+    s21_strcpy(res, src);
+    ck_assert_str_eq(res, exp);
+
+
+test full_capacity_plus_one
+    char *src = "123";
+    char res[2] = "";
+    char exp[2] = "";
+
+    strcpy(exp, src);
+    s21_strcpy(res, src);
+    ck_assert_str_eq(res, exp);
+*/
+
+
+/* ubuntu compilation error
+test dest_is_src_1
+    char *src = "123";
+    char *src1 = "123";
+
+    strcpy(src, src);
+    s21_strcpy(src1, src1);
+    ck_assert_str_eq(src, src1);
+
+
+test dest_is_src_2
+    char *src = "abc ";
+    char *src1 = "abc ";
+
+    strcpy(src, src);
+    s21_strcpy(src1, src1);
+    ck_assert_str_eq(src, src1);
+*/

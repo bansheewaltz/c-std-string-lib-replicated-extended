@@ -12,8 +12,7 @@ void *s21_trim(const char *src, const char *trim_chars) {
       s21_size_t len_chars = s21_strlen(trim_chars);
 
       s21_trim_l(&src, trim_chars, &len_src, len_chars);
-      if (len_src)
-        s21_trim_r(&src, trim_chars, &len_src, len_chars);
+      if (len_src) s21_trim_r(&src, trim_chars, &len_src, len_chars);
 
       result = (char *)malloc(sizeof(char) * (len_src + 1));
 

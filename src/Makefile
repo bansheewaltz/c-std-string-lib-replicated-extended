@@ -1,3 +1,4 @@
+# Makefile author: dondarri | dondarri@student.21-school.ru
 CONFIG := release
 ### many variables are stored in a shared makefile
 include Makefile.common
@@ -8,11 +9,15 @@ export
 
 .PHONY: all
 all:
+ifeq ($(OS), )
+	$(warning warning: it looks like this Makefile is not fully adapted to your OS)
+endif
 	$(MAKE) lib
+ifneq ($(shell pkg-config --libs check 2> /dev/null), )
 	$(MAKE) test
+ifneq ($(shell which gcovr 2> /dev/null), )
 	$(MAKE) gcov_report
-ifeq ($(KERNEL), Linux)
-	$(MAKE) memcheck
+endif
 endif
 
 s21_string.a: $(OBJS)
@@ -22,18 +27,22 @@ $(OBJ)/%.o: %.c $(HDRS)
 	$(dir_guard)
 	$(CC) -c $(CFLAGS) $< -o $@
 
-.PHONY: clean
-clean:
-	$(RM) $(BUILD)
-	$(RM) $(REPORTS)
-	$(RM) $(LIBNAME).a
-
 .PHONY: test gcov_report
 test gcov_report: lib
 ifeq ($(DEBUG), 1)
 	$(MAKE) -f Makefile.unit_testing $@
 endif
 	@$(MAKE) -s -f Makefile.unit_testing $@
+
+.PHONY: clean
+clean:
+	$(RM) $(BUILD)
+	$(RM) $(REPORTS)
+	$(RM) $(LIBNAME).a
+
+.PHONY: re
+re: clean
+	$(MAKE) all
 
 
 
@@ -51,22 +60,16 @@ endif
 ifeq ($(DEBUG), 1)
 	$(MAKE) -f Makefile.memcheck $@
 endif
-	$(MAKE) -s -f Makefile.memcheck $@
+	@$(MAKE) -s -f Makefile.memcheck $@
+
+.PHONY: linter linter_check
+linter_check: LINTFLAG := -n
+linter linter_check:
+	$(LINT) $(LINTFLAG) $(shell find . -type f -name '*.h' -o -name '*.c')
 
 .PHONY: miniverter
 miniverter: clean
-	cd $(SCRIPTS) && bash run_miniverter.sh
-
-.PHONY: re
-re: clean
-	$(MAKE) all
-
-.PHONY: linter
-linter:
-	clang-format -style=Google -i $(shell find . -type f -name '*.h' -o -name '*.c' -o -name '*.cs')
-.PHONY: linter_check
-linter_check:
-	clang-format -style=Google -n $(shell find . -type f -name '*.h' -o -name '*.c' -o -name '*.cs')
+	cd $(SCRIPTS) && bash run_miniverter_test.sh
 
 .PHONY: container
 container:

@@ -36,3 +36,15 @@
   if (result) {
     free(result);
   }
+
+#test null_arg
+  char *result = s21_to_upper(s21_NULL);
+  ck_assert(result == s21_NULL);
+
+#test not_ascii
+  char *result = s21_to_upper("{");
+  ck_assert_str_eq(result, "{");
+
+#test malloc_fail
+  char *result = s21_to_upper("0123456789");
+  ck_assert(result == s21_NULL);

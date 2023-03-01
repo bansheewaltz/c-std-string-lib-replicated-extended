@@ -2,6 +2,13 @@ PROJNAME := s21_string
 # end directories
 BUILD := build
 REPORTS := reports
+# programs specification
+CC := gcc
+AR := ar
+COV := gcovr
+LINT := clang-format -style=Google
+SHELL := /bin/bash
+MEMCHECK := valgrind
 # paths
 SRC := lib
 TST := testing
@@ -10,7 +17,7 @@ UTL := $(SRC)/utils
 BLD = $(BUILD)/$(CONFIG)
 OBJ = $(BLD)/obj
 BIN = $(BLD)/bin
-LIB = $(BUILD)/release/bin/lib
+LIB := $(BUILD)/release/bin/lib
 SCRIPTS := $(TST)/scripts
 # project files
 SRCS := $(wildcard $(SRC)/*.c)
@@ -22,37 +29,40 @@ HDRS := $(shell find $(INCS) -name *.h)
 KERNEL := $(shell uname -s)
 DISTRO := $(shell cat /etc/os-release 2>/dev/null | grep -o '^NAME="[^"]*' | sed 's/NAME="//g')
 ARCHITECTURE := $(shell uname -m)
+OS :=
 ifeq ($(KERNEL), Darwin)
 	OS := macOS
-else ifeq ($(DISTRO), Ubuntu)
-	OS := Ubuntu
-else
-	OS := Alpine
+endif
+ifeq ($(KERNEL), Linux)
+	ifeq ($(DISTRO), Ubuntu)
+		OS := Ubuntu
+	endif
+	ifeq ($(DISTRO), Alpine Linux)
+		OS := Alpine
+	endif
 endif
 # filenames specification
 LIBNAME := $(PROJNAME)
 # compilation parameters
-CC := gcc
-WFLAGS := -Wall -Werror -Wextra
-HEADRS := $(INCS:%=-I%)
+WFLAGS := -Wall -Werror -Wextra -pedantic
 LDLIBS := -l$(LIBNAME)
 LDFLAGS := -L$(LIB)
+STDFLAG := -std=c11
+INCFLAGS := $(INCS:%=-I%)
 DBGFLAGS ?= -g0
-ifeq ($(OS), Alpine)
-	DBGFLAGS := -g
-endif
-CFLAGS = $(DBGFLAGS) $(WFLAGS) -std=c11 $(HEADRS)
+LINTFLAG = -i
+CFLAGS = $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(INCFLAGS)
 # macros
 RM := rm -rf
 MK := mkdir -p
 dir_guard = @$(MK) $(@D)
-format_the_file = clang-format -style=Google -i $@
+format_the_file = $(LINT) $(LINTFLAG) $@
 # special targets and variables
 .SECONDARY:# keeps all intermediate files (otherwise, they are automatically deleted)
 .SUFFIXES:# cleans-up debug info
+.DELETE_ON_ERROR:# deletes target-files that caused an error during the build
 .DEFAULT_GOAL := all
-SHELL := /bin/bash
-DEBUG ?= 0#makefile debugging
+DEBUG ?= 0# makefile debugging
 ifneq ($(OS), Alpine)
 	MAKEFLAGS += --no-print-directory
 endif
