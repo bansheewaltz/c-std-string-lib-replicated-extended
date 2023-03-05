@@ -202,7 +202,7 @@ int scan_hint(char **str, struct opt options, short int *dst) {
     char *tmp_ptr = calloc(options.width + 1, sizeof(char));
     if (NULL != tmp_ptr) {
       s21_strncpy(tmp_ptr, *str, options.width);
-      result = (short)s21_strtol(tmp_ptr, NULL, base);
+      result = (short)s21_strtol(tmp_ptr, s21_NULL, base);
       free(tmp_ptr);
       tmp_ptr = s21_NULL;
       *str += options.width;
@@ -223,7 +223,7 @@ int scan_uhint(char **str, struct opt options, unsigned short int *dst) {
     char *tmp_ptr = calloc(options.width + 1, sizeof(char));
     if (NULL != tmp_ptr) {
       s21_strncpy(tmp_ptr, *str, options.width);
-      result = (unsigned short)s21_strtol(tmp_ptr, NULL, base);
+      result = (unsigned short)s21_strtol(tmp_ptr, s21_NULL, base);
       free(tmp_ptr);
       tmp_ptr = s21_NULL;
       *str += options.width;
@@ -244,7 +244,7 @@ int scan_int(char **str, struct opt options, int *dst) {
     char *tmp_ptr = calloc(options.width + 1, sizeof(char));
     if (NULL != tmp_ptr) {
       s21_strncpy(tmp_ptr, *str, options.width);
-      result = (int)s21_strtol(tmp_ptr, NULL, base);
+      result = (int)s21_strtol(tmp_ptr, s21_NULL, base);
       free(tmp_ptr);
       tmp_ptr = s21_NULL;
       *str += options.width;
@@ -265,7 +265,7 @@ int scan_uint(char **str, struct opt options, unsigned int *dst) {
     char *tmp_ptr = calloc(options.width + 1, sizeof(char));
     if (NULL != tmp_ptr) {
       s21_strncpy(tmp_ptr, *str, options.width);
-      result = (unsigned int)s21_strtol(tmp_ptr, NULL, base);
+      result = (unsigned int)s21_strtol(tmp_ptr, s21_NULL, base);
       free(tmp_ptr);
       tmp_ptr = s21_NULL;
       *str += options.width;
@@ -286,7 +286,7 @@ int scan_lint(char **str, struct opt options, long int *dst) {
     char *tmp_ptr = calloc(options.width + 1, sizeof(char));
     if (NULL != tmp_ptr) {
       s21_strncpy(tmp_ptr, *str, options.width);
-      result = s21_strtol(tmp_ptr, NULL, base);
+      result = s21_strtol(tmp_ptr, s21_NULL, base);
       free(tmp_ptr);
       tmp_ptr = s21_NULL;
       *str += options.width;
@@ -307,7 +307,7 @@ int scan_ulint(char **str, struct opt options, unsigned long int *dst) {
     char *tmp_ptr = calloc(options.width + 1, sizeof(char));
     if (NULL != tmp_ptr) {
       s21_strncpy(tmp_ptr, *str, options.width);
-      result = (unsigned long)s21_strtol(tmp_ptr, NULL, base);
+      result = (unsigned long)s21_strtol(tmp_ptr, s21_NULL, base);
       free(tmp_ptr);
       tmp_ptr = s21_NULL;
       *str += options.width;
@@ -327,7 +327,7 @@ int scan_float(char **str, struct opt options, float *dst) {
     char *tmp_ptr = calloc(options.width + 1, sizeof(char));
     if (NULL != tmp_ptr) {
       s21_strncpy(tmp_ptr, *str, options.width);
-      result = (float)s21_strtod(tmp_ptr, NULL);
+      result = (float)s21_strtod(tmp_ptr, s21_NULL);
       free(tmp_ptr);
       tmp_ptr = s21_NULL;
       *str += options.width;
@@ -347,7 +347,7 @@ int scan_double(char **str, struct opt options, double *dst) {
     char *tmp_ptr = calloc(options.width + 1, sizeof(char));
     if (NULL != tmp_ptr) {
       s21_strncpy(tmp_ptr, *str, options.width);
-      result = (double)s21_strtod(tmp_ptr, NULL);
+      result = (double)s21_strtod(tmp_ptr, s21_NULL);
       free(tmp_ptr);
       tmp_ptr = s21_NULL;
       *str += options.width;
@@ -367,7 +367,7 @@ int scan_ldouble(char **str, struct opt options, long double *dst) {
     char *tmp_ptr = calloc(options.width + 1, sizeof(char));
     if (NULL != tmp_ptr) {
       s21_strncpy(tmp_ptr, *str, options.width);
-      result = s21_strtod(tmp_ptr, NULL);
+      result = s21_strtod(tmp_ptr, s21_NULL);
       free(tmp_ptr);
       tmp_ptr = s21_NULL;
       *str += options.width;
@@ -388,7 +388,7 @@ int scan_ptr(char **str, struct opt options, void **dst) {
     char *tmp_ptr = calloc(options.width + 1, sizeof(char));
     if (NULL != tmp_ptr) {
       s21_strncpy(tmp_ptr, *str, options.width);
-      result = (void *)s21_strtol(tmp_ptr, NULL, base);
+      result = (void *)s21_strtol(tmp_ptr, s21_NULL, base);
       free(tmp_ptr);
       tmp_ptr = s21_NULL;
       *str += options.width;
