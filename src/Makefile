@@ -1,4 +1,4 @@
-# Makefile author: dondarri | dondarri@student.21-school.ru
+# Makefile author: dondarri@student.21-school.ru
 CONFIG := release
 ### many variables are stored in a shared makefile
 include Makefile.common
