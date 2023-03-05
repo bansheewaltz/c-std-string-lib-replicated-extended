@@ -1,5 +1,3 @@
-#include <string.h>
-
 #include "s21_string.h"
 
 char *s21_strpbrk(const char *str1, const char *str2) {
@@ -10,5 +8,5 @@ char *s21_strpbrk(const char *str1, const char *str2) {
       if (str1[i] == str2[j]) return (char *)&str1[i];
     }
   }
-  return NULL;
+  return s21_NULL;
 }

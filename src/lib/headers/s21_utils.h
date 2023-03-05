@@ -18,4 +18,9 @@ void s21_trim_r(const char **src, const char *trim_chars, s21_size_t *src_len,
 void s21_trim_l(const char **src, const char *trim_chars, s21_size_t *src_len,
                 const s21_size_t trim_chars_len);
 
+char *skip_spaces(char *str);
+int char_value(char *symbol, int base);
+long s21_strtol(char *str, char **end_ptr, int base);
+long double s21_strtod(char *str, char **end_ptr);
+
 #endif  //  HEADERS_S21_UTILS_H_

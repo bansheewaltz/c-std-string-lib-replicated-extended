@@ -1,5 +1,3 @@
-#include <string.h>
-
 #include "s21_string.h"
 int comp(const char *haystack, const char *needle);
 
@@ -9,7 +7,7 @@ char *s21_strstr(const char *haystack, const char *needle) {
       return (char *)haystack;
     haystack++;
   }
-  return NULL;
+  return s21_NULL;
 }
 
 int comp(const char *haystack, const char *needle) {
