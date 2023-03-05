@@ -640,7 +640,7 @@ char dst[20] = "";
 char s21_dst[20] = "";
 s21_sscanf(src, format, s21_dst);
 sscanf(src, format, dst);
-ck_assert_pstr_eq(dst, s21_dst);
+ck_assert_str_eq(dst, s21_dst);
 
 #test s3
 char src[] = " abc\nd 123.1345643564356";
@@ -649,7 +649,7 @@ char dst[20] = "";
 char s21_dst[20] = "";
 s21_sscanf(src, format, s21_dst);
 sscanf(src, format, dst);
-ck_assert_pstr_eq(dst, s21_dst);
+ck_assert_str_eq(dst, s21_dst);
 
 #test c_prec
 char src[] = "abc\nd 123.1345643564356";
@@ -666,7 +666,7 @@ char dst[20] = "";
 char s21_dst[20] = "";
 s21_sscanf(src, format, s21_dst);
 sscanf(src, format, dst);
-ck_assert_pstr_eq(dst, s21_dst);
+ck_assert_str_eq(dst, s21_dst);
 
 #test s3_prec
 char src[] = " abc\nd 123.1345643564356";
@@ -675,7 +675,7 @@ char dst[20] = "";
 char s21_dst[20] = "";
 s21_sscanf(src, format, s21_dst);
 sscanf(src, format, dst);
-ck_assert_pstr_eq(dst, s21_dst);
+ck_assert_str_eq(dst, s21_dst);
 
 #test n
 char src[] = " abc d 123.1345643564356";
@@ -686,7 +686,7 @@ long n = 0;
 long s21_n = 0;
 s21_sscanf(src, format, s21_dst, &s21_n);
 sscanf(src, format, dst, &n);
-ck_assert_pstr_eq(dst, s21_dst);
+ck_assert_str_eq(dst, s21_dst);
 ck_assert_int_eq(n, s21_n);
 
 #test combination
@@ -702,7 +702,7 @@ int num = 0;
 int s21_num = 0;
 s21_sscanf(src, format, s21_dst, s21_dst2, &s21_n, &s21_num);
 sscanf(src, format, dst, dst2, &n, &num);
-ck_assert_pstr_eq(dst, s21_dst);
+ck_assert_str_eq(dst, s21_dst);
 ck_assert_int_eq(n, s21_n);
 
 #test empty_src
@@ -717,7 +717,7 @@ char s21_letter = '0';
 s21_sscanf(src, format, s21_dst, &s21_letter, &s21_num);
 sscanf(src, format, dst, &letter, &num);
 ck_assert_float_eq_tol(num, s21_num, delta);
-ck_assert_pstr_eq(dst, s21_dst);
+ck_assert_str_eq(dst, s21_dst);
 ck_assert_int_eq(letter, s21_letter);
 
 #test empty_src2
@@ -732,5 +732,5 @@ char s21_letter = '0';
 s21_sscanf(src, format, &s21_letter, s21_dst, &s21_num);
 sscanf(src, format, &letter, dst, &num);
 ck_assert_float_eq_tol(num, s21_num, delta);
-ck_assert_pstr_eq(dst, s21_dst);
+ck_assert_str_eq(dst, s21_dst);
 ck_assert_int_eq(letter, s21_letter);
