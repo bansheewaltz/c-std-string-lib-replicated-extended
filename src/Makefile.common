@@ -12,7 +12,8 @@ MEMCHECK := valgrind
 # paths
 SRC := lib
 TST := testing
-INC := lib/include# public header
+INC := include# public header
+HDR := $(SRC)/headers# private headers
 UTL := $(SRC)/utils
 BLD = $(BUILD)/$(CONFIG)
 OBJ = $(BLD)/obj
@@ -23,7 +24,7 @@ SCRIPTS := $(TST)/scripts
 SRCS := $(wildcard $(SRC)/*.c)
 UTLS := $(wildcard $(UTL)/*.c)
 OBJS = $(SRCS:$(SRC)/%.c=$(OBJ)/%.o) $(UTLS:$(UTL)/%.c=$(OBJ)/%.o)
-INCS := $(INC) $(UTL)
+INCS := $(INC) $(HDR)
 HDRS := $(shell find $(INCS) -name *.h)
 # specifications detection
 KERNEL := $(shell uname -s)
@@ -47,6 +48,7 @@ LIBNAME := $(PROJNAME)
 WFLAGS := -Wall -Werror -Wextra -pedantic
 LDLIBS := -l$(LIBNAME)
 LDFLAGS := -L$(LIB)
+DEFINES := -DMALLOC_FAIL_VALUE=13
 STDFLAG := -std=c11
 INCFLAGS := $(INCS:%=-I%)
 DBGFLAGS ?= -g0
@@ -60,9 +62,8 @@ format_the_file = $(LINT) $(LINTFLAG) $@
 # special targets and variables
 .SECONDARY:# keeps all intermediate files (otherwise, they are automatically deleted)
 .SUFFIXES:# cleans-up debug info
-.DELETE_ON_ERROR:# deletes target-files that caused an error during the build
+# .DELETE_ON_ERROR:# deletes target-files that caused an error during the build
 .DEFAULT_GOAL := all
-DEBUG ?= 0# makefile debugging
 ifneq ($(OS), Alpine)
 	MAKEFLAGS += --no-print-directory
 endif

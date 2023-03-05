@@ -2,7 +2,10 @@
 CONFIG := release
 ### many variables are stored in a shared makefile
 include Makefile.common
-vpath %.c $(SRC) $(UTL)# sets search paths for .c files
+# build parameters
+CFLAGS = $(WFLAGS) $(STDFLAG) $(INCFLAGS)
+# Makefile search paths
+vpath %.c $(SRC) $(UTL)
 vpath lib%.a $(LIB)
 export
 
@@ -18,6 +21,9 @@ ifneq ($(shell pkg-config --libs check 2> /dev/null), )
 ifneq ($(shell which gcovr 2> /dev/null), )
 	$(MAKE) gcov_report
 endif
+ifneq ($(shell which valgrind), )
+	$(MAKE) memcheck
+endif
 endif
 
 s21_string.a: $(OBJS)
@@ -25,13 +31,10 @@ s21_string.a: $(OBJS)
 
 $(OBJ)/%.o: %.c $(HDRS)
 	$(dir_guard)
-	$(CC) -c $(CFLAGS) $< -o $@
+	$(CC) -c $(CFLAGS) -o $@ $<
 
 .PHONY: test gcov_report
 test gcov_report: lib
-ifeq ($(DEBUG), 1)
-	$(MAKE) -f Makefile.unit_testing $@
-endif
 	@$(MAKE) -s -f Makefile.unit_testing $@
 
 .PHONY: clean
@@ -39,6 +42,7 @@ clean:
 	$(RM) $(BUILD)
 	$(RM) $(REPORTS)
 	$(RM) $(LIBNAME).a
+	$(RM) *.out*
 
 .PHONY: re
 re: clean
@@ -56,9 +60,6 @@ libs21_string.a: s21_string.a
 memcheck: lib
 ifeq (, $(shell which valgrind))
 	$(error "valgrind" should be installed)
-endif
-ifeq ($(DEBUG), 1)
-	$(MAKE) -f Makefile.memcheck $@
 endif
 	@$(MAKE) -s -f Makefile.memcheck $@
 
@@ -82,3 +83,7 @@ endif
 .PHONY: brew
 brew:
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+
+# testf:
+# 	gcc -g $(WFLAGS) $(INCFLAGS) lib/s21_sprintf.c $(LDFLAGS) $(LDLIBS)
+# 	./a.out

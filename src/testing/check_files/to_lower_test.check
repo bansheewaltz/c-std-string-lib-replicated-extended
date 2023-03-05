@@ -1,4 +1,4 @@
-#include "tests_includes.h"
+#include "s21_tests.h"
 
 #suite to_lower
 #test to_lower_test1

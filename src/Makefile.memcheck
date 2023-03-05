@@ -16,9 +16,15 @@ LDLIBS += $(shell pkg-config --libs-only-l check)
 LDFLAGS += $(shell pkg-config --libs-only-L check)
 INCFLAGS += -I$(T_INC)
 MEM := valgrind
-MEMFLAGS := --leak-check=full --show-leak-kinds=all --track-origins=yes -s
+MEMFLAGS := --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=yes
 DBGFLAGS := -g
-export CK_FORK SHELL
+CFLAGS = $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(shell pkg-config --cflags check) $(DEFINES) $(INCFLAGS)
+export CK_FORK SHELL TST_REPORT_R
+
+$(info )
+$(info *** silently compiling build version for checking memory usage ***)
+$(info *** with the parameters: $(CFLAGS) $(LDFLAGS) $(LDLIBS))
+$(info *** executing through $(MEMCHECK) with the parameters: $(MEMFLAGS))
 
 
 .PHONY: memcheck
@@ -28,11 +34,7 @@ memcheck: $(T_EXES)
 $(BIN)/%_test: $(SRC)/s21_%.c $(SRC_B)/%_test.c | $(REPORTS)
 	$(dir_guard)
 	$(CC) $(CFLAGS) $^ $(LDFLAGS) $(LDLIBS) -o $@
-ifeq ($(DEBUG), 1)
-	-$(MEM) $(MEMFLAGS) $@ > /dev/null 2> /dev/null
-else
-	-(echo && $(MEM) $(MEMFLAGS) $@) > >(tee -a $(TST_REPORT_R)) 2> >(tee -a $(TST_REPORT_R) | grep -m 2 -e "at exit" -e "ERROR SUMMARY")
-endif
+	-(echo && $(MEM) $(MEMFLAGS) $@) 2> >(bash $(SCRIPTS)/format_memcheck.sh)
 
 $(SRC_B)/%_test.c: $(CHK)/%_test.check
 	$(dir_guard)

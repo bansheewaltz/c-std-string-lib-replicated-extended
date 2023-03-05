@@ -16,20 +16,25 @@ T_EXES := $(SRCS:$(SRC)/s21_%.c=$(BIN)/%_test)
 # compilation parameters
 LDLIBS += $(shell pkg-config --libs-only-l check)
 LDFLAGS += $(shell pkg-config --libs-only-L check)
+DBGFLAGS = -g
 COVFLAG := --coverage
-DEFINES := -DUNIT_TESTING
+CK_FORK=no
+# export CK_FORK
+
+$(info )
+$(info *** silently compiling code covered build version for unit testing ***)
+$(info *** compiler parameters for tests .o files: $(WFLAGS) $(STDFLAG) $(shell pkg-config --cflags check) -I$(INC) -I$(T_INC))
+$(info *** compiler parameters for functions .o files: $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(COVFLAG) $(DEFINES) $(INCFLAGS))
+$(info *** linker parameters: $(COVFLAG) $(LDFLAGS) $(LDLIBS))
+
 
 .PHONY: test
 test: $(T_EXES)
 $(BIN)/%_test: $(OBJ)/s21_%.o $(OBJ)/%_test.o | $(COV_INF) $(REPORTS)
 	$(dir_guard)
-	$(CC) $(COVFLAG) $^ $(LDFLAGS) $(LDLIBS) -o $@
+	$(CC) $(DBGFLAGS) $(COVFLAG) $^ $(LDFLAGS) $(LDLIBS) -o $@
 	-mv $(OBJ)/s21_$*.gcno $(COV_INF) 2> /dev/null
-ifeq ($(DEBUG), 1)
-	-./$@ > /dev/null
-else
 	-(echo && ./$@) | tee -a $(TST_REPORT_R) | sed 's/.*[FE]:.\{1,8\}:/\t/g'
-endif
 	mv $(OBJ)/s21_$*.gcda $(COV_INF)
 
 $(OBJ)/s21_%.o: CFLAGS = $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(COVFLAG) $(DEFINES) $(INCFLAGS)

@@ -1,4 +1,4 @@
-#include "tests_includes.h"
+#include "s21_tests.h"
 
 #suite insert
 #test insert_test1

@@ -4,16 +4,13 @@
 
 #include "s21_string.h"
 
-char* s21_itoa(int64_t n, char* buffer, int radix) {
+char* s21_uitoa(uint64_t n, char* buffer, int radix) {
   if (radix < 2 || radix > 32) {
     return buffer;
   }
 
   char* buff0 = buffer;
   char tmp[sizeof n * CHAR_BIT + 1];
-
-  bool neg = (radix == 10 && n < 0);
-  n = neg ? -n : n;
 
   int i = 0;
   if (n == 0) {
@@ -24,10 +21,7 @@ char* s21_itoa(int64_t n, char* buffer, int radix) {
     n /= radix;
   }
 
-  if (neg) {
-    *buffer++ = '-';
-  }
-  while (i) {
+  while (i > 0) {
     *buffer++ = tmp[--i];
   }
   *buffer = '\0';

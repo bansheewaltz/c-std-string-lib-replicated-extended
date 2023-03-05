@@ -1,4 +1,4 @@
-#include "tests_includes.h"
+#include "s21_tests.h"
 
 #suite memmove
 #test classic
@@ -26,8 +26,8 @@
     char res[20000] = "";
     char exp[20000] = "";
 
-    memmove(exp, src, 10101);
-    s21_memmove(res, src, 10101);
+    memmove(exp, src, MALLOC_FAIL_VALUE);
+    s21_memmove(res, src, MALLOC_FAIL_VALUE);
     ck_assert_str_eq(res, exp);
 
 

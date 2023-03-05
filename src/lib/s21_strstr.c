@@ -2,6 +2,7 @@
 #include <string.h>
 
 #include "s21_string.h"
+int comp(const char *haystack, const char *needle);
 
 char *s21_strstr(const char *haystack, const char *needle) {
   while (*haystack != '\0') {
