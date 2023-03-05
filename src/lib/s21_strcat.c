@@ -12,8 +12,3 @@ char *s21_strcat(char *dest, const char *src) {
   *ptr = '\0';
   return dest;
 }
-/*Тесты:
-strcat(NULL, NULL); == segmentation fault
-char str1[100] = "This is ", str2[] = "win";
-printf("%s", s21_strcat(str1, str2)); == This is win
-*/

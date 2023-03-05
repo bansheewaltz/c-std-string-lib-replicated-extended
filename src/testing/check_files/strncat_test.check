@@ -1,0 +1,12 @@
+#include "s21_tests.h"
+
+#suite strncat
+#test t_1
+    char dest[50] = "123";
+    char src[50] = "456";
+    char exp[] = "12345";
+
+    s21_strncat(dest, src, 2);
+    char *res = dest;
+
+    ck_assert_str_eq(res, exp);

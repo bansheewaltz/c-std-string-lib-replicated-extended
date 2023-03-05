@@ -1,6 +1,7 @@
-#include "s21_string.h"
 #include <errno.h>
 #include <stdlib.h>
+
+#include "s21_string.h"
 
 char *s21_strerror(int errnum) {
   char *stringErr = (char *)malloc(200 * sizeof(char));
@@ -9,12 +10,7 @@ char *s21_strerror(int errnum) {
   if (errnum < ERROUTSIZE && errnum >= 0) {
     stringErr = arrErre[errnum];
   } else {
-    s21_sprintf(stringErr, "%s%d", ERROUT, errnum); // ЗАМЕНИТЬ НА СВОЮ
+    s21_sprintf(stringErr, "%s%d", ERROUT, errnum);
   }
   return stringErr;
 }
-
-/*Тесты:
-s21_strerror(1);
-s21_strerror(134);
-*/
