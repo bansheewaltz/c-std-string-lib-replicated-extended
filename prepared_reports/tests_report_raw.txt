@@ -1,0 +1,78 @@
+
+Running suite(s): insert
+100%: Checks: 7, Failures: 0, Errors: 0
+
+Running suite(s): memchr
+100%: Checks: 3, Failures: 0, Errors: 0
+
+Running suite(s): memcmp
+100%: Checks: 5, Failures: 0, Errors: 0
+
+Running suite(s): memmcpy
+100%: Checks: 6, Failures: 0, Errors: 0
+
+Running suite(s): memmove
+100%: Checks: 9, Failures: 0, Errors: 0
+
+Running suite(s): memset
+100%: Checks: 3, Failures: 0, Errors: 0
+
+Running suite(s): sprintf
+100%: Checks: 172, Failures: 0, Errors: 0
+
+Running suite(s): sscanf
+100%: Checks: 84, Failures: 0, Errors: 0
+
+Running suite(s): strcat
+100%: Checks: 2, Failures: 0, Errors: 0
+
+Running suite(s): strrchr
+100%: Checks: 3, Failures: 0, Errors: 0
+
+Running suite(s): strcmp
+100%: Checks: 5, Failures: 0, Errors: 0
+
+Running suite(s): strcpy
+100%: Checks: 7, Failures: 0, Errors: 0
+
+Running suite(s): strcspn
+100%: Checks: 5, Failures: 0, Errors: 0
+
+Running suite(s): strerror
+100%: Checks: 137, Failures: 0, Errors: 0
+
+Running suite(s): strlen
+100%: Checks: 4, Failures: 0, Errors: 0
+
+Running suite(s): strncat
+100%: Checks: 1, Failures: 0, Errors: 0
+
+Running suite(s): strncmp
+100%: Checks: 7, Failures: 0, Errors: 0
+
+Running suite(s): strncpy
+100%: Checks: 5, Failures: 0, Errors: 0
+
+Running suite(s): strpbrk
+100%: Checks: 3, Failures: 0, Errors: 0
+
+Running suite(s): strrchr
+100%: Checks: 3, Failures: 0, Errors: 0
+
+Running suite(s): strcspn
+100%: Checks: 5, Failures: 0, Errors: 0
+
+Running suite(s): strstr
+100%: Checks: 3, Failures: 0, Errors: 0
+
+Running suite(s): strtok
+100%: Checks: 4, Failures: 0, Errors: 0
+
+Running suite(s): to_lower
+100%: Checks: 4, Failures: 0, Errors: 0
+
+Running suite(s): to_upper
+100%: Checks: 7, Failures: 0, Errors: 0
+
+Running suite(s): trim
+100%: Checks: 6, Failures: 0, Errors: 0

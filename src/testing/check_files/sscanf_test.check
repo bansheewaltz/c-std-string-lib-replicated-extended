@@ -35,8 +35,8 @@ sscanf(src, format, &num);
 ck_assert_int_eq(num, s21_num);
 
 #test hd3_prec
-char src[] = "123.1";
-char format[] = "%*3hd%3hd";
+char *src = "123.1";
+char *format = "%*3hd%3hd";
 short num = 0, s21_num = 0; 
 s21_sscanf(src, format, &s21_num);
 sscanf(src, format, &num);
@@ -267,24 +267,24 @@ sscanf(src, format, &num);
 ck_assert_int_eq(num, s21_num);
 
 #test u5_prec
-char src[] = "12345134";
-char format[] = "%*5u%5u";
+char *src = "12345134";
+char *format = "%*5u%5u";
 unsigned int num = 0, s21_num = 0; 
 s21_sscanf(src, format, &s21_num);
 sscanf(src, format, &num);
 ck_assert_int_eq(num, s21_num);
 
 #test hu5_prec
-char src[] = "12345134";
-char format[] = "%*5hu%5hu";
+char *src = "12345134";
+char *format = "%*5hu%5hu";
 unsigned short num = 0, s21_num = 0; 
 s21_sscanf(src, format, &s21_num);
 sscanf(src, format, &num);
 ck_assert_int_eq(num, s21_num);
 
 #test lu5_prec
-char src[] = "12345134";
-char format[] = "%*5lu%5lu";
+char *src = "12345134";
+char *format = "%*5lu%5lu";
 unsigned long num = 0, s21_num = 0; 
 s21_sscanf(src, format, &s21_num);
 sscanf(src, format, &num);

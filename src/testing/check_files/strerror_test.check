@@ -2,5 +2,7 @@
 
 #suite strerror
 
-#test-loop(0, 136) test_strerr
-    ck_assert_str_eq(strerror(_i), s21_strerror(_i));
+#test-loop(-1, 136) test_strerr
+    char *system = strerror(_i);
+    char *ours = s21_strerror(_i);
+    ck_assert_str_eq(system, ours);

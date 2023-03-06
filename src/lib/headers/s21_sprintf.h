@@ -23,7 +23,7 @@ void prepend_ox(char *buff, specifications *);
 void prepend_mantissa(char *str, int pow, char sign);
 void remove_trailing_zeroes(char *buff);
 
-// parse format
+// scan format
 const char *scan_flags(const char *format, specifications *);
 const char *scan_width(const char *format, specifications *, va_list *va);
 const char *scan_precision(const char *format, specifications *, va_list *va);

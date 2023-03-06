@@ -36,7 +36,7 @@ int s21_sscanf(const char *restrict s, const char *restrict format, ...) {
 
   int result = 0;
 
-  while ((*f_ptr) && (*s_ptr != '\0')) {
+  while ((*f_ptr != '\0') && (*s_ptr != '\0')) {
     if (*f_ptr != '%') {
       f_ptr++;
     } else {
