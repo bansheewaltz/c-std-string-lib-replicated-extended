@@ -1,0 +1,92 @@
+#include "s21_tests.h"
+
+#suite memmove
+#test classic
+    char *src = "123";
+    char res[10] = "";
+    char exp[10] = "";
+
+    memmove(exp, src, strlen(src));
+    s21_memmove(res, src, strlen(src));
+    ck_assert_str_eq(res, exp);
+
+
+#test n_zero
+    char *src = "123";
+    char res[10] = "";
+    char exp[10] = "";
+
+    memmove(exp, src, 0);
+    s21_memmove(res, src, 0);
+    ck_assert_str_eq(res, exp);
+
+
+#test malloc_fail
+    char *src = "";
+    char res[20000] = "";
+    char exp[20000] = "";
+
+    memmove(exp, src, MALLOC_FAIL_VALUE);
+    s21_memmove(res, src, MALLOC_FAIL_VALUE);
+    ck_assert_str_eq(res, exp);
+
+
+#test res_full_capacity
+    char *src = "12345";
+    char res[6] = "";
+    char exp[6] = "";
+
+    memmove(exp, src, strlen(src));
+    s21_memmove(res, src, strlen(src));
+    ck_assert_str_eq(res, exp);
+
+
+#test empty_to_empy
+    char *src = "";
+    char res[5] = "";
+    char exp[5] = "";
+
+    memmove(exp, src, strlen(src));
+    s21_memmove(res, src, strlen(src));
+    ck_assert_str_eq(res, exp);
+
+
+#test empty_to_empy_zero_size
+    char *src = "";
+    char res[5] = "";
+    char exp[5] = "";
+
+    memmove(exp, src, 0);
+    s21_memmove(res, src, 0);
+    ck_assert_str_eq(res, exp);
+
+
+#test empty_to_full_not_terminated
+    char *src = "";
+    char res[6] = "12345";
+    char exp[6] = "12345";
+
+    memmove(exp, src, strlen(src));
+    s21_memmove(res, src, strlen(src));
+    ck_assert_str_eq(res, exp);
+
+
+#test src_eq_dest
+    char src[6] = "12345";
+    char *res = &src[0];
+    char exp[6] = "12345";
+
+    memmove(src, src, strlen(src));
+    s21_memmove(res, res, strlen(src));
+    ck_assert_str_eq(res, exp);
+
+
+#test n_gt_len
+    char *src = "123";
+    char res[5] = "";
+    char exp[5] = "";
+    int n = 5;
+
+    memmove(exp, src, n);
+    s21_memmove(res, src, n);
+    ck_assert_str_eq(res, exp);

@@ -1,0 +1,22 @@
+#include "s21_tests.h"
+
+#suite strcmp 
+#test test1
+   ck_assert_int_eq(strcmp("", ""), s21_strcmp("", ""));
+
+
+#test test2
+    ck_assert_int_eq(strcmp("3dd3d", "3dd3d"),
+                   s21_strcmp("3dd3d", "3dd3d"));
+
+
+#test test3
+    ck_assert_int_eq(strcmp("3", ""), s21_strcmp("3", ""));
+
+
+#test test4
+   ck_assert_int_eq(strcmp("3dd3sdfgsdd", "dsfg3dd3d"),
+                   s21_strcmp("3dd3sdfgsdd", "dsfg3dd3d"));
+
+#test test5
+    ck_assert_int_eq(strcmp("1234", ""), s21_strcmp("1234", ""));

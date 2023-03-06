@@ -1,0 +1,12 @@
+#include "s21_tests.h"
+
+#suite strstr
+#test t1
+ck_assert_pstr_eq(strstr("Hello my old friend", "old"),
+                    s21_strstr("Hello my old friend", "old"));
+#test t2
+ck_assert_pstr_eq(strstr("1978 year i'm was 18", "8"),
+                    s21_strstr("1978 year i'm was 18", "8"));
+#test t3 
+ck_assert_pstr_eq(strstr("You love me???", "can"),
+                    s21_strstr("You love me???", "can"));
