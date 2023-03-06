@@ -1,8 +1,6 @@
 #include "s21_tests.h"
 
 #suite strerror
-#test test1
-    ck_assert_pstr_eq(strerror(1), s21_strerror(1));
 
-#test test2
-    ck_assert_pstr_eq(strerror(134), s21_strerror(134));
+#test-loop(0, 136) test_strerr
+    ck_assert_str_eq(strerror(_i), s21_strerror(_i));
