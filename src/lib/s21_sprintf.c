@@ -180,6 +180,7 @@ void parse_value(specifications *specs, char *buff, va_list *va) {
 
 void parse_int(specifications *specs, char *buff, va_list *va) {
   int64_t val = va_arg(*va, int64_t);
+
   switch (specs->length) {
     case 0:
       val = (int32_t)val;
@@ -196,7 +197,6 @@ void parse_int(specifications *specs, char *buff, va_list *va) {
 
 void format_precision(char *buff, specifications *specs) {
   char tmp[BUFF_SIZE] = "";
-
   int sign = 0;
   int len = s21_strlen(buff);
 
@@ -231,6 +231,7 @@ bool is_integer_specifier(char c) {
 
 void format_flags(char *buff, specifications *specs) {
   char tmp[BUFF_SIZE] = "";
+
   if (specs->plus && specs->specifier != 'u') {
     tmp[0] = buff[0] == '-' ? buff[0] : '+';
     s21_strcpy(tmp + 1, buff[0] == '-' ? buff + 1 : buff);
@@ -255,6 +256,7 @@ void format_flags(char *buff, specifications *specs) {
 
 void parse_uint(specifications *specs, char *buff, va_list *va) {
   uint64_t val = va_arg(*va, uint64_t);
+
   switch (specs->length) {
     case 'h':
       val = (uint16_t)val;
@@ -273,6 +275,7 @@ void parse_uint(specifications *specs, char *buff, va_list *va) {
 
 void parse_octal(specifications *specs, char *buff, va_list *va) {
   buff[0] = '0';
+
   s21_itoa(va_arg(*va, int64_t), buff + specs->hash, 8);
   format_precision(buff, specs);
   format_flags(buff, specs);
@@ -288,15 +291,20 @@ void to_upper(char *str) {
 }
 
 bool is_all_zeroes(char *buff) {
+  bool result = true;
+
   for (int i = 0; buff[i]; i++)
     if (buff[i] != '0') {
-      return false;
+      result = false;
+      break;
     }
-  return true;
+
+  return result;
 }
 
 void parse_hex(specifications *specs, char *buff, va_list *va) {
   uint64_t val = va_arg(*va, uint64_t);
+
   switch (specs->length) {
     case 0:
       val = (uint32_t)val;
@@ -356,6 +364,7 @@ void parse_string(specifications *specs, char *buff, va_list *va) {
 
 void format_string(specifications *specs, char *buff, char *str) {
   char tmp[BUFF_SIZE] = "";
+
   s21_strcpy(tmp, str);
   if (specs->is_precision_set) {
     tmp[specs->precision] = '\0';
@@ -384,6 +393,7 @@ void parse_pointer(specifications *specs, char *buff, va_list *va) {
 
 void parse_float(specifications *specs, char *buff, va_list *va) {
   long double val = 0;
+
   if (specs->length == 'L') {
     val = va_arg(*va, long double);
   } else {
@@ -400,19 +410,23 @@ void parse_float(specifications *specs, char *buff, va_list *va) {
 
 void parse_float_g_G(specifications *specs, char *buff, va_list *va) {
   long double val = 0;
+
   if (specs->length == 'L') {
     val = va_arg(*va, long double);
   } else {
     val = va_arg(*va, double);
   }
-
   if (!specs->is_precision_set) {
     specs->precision = 6;
   }
-  if (specs->precision == 0) specs->precision = 1;
+  if (specs->precision == 0) {
+    specs->precision = 1;
+  }
+
   int precision = specs->precision;
   long double m_val = val;
   int pow = 0;
+
   if ((int)val - val) {
     while ((int)m_val == 0) {
       pow++;
@@ -437,12 +451,14 @@ void parse_float_g_G(specifications *specs, char *buff, va_list *va) {
 void remove_trailing_zeroes(char *buff) {
   int len = s21_strlen(buff);
   char *dot = s21_strchr(buff, '.');
+
   if (dot) {
     for (int i = len - 1; buff[i] != '.'; i--) {
-      if (buff[i] == '0')
+      if (buff[i] == '0') {
         buff[i] = '\0';
-      else
+      } else {
         break;
+      }
     }
     if (dot[1] == '\0') dot[0] = '\0';
   }
@@ -452,11 +468,13 @@ void format_gG_precision(char *buff, int precision) {
   int sig_digs = 0;
   s21_size_t len = s21_strlen(buff);
   int not_zero_found = 0;
+
   for (s21_size_t i = 0; i < s21_strlen(buff); i++) {
-    if ((buff[i] == '0' && !not_zero_found) || buff[i] == '.')
+    if ((buff[i] == '0' && !not_zero_found) || buff[i] == '.') {
       continue;
-    else
+    } else {
       not_zero_found = 1;
+    }
 
     if (isdigit(buff[i]) && not_zero_found) {
       sig_digs++;
