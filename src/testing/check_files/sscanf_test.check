@@ -365,12 +365,40 @@ s21_sscanf(src, format, &s21_num);
 sscanf(src, format, &num);
 ck_assert_ldouble_eq_tol(num, s21_num, delta);
 
+#test f_NaN
+char src[] = "NaN";
+char format[] = "%f";
+float s21_num = 0; 
+s21_sscanf(src, format, &s21_num);
+ck_assert_float_nan(s21_num);
+
+#test f_INF
+char src[] = "INF";
+char format[] = "%f";
+float s21_num = 0; 
+s21_sscanf(src, format, &s21_num);
+ck_assert_float_infinite(s21_num);
+
+#test lf_NaN
+char src[] = "NaN";
+char format[] = "%lf";
+double s21_num = 0; 
+s21_sscanf(src, format, &s21_num);
+ck_assert_double_nan(s21_num);
+
+#test lf_INF
+char src[] = "INF";
+char format[] = "%lf";
+double s21_num = 0; 
+s21_sscanf(src, format, &s21_num);
+ck_assert_double_infinite(s21_num);
+
 #test Lf_NaN
 char src[] = "NaN";
 char format[] = "%Lf";
 long double s21_num = 0; 
 s21_sscanf(src, format, &s21_num);
-ck_assert_double_nan(s21_num);
+ck_assert_ldouble_nan(s21_num);
 
 #test Lf_INF
 char src[] = "INF";
@@ -737,7 +765,22 @@ ck_assert_int_eq(letter, s21_letter);
 #test empty_src2
 double delta = 1e-6;
 char src[] = "";
-char format[] = "%3c%s%f";
+char format[] = "%c%s%f";
+float num = 0, s21_num = 0; 
+char dst[20] = "";
+char s21_dst[20] = "";
+char letter = '0';
+char s21_letter = '0';
+s21_sscanf(src, format, &s21_letter, s21_dst, &s21_num);
+sscanf(src, format, &letter, dst, &num);
+ck_assert_float_eq_tol(num, s21_num, delta);
+ck_assert_str_eq(dst, s21_dst);
+ck_assert_int_eq(letter, s21_letter);
+
+#test percents
+double delta = 1e-6;
+char src[] = "sss aaaaaa 1.192847e-3";
+char format[] = "%c%s%f";
 float num = 0, s21_num = 0; 
 char dst[20] = "";
 char s21_dst[20] = "";

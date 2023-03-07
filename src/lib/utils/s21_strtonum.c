@@ -141,6 +141,8 @@ int check_nan(char *str) {
       result = 0;
     }
   }
+  free(tmp_lower);
+  tmp_lower = s21_NULL;
   return result;
 }
 
@@ -156,5 +158,7 @@ int check_inf(char *str) {
       result = 0;
     }
   }
+  free(tmp_lower);
+  tmp_lower = s21_NULL;
   return result;
 }
