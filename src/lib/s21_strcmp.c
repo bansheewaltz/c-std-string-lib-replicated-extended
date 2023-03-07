@@ -1,7 +1,7 @@
 #include "s21_string.h"
 
 int s21_strcmp(const char *str1, const char *str2) {
-  if (s21_strlen(str1) == 0 && s21_strlen(str2) == 0) {
+  if (*str1 == '\0' && *str2 == '\0') {
     return 0;
   }
 
