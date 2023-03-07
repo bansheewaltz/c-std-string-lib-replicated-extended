@@ -365,6 +365,20 @@ s21_sscanf(src, format, &s21_num);
 sscanf(src, format, &num);
 ck_assert_ldouble_eq_tol(num, s21_num, delta);
 
+#test Lf_NaN
+char src[] = "NaN";
+char format[] = "%Lf";
+long double s21_num = 0; 
+s21_sscanf(src, format, &s21_num);
+ck_assert_double_nan(s21_num);
+
+#test Lf_INF
+char src[] = "INF";
+char format[] = "%Lf";
+long double s21_num = 0; 
+s21_sscanf(src, format, &s21_num);
+ck_assert_ldouble_infinite(s21_num);
+
 #test f3_prec
 double delta = 1e-6;
 char src[] = "0.120.3456";
