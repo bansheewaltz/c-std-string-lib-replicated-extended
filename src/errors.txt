@@ -1,0 +1,115 @@
+Running suite(s): suite_insert
+80%: Checks: 593, Failures: 113, Errors: 0
+strpbrk_3:0: Assertion 'strpbrk(str3, "saq") == s21_strpbrk(str3, "saq")' failed: strpbrk(str3, "saq") == "qrstwsas", s21_strpbrk(str3, "saq") == "s"
+strstr_1:0: Assertion 'strstr(str, "") == s21_strstr(str, "")' failed: strstr(str, "") == "", s21_strstr(str, "") == (null)
+strrchr_empty:0: Assertion 's21_strrchr(str1, str2) == strrchr(str1, str2)' failed: s21_strrchr(str1, str2) == (null), strrchr(str1, str2) == ""
+strrchr_floppy_:0: Assertion 's21_strrchr(str1, str2) == strrchr(str1, str2)' failed: s21_strrchr(str1, str2) == (null), strrchr(str1, str2) == ""
+strpbrk_poki_doki_o:0: Assertion 's21_strpbrk(str1, str2) == strpbrk(str1, str2)' failed: s21_strpbrk(str1, str2) == "oki", strpbrk(str1, str2) == "oki doki"
+strpbrk_poki_doki_i:0: Assertion 's21_strpbrk(str1, str2) == strpbrk(str1, str2)' failed: s21_strpbrk(str1, str2) == "i", strpbrk(str1, str2) == "i doki"
+strstr_empty_string_haystack_and_needle:0: Assertion 's21_strstr(haystack, needle) == strstr(haystack, needle)' failed: s21_strstr(haystack, needle) == (null), strstr(haystack, needle) == ""
+strstr_empty_string_needle:0: Assertion 's21_strstr(haystack, needle) == strstr(haystack, needle)' failed: s21_strstr(haystack, needle) == (null), strstr(haystack, needle) == "safQhilufas7MaSef2345wknwefnkjHawe2fhilu"
+memchr_find_num_in_string_in_mid:0: Assertion 's21_memchr(str, find_byte, n_byte) == memchr(str, find_byte, n_byte)' failed: s21_memchr(str, find_byte, n_byte) == 0x1ffefff69f, memchr(str, find_byte, n_byte) == 0x1ffefff69d
+memchr_find_num_in_array_num:0: Assertion 's21_memchr(array, find_byte, n_byte) == memchr(array, find_byte, n_byte)' failed: s21_memchr(array, find_byte, n_byte) == 0, memchr(array, find_byte, n_byte) == 0x1ffefff694
+insert_str_null:0: Assertion 'got == expected' failed: got == (null), expected == "Space  "
+sprintf_null_ptr:0: Assertion 's21_sprintf(str1, format, ptr) == sprintf(str2, format, ptr)' failed: s21_sprintf(str1, format, ptr) == 3, sprintf(str2, format, ptr) == 5
+sscanf_EOF1:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == -1
+sscanf_EOF2:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == -1
+sscanf_EOF3:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == -1
+sscanf_only_chars1:0: Assertion 'b1 == b2' failed: b1 == 32, b2 == 97
+sscanf_only_chars3:0: Assertion 'b1 == b2' failed: b1 == 32, b2 == 97
+sscanf_only_chars4:0: Assertion 'b1 == b2' failed: b1 == 32, b2 == 48
+sscanf_special_symbols_as_chars2:0: Assertion 'b1 == b2' failed: b1 == 32, b2 == 39
+sscanf_special_symbols_as_chars3:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 3
+sscanf_chars_flags1:0: Assertion 'b1 == b2' failed: b1 == 32, b2 == 42
+sscanf_chars_flags2:0: Assertion 'b1 == b2' failed: b1 == 32, b2 == 42
+sscanf_chars_flags3:0: Assertion 'b1 == b2' failed: b1 == 32, b2 == 42
+sscanf_chars_flags4:0: Assertion 'b1 == b2' failed: b1 == 32, b2 == 42
+sscanf_chars_flags5:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 1
+sscanf_chars_aster1:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 0
+sscanf_chars_aster2:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 1
+sscanf_only_ints3:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 4
+sscanf_ints_nwidth1:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 4
+sscanf_ints_nwidth2:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 4
+sscanf_ints_nwidth3:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 2
+sscanf_ints_nwidth4:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 1
+sscanf_ints_astwidth1:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 1
+sscanf_ints_astwidth2:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 1
+sscanf_ints_astwidth3:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 1
+sscanf_ints_astwidth4:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 1
+sscanf_signed_ints1:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 1
+sscanf_signed_ints2:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 1
+sscanf_signed_ints3:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 1
+sscanf_signed_ints4:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 4
+sscanf_spec_i_int1:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 4
+sscanf_spec_i_int2:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 4
+sscanf_spec_i_int3:0: Assertion 'res1 == res2' failed: res1 == 2, res2 == 4
+sscanf_spec_i_int4:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 1
+sscanf_spec_i_oct1:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 2
+sscanf_spec_i_oct2:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 2
+sscanf_spec_i_hex1:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 2
+sscanf_spec_i_hex2:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 2
+sscanf_strings2:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == 4
+sscanf_strings3:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 0
+sscanf_strings5:0: Assertion 's2 == s6' failed: s2 == "ba	", s6 == "ba"
+sscanf_strings6:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == 4
+sscanf_uint1:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 2
+sscanf_uint3:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 6
+sscanf_uint4:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 2
+sscanf_uint5:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 2
+sscanf_uint6:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 2
+sscanf_strings_mixed1:0: Assertion 'res1 == res2' failed: res1 == 3, res2 == 2
+sscanf_strings_mixed2:0: Assertion 'res1 == res2' failed: res1 == 5, res2 == 6
+sscanf_floats1:0: Assertion 'd1 == d2' failed: d1 == 0, d2 == 2.0001
+sscanf_floats2:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 3
+sscanf_floats3:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 0
+sscanf_floats4:0: Assertion 'd1 == d2' failed: d1 == 0, d2 == 112
+sscanf_floats5:0: Assertion 'res1 == res2' failed: res1 == 4, res2 == 3
+sscanf_floats_sci1:0: Assertion 'b1 == b2' failed: b1 == 1.31, b2 == 13100
+sscanf_floats_sci2:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == inf
+sscanf_floats_sci3:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == inf
+sscanf_floats_sci4:0: Assertion 'a1 is NaN' failed: a1 == 0
+sscanf_floats_sci5:0: Assertion 'a1 is NaN' failed: a1 == 0
+sscanf_n1:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 4
+sscanf_n2:0: Assertion 'n1 == n2' failed: n1 == 13, n2 == 14
+sscanf_n4:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 4
+sscanf_n5:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 4
+sscanf_upeer_hex_base_version:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 15
+sscanf_upeer_hex_empty:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 4294967295
+sscanf_upeer_hex_fail:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == 0
+sscanf_upeer_hex_spaces_tabs_sns:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 15
+sscanf_upeer_hex_short:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 15
+sscanf_upeer_hex_long:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 15
+sscanf_upeer_hex_longlong:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 1
+sscanf_upeer_hex_star:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == 0
+sscanf_upeer_hex_nohex:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == 0
+sscanf_upeer_hex_lower:0: Assertion 'a1 == a2' failed: a1 == 52719, a2 == 11259375
+sscanf_upeer_hex_sign:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 4294967281
+upper_hex_len:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 18
+sscanf_lower_hex_base_version:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 15
+sscanf_lower_hex_empty:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 4294967295
+sscanf_lower_hex_fail:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == 0
+sscanf_lower_hex_spaces_tabs_sns:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 15
+sscanf_lower_hex_short:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 255
+sscanf_lower_hex_long:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 255
+sscanf_lower_hex_longlong:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 1
+sscanf_lower_hex_star:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == 0
+sscanf_lower_hex_nohex:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == 0
+sscanf_lower_hex_lower:0: Assertion 'a1 == a2' failed: a1 == 52719, a2 == 11259375
+sscanf_lower_hex_sign:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 4294967281
+sscanf_lower_hex_len:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 18
+sscanf_octal_empty:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 4294967295
+sscanf_octal_fail:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == 0
+sscanf_octal_longlong:0: Assertion 'res1 == res2' failed: res1 == 0, res2 == 1
+sscanf_octal_star:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == 0
+sscanf_octal_nohex:0: Assertion 'res1 == res2' failed: res1 == 1, res2 == 0
+sscanf_buff1:0: Assertion 'b1 == b2' failed: b1 == 0, b2 == 12
+sscanf_buff2:0: Assertion 'b1 == b2' failed: b1 == 0, b2 == 12
+sscanf_buff3:0: Assertion 'res1 == res2' failed: res1 == 2, res2 == 1
+sscanf_perc1:0: Assertion 'b1 == b2' failed: b1 == 0, b2 == 13
+sscanf_perc2:0: Assertion 'b1 == b2' failed: b1 == 0, b2 == 13
+sscanf_perc3:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 16
+sscanf_perc5:0: Assertion 'a1 == a2' failed: a1 == 0, a2 == 123
+sscanf_hard1:0: Assertion 'n1 == n2' failed: n1 == 6, n2 == 25
+sscanf_hard3:0: Assertion 'c1 is infinite' failed: c1 == 0
+sscanf_hard4:0: Assertion 'res1 == res2' failed: res1 == 10, res2 == 4
+sscanf_hard5:0: Assertion 'res1 == res2' failed: res1 == 10, res2 == 4
