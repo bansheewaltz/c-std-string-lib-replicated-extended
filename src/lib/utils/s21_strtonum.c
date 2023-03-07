@@ -1,6 +1,5 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+
 #include "s21_utils.h"
 
 int char_value(char *symbol, int base);  // returns value of char depends on

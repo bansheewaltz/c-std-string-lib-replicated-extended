@@ -51,10 +51,10 @@ $(REPORTS):
 test1:
 	echo
 	gcc $(WFLAGS) -g -I. testing/src/s21_string_test.c s21_string.a $(shell pkg-config --cflags --libs check) -o build/unit_testing/bin/additional_tests
-ifeq (, $(shell which valgrind))
-	build/unit_testing/bin/additional_tests | grep -v Passed | sed 's/.*additional_tests://g'
-else
+ifneq ($(shell which valgrind 2> /dev/null), )
 	valgrind $(MEMFLAGS) build/unit_testing/bin/additional_tests 2> reports/memcheck_additional_report.txt | grep -v Passed | sed 's/.*additional_tests://g'
 	echo -e "\n\nyou can check saved $(MEMCHECK) logs at reports/memcheck_additional_report.txt"	
+else
+	build/unit_testing/bin/additional_tests | grep -v Passed | sed 's/.*additional_tests://g'
 endif
 	rm build/unit_testing/bin/additional_tests

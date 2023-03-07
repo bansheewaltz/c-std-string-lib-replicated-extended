@@ -5,12 +5,12 @@ char *s21_strrchr(const char *str, int c) {
   const char *tmp_ptr = str;
   while (*tmp_ptr != '\0') {
     if (*tmp_ptr == c) {
-      result = (char*)tmp_ptr;
+      result = (char *)tmp_ptr;
     }
     tmp_ptr += 1;
   }
   if (*tmp_ptr == c) {
-    result = (char*)tmp_ptr;
+    result = (char *)tmp_ptr;
   }
   return result;
 }

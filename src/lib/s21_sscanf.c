@@ -154,7 +154,7 @@ int s21_sscanf(const char *restrict s, const char *restrict format, ...) {
             *n_ptr = s_ptr - s;
           }
           break;
-        
+
         default:
           break;
       }

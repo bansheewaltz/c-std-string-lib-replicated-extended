@@ -596,7 +596,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     </tr>
     <tr>
       <th scope="row">Date:</th>
-      <td>2023-03-07 11:55:14</td>
+      <td>2023-03-08 02:30:56</td>
     </tr>
   </table>
 </div>
@@ -610,9 +610,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     </tr>
     <tr>
       <th scope="row">Lines:</th>
-      <td>4</td>
-      <td>4</td>
-      <td class="coverage-high">100.0%</td>
+      <td>9</td>
+      <td>10</td>
+      <td class="coverage-high">90.0%</td>
     </tr>
     <tr>
       <th scope="row">Functions:</th>
@@ -622,9 +622,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     </tr>
     <tr>
       <th scope="row">Branches:</th>
-      <td>4</td>
-      <td>4</td>
-      <td class="coverage-high">100.0%</td>
+      <td>5</td>
+      <td>6</td>
+      <td class="coverage-medium">83.3%</td>
     </tr>
   </table>
 </div>
@@ -644,13 +644,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     </tr>
     <tr>
       <td>
-        <a href="#l5">s21_strrchr</a>
+        <a href="#l3">s21_strrchr</a>
       </td>
       <td>
-        <a href="#l5">5</a>
+        <a href="#l3">3</a>
       </td>
       <td>
-        <a href="#l5"> called 3 times</a>
+        <a href="#l3"> called 3 times</a>
       </td>
     </tr>
   </table>
@@ -673,7 +673,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="src "><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;s21_string.h&quot;</span><span class="cp"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -688,16 +688,16 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
       <td class="lineno"><a id="l3" href="#l3">3</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;s21_string.h&quot;</span><span class="cp"></span></td>
+      <td class="linecount coveredLine">3</td>
+      <td class="src coveredLine"><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">s21_strrchr</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l4" href="#l4">4</a></td>
       <td class="linebranch">
       </td>
-      <td class="linecount "></td>
-      <td class="src "></td>
+      <td class="linecount coveredLine">3</td>
+      <td class="src coveredLine"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s21_NULL</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -705,35 +705,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
       <td class="linebranch">
       </td>
       <td class="linecount coveredLine">3</td>
-      <td class="src coveredLine"><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">s21_strrchr</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
+      <td class="src coveredLine"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">tmp_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l6" href="#l6">6</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">save_c</span><span class="p">;</span><span class="w"></span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l7" href="#l7">7</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span><span class="w"></span></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l8" href="#l8">8</a></td>
-      <td class="linebranch">
-      </td>
-      <td class="linecount "></td>
-      <td class="src "></td>
-    </tr>
-
-    <tr class="source-line">
-      <td class="lineno"><a id="l9" href="#l9">9</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">2/2</summary>
@@ -744,11 +720,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         </details>
       </td>
       <td class="linecount coveredLine">26</td>
-      <td class="src coveredLine"><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">save_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">str</span><span class="p">);</span><span class="w"> </span><span class="n">str</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
+      <td class="src coveredLine"><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">tmp_ptr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l10" href="#l10">10</a></td>
+      <td class="lineno"><a id="l7" href="#l7">7</a></td>
       <td class="linebranch">
         <details class="linebranchDetails">
         <summary class="linebranchSummary">2/2</summary>
@@ -759,7 +735,31 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         </details>
       </td>
       <td class="linecount coveredLine">23</td>
-      <td class="src coveredLine"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="n">save_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">str</span><span class="p">;</span><span class="w"></span></td>
+      <td class="src coveredLine"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">tmp_ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l8" href="#l8">8</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">3</td>
+      <td class="src coveredLine"><span class="w">      </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">tmp_ptr</span><span class="p">;</span><span class="w"></span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l9" href="#l9">9</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">    </span><span class="p">}</span><span class="w"></span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l10" href="#l10">10</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">23</td>
+      <td class="src coveredLine"><span class="w">    </span><span class="n">tmp_ptr</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
@@ -773,13 +773,44 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <tr class="source-line">
       <td class="lineno"><a id="l12" href="#l12">12</a></td>
       <td class="linebranch">
+        <details class="linebranchDetails">
+        <summary class="linebranchSummary">1/2</summary>
+        <div class="linebranchContents">
+          <div class="notTakenBranch">&cross; Branch 0 not taken.</div>
+          <div class="takenBranch">&check; Branch 1 taken 3 times.</div>
+        </div>
+        </details>
       </td>
       <td class="linecount coveredLine">3</td>
-      <td class="src coveredLine"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">save_c</span><span class="p">;</span><span class="w"></span></td>
+      <td class="src coveredLine"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">tmp_ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span></td>
     </tr>
 
     <tr class="source-line">
       <td class="lineno"><a id="l13" href="#l13">13</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount uncoveredLine">&cross;</td>
+      <td class="src uncoveredLine"><span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">tmp_ptr</span><span class="p">;</span><span class="w"></span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l14" href="#l14">14</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount "></td>
+      <td class="src "><span class="w">  </span><span class="p">}</span><span class="w"></span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l15" href="#l15">15</a></td>
+      <td class="linebranch">
+      </td>
+      <td class="linecount coveredLine">3</td>
+      <td class="src coveredLine"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span></td>
+    </tr>
+
+    <tr class="source-line">
+      <td class="lineno"><a id="l16" href="#l16">16</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>
@@ -787,7 +818,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     </tr>
 
     <tr class="source-line">
-      <td class="lineno"><a id="l14" href="#l14">14</a></td>
+      <td class="lineno"><a id="l17" href="#l17">17</a></td>
       <td class="linebranch">
       </td>
       <td class="linecount "></td>

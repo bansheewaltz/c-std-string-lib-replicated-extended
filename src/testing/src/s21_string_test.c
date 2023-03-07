@@ -2779,7 +2779,7 @@ END_TEST
 START_TEST(memchr_find_num_in_array_num) {
   int array[] = {1, 2, 3, 666, 5, 99, 100};
   s21_size_t n_byte = sizeof(int) * 7;
-  int find_byte = 666;
+  int find_byte = 156;
   ck_assert_ptr_eq(s21_memchr(array, find_byte, n_byte),
                    memchr(array, find_byte, n_byte));
 }

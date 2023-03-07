@@ -1,22 +1,24 @@
+#include <stdbool.h>
+
 #include "s21_string.h"
-int comp(const char *haystack, const char *needle);
 
 char *s21_strstr(const char *haystack, const char *needle) {
-  char *result = s21_NULL;
-  while (*haystack != '\0' && result == s21_NULL) {
-    if ((*haystack == *needle) && comp(haystack, needle))
-      result = (char *)haystack;
-    haystack++;
+  char *res = s21_NULL;
+  if (s21_strlen(haystack) >= s21_strlen(needle)) {
+    for (s21_size_t i = 0; i <= s21_strlen(haystack) - s21_strlen(needle);
+         i++) {
+      bool found = true;
+      for (s21_size_t j = i, k = 0; needle[k]; k++, j++) {
+        if (haystack[j] != needle[k]) {
+          found = false;
+          break;
+        }
+      }
+      if (found) {
+        res = (char *)haystack + i;
+        break;
+      }
+    }
   }
-  return result;
-}
-
-int comp(const char *haystack, const char *needle) {
-  int result = 1;
-  while (*haystack && *needle && result != 0) {
-    if (*haystack != *needle) result = 0;
-    haystack++;
-    needle++;
-  }
-  return result == 1 ? (*needle == '\0') : 0;
+  return res;
 }
