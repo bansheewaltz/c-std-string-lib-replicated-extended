@@ -1,0 +1,72 @@
+#include "s21_tests.h"
+
+#suite to_lower
+#test to_lower_test1
+  char buff1[] = "are YOU ok?";
+  char buff2[] = "are you ok?";
+  char *result = s21_to_lower(buff1);
+
+  ck_assert_str_eq(result, buff2);
+  if (result) {
+    free(result);
+  }
+
+
+#test to_lower_test2
+  char buff1[] = "";
+  char buff2[] = "";
+  char *result = s21_to_lower(buff1);
+
+  ck_assert_str_eq(result, buff2);
+  if (result) {
+  free(result);
+  }
+
+
+#test to_lower_test3
+  char buff1[] = "!?";
+  char buff2[] = "!?";
+  char *result = s21_to_lower(buff1);
+
+  ck_assert_str_eq(result, buff2);
+  if (result) {
+    free(result);
+  }
+
+
+#test to_lower_test4
+  char buff1[] = "112";
+  char buff2[] = "112";
+  char *result = s21_to_lower(buff1);
+
+  ck_assert_str_eq(result, buff2);
+  if (result) {
+    free(result);
+  }
+
+
+#test null_arg
+  char *result = s21_to_lower(s21_NULL);
+
+  ck_assert(result == s21_NULL);
+  if (result) {
+    free(result);
+  }
+
+
+#test not_ascii
+  char *result = s21_to_lower("{");
+
+  ck_assert_str_eq(result, "{");
+  if (result) {
+    free(result);
+  }
+
+
+#test malloc_fail
+  char *result = s21_to_lower("0123456789123");
+
+  ck_assert(result == s21_NULL);
+  if (result) {
+    free(result);
+  }

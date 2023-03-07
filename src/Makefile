@@ -1,0 +1,97 @@
+# Makefile author: dondarri@student.21-school.ru
+CONFIG := release
+### many variables are stored in a shared makefile
+include Makefile.common
+# build parameters
+CFLAGS = $(WFLAGS) $(STDFLAG) $(INCFLAGS)
+# Makefile search paths
+vpath %.c $(SRC) $(UTL)
+vpath lib%.a $(LIB)
+export
+
+
+.PHONY: all
+all:
+ifeq ($(OS), )
+	$(warning warning: it looks like this Makefile is not fully adapted to your OS)
+endif
+	$(MAKE) lib
+ifneq ($(shell pkg-config --libs check 2> /dev/null), )
+	$(MAKE) test
+ifneq ($(shell which gcovr 2> /dev/null), )
+	$(MAKE) gcov_report
+endif
+ifneq ($(shell which valgrind), )
+	$(MAKE) memcheck
+endif
+endif
+
+s21_string.a: $(OBJS)
+	ar -rsc $@ $^
+
+$(OBJ)/%.o: %.c $(HDRS)
+	$(dir_guard)
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+.PHONY: test gcov_report
+test gcov_report: lib
+	@$(MAKE) -s -f Makefile.unit_testing $@
+
+.PHONY: clean
+clean:
+	$(RM) $(BUILD)
+	$(RM) $(REPORTS)
+	$(RM) $(LIBNAME).a
+	$(RM) *.out*
+
+.PHONY: re
+re: clean
+	$(MAKE) all
+
+
+
+.PHONY: lib
+lib: libs21_string.a
+libs21_string.a: s21_string.a
+	$(MK) $(LIB)
+	cp $< $(LIB)/$@
+
+.PHONY: memcheck
+memcheck: lib
+ifeq (, $(shell which valgrind))
+	$(error "valgrind" should be installed)
+endif
+	@$(MAKE) -s -f Makefile.memcheck $@
+
+.PHONY: linter linter_check
+linter_check: LINTFLAG := -n
+linter linter_check:
+	$(LINT) $(LINTFLAG) $(shell find . -type f -name '*.h' -o -name '*.c')
+
+.PHONY: miniverter
+miniverter: clean
+	cd $(SCRIPTS) && bash run_miniverter_test.sh
+
+.PHONY: container
+container:
+ifeq (, $(shell which docker))
+	$(error "Docker" should be installed)
+endif
+	$(MAKE) clean_build
+	bash $(SCRIPTS)/run_docker_image.sh
+
+.PHONY: test1
+test1: s21_string.a test
+	@echo
+	gcc -g -I. testing/src/s21_string_test.c s21_string.a $(shell pkg-config --cflags --libs check) -o build/unit_testing/bin/additional_tests
+	@echo
+	build/unit_testing/bin/additional_tests | grep -v Passed | sed 's/.*additional_tests://g'
+	rm build/unit_testing/bin/additional_tests 
+
+.PHONY: brew
+brew:
+	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+
+# testf:
+# 	gcc -g $(WFLAGS) $(INCFLAGS) lib/s21_sprintf.c $(LDFLAGS) $(LDLIBS)
+# 	./a.out
