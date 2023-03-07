@@ -2,19 +2,21 @@
 int comp(const char *haystack, const char *needle);
 
 char *s21_strstr(const char *haystack, const char *needle) {
-  while (*haystack != '\0') {
+  char *result = s21_NULL;
+  while (*haystack != '\0' && result == s21_NULL) {
     if ((*haystack == *needle) && comp(haystack, needle))
-      return (char *)haystack;
+      result = (char *)haystack;
     haystack++;
   }
-  return s21_NULL;
+  return result;
 }
 
 int comp(const char *haystack, const char *needle) {
-  while (*haystack && *needle) {
-    if (*haystack != *needle) return 0;
+  int result = 1;
+  while (*haystack && *needle && result != 0) {
+    if (*haystack != *needle) result = 0;
     haystack++;
     needle++;
   }
-  return (*needle == '\0');
+  return result == 1 ? (*needle == '\0') : 0;
 }
