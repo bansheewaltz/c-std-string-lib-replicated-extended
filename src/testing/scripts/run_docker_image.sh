@@ -5,7 +5,7 @@ CLR="\033[38;5;117m"
 RST="\033[0m"
 
 # start docker if is not running yet
-if ! pgrep -x "Docker" >/dev/null; then
+if ! docker ps >/dev/null; then
   if [ "$OS" = 'macOS' ]; then
     echo "Starting Docker app..."
     open -a Docker
