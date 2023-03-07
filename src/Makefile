@@ -3,7 +3,11 @@ CONFIG := release
 ### many variables are stored in a shared makefile
 include Makefile.common
 # build parameters
-CFLAGS = $(WFLAGS) $(STDFLAG) $(INCFLAGS)
+DBGFLAGS := -g
+CFLAGS := $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(INCFLAGS)
+ifeq ($(OS), Alpine)
+	CFLAGS := $(DBGFLAGS) $(INCFLAGS)
+endif
 # Makefile search paths
 vpath %.c $(SRC) $(UTL)
 vpath lib%.a $(LIB)
@@ -82,11 +86,7 @@ endif
 
 .PHONY: test1
 test1: s21_string.a test
-	@echo
-	gcc -g -I. testing/src/s21_string_test.c s21_string.a $(shell pkg-config --cflags --libs check) -o build/unit_testing/bin/additional_tests
-	@echo
-	build/unit_testing/bin/additional_tests | grep -v Passed | sed 's/.*additional_tests://g'
-	rm build/unit_testing/bin/additional_tests 
+	@$(MAKE) -s -f Makefile.memcheck $@
 
 .PHONY: brew
 brew:
