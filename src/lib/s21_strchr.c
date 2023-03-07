@@ -1,7 +1,17 @@
 #include "s21_string.h"
 
 char *s21_strchr(const char *str, int c) {
-  int i = 0;
-  while ((str[i] != '\0') && (str[i] != c)) i++;
-  return c == str[i] ? (char *)str + i : s21_NULL;
+  char *result = s21_NULL;
+  const char *tmp_ptr = str;
+  while (*tmp_ptr != '\0') {
+    if (*tmp_ptr == c) {
+      result = (char*)tmp_ptr;
+      break;
+    }
+    tmp_ptr += 1;
+  }
+  if (*tmp_ptr == c) {
+    result = (char*)tmp_ptr;
+  }
+  return result;
 }
