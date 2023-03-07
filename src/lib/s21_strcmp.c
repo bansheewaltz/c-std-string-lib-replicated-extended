@@ -1,6 +1,10 @@
 #include "s21_string.h"
 
 int s21_strcmp(const char *str1, const char *str2) {
+  if (s21_strlen(str1) == 0 && s21_strlen(str2) == 0) {
+    return 0;
+  }
+
   int result = 0, fend = 0;
   while (fend == 0) {
     if (*str1 == *str2) {
@@ -15,5 +19,6 @@ int s21_strcmp(const char *str1, const char *str2) {
       fend = 1;
     }
   }
+
   return result;
 }

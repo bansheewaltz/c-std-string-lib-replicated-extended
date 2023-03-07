@@ -21,14 +21,16 @@ DBGFLAGS := -g
 CFLAGS = $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(shell pkg-config --cflags check) $(DEFINES) $(INCFLAGS)
 export CK_FORK SHELL TST_REPORT_R
 
-$(info )
-$(info *** silently compiling build version for checking memory usage ***)
-$(info *** with the parameters: $(CFLAGS) $(LDFLAGS) $(LDLIBS))
-$(info *** executing through $(MEMCHECK) with the parameters: $(MEMFLAGS))
+
 
 
 .PHONY: memcheck
-memcheck: $(T_EXES)
+memcheck:
+	$(info )
+	$(info *** silently compiling build version for checking memory usage ***)
+	$(info *** with the parameters: $(CFLAGS) $(LDFLAGS) $(LDLIBS))
+	$(info *** executing through $(MEMCHECK) with the parameters: $(MEMFLAGS))
+	$(MAKE) -f Makefile.memcheck $(T_EXES)
 	echo -e "\n\nyou can check saved $(MEMCHECK) logs at $(TST_REPORT_R)"
 
 $(BIN)/%_test: $(SRC)/s21_%.c $(SRC_B)/%_test.c | $(REPORTS)
@@ -43,3 +45,16 @@ $(SRC_B)/%_test.c: $(CHK)/%_test.check
 
 $(REPORTS):
 	@$(MK) $@
+
+
+.PHONY: test1
+test1:
+	echo
+	gcc $(WFLAGS) -g -I. testing/src/s21_string_test.c s21_string.a $(shell pkg-config --cflags --libs check) -o build/unit_testing/bin/additional_tests
+ifeq (, $(shell which valgrind))
+	build/unit_testing/bin/additional_tests | grep -v Passed | sed 's/.*additional_tests://g'
+else
+	valgrind $(MEMFLAGS) build/unit_testing/bin/additional_tests 2> reports/memcheck_additional_report.txt | grep -v Passed | sed 's/.*additional_tests://g'
+	echo -e "\n\nyou can check saved $(MEMCHECK) logs at reports/memcheck_additional_report.txt"	
+endif
+	rm build/unit_testing/bin/additional_tests
