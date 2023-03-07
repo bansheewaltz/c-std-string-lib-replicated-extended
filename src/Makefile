@@ -1,10 +1,14 @@
 # Makefile author: dondarri@student.21-school.ru
-CONFIG := release
+CONFIG ?= debug
 ### many variables are stored in a shared makefile
 include Makefile.common
 # build parameters
-DBGFLAGS := -g
-CFLAGS := $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(INCFLAGS)
+ifeq ($(CONFIG), debug)
+	DBGFLAGS := -g
+	CFLAGS := $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(INCFLAGS)
+else
+	CFLAGS := $(WFLAGS) $(STDFLAG) $(INCFLAGS)
+endif
 ifeq ($(OS), Alpine)
 	CFLAGS := $(DBGFLAGS) $(INCFLAGS)
 endif
