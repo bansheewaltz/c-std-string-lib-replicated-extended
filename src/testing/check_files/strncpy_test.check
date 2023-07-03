@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 
 #suite strncpy
 #test classic
@@ -7,7 +7,7 @@
     char exp[10] = "";
 
     strncpy(exp, src, strlen(src));
-    s21_strncpy(res, src, strlen(src));
+    x_strncpy(res, src, strlen(src));
     ck_assert_str_eq(res, exp);
 
 
@@ -17,7 +17,7 @@
     char exp[6] = "";
 
     strncpy(exp, src, strlen(src));
-    s21_strncpy(res, src, strlen(src));
+    x_strncpy(res, src, strlen(src));
     ck_assert_str_eq(res, exp);
 
 
@@ -27,7 +27,7 @@
     char exp[5] = "";
 
     strncpy(exp, src, strlen(src));
-    s21_strncpy(res, src, strlen(src));
+    x_strncpy(res, src, strlen(src));
     ck_assert_str_eq(res, exp);
 
 
@@ -38,7 +38,7 @@ test empty_to_empy_zero_size
     char exp[5] = "";
 
     strncpy(exp, src, 0);
-    s21_strncpy(res, src, 0);
+    x_strncpy(res, src, 0);
     ck_assert_str_eq(res, exp);
 */
 
@@ -49,7 +49,7 @@ test empty_to_empy_zero_size
     char exp[6] = "12345";
 
     strncpy(exp, src, strlen(src));
-    s21_strncpy(res, src, strlen(src));
+    x_strncpy(res, src, strlen(src));
     ck_assert_str_eq(res, exp);
 
 
@@ -60,5 +60,5 @@ test empty_to_empy_zero_size
     int n = 5;
 
     strncpy(exp, src, n);
-    s21_strncpy(res, src, n);
+    x_strncpy(res, src, n);
     ck_assert_str_eq(res, exp);

@@ -1,11 +1,11 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 
 #suite strpbrk
 #test t1
-    ck_assert_pstr_eq(strpbrk("123456", "892"), s21_strpbrk("123456", "892"));
+    ck_assert_pstr_eq(strpbrk("123456", "892"), x_strpbrk("123456", "892"));
 
 #test t2
-    ck_assert_pstr_eq(strpbrk("34521542", "019"), s21_strpbrk("34521542", "019"));
+    ck_assert_pstr_eq(strpbrk("34521542", "019"), x_strpbrk("34521542", "019"));
 
 #test t3 
-    ck_assert_pstr_eq(strpbrk("45634567", "91"), s21_strpbrk("45634567", "91"));
+    ck_assert_pstr_eq(strpbrk("45634567", "91"), x_strpbrk("45634567", "91"));

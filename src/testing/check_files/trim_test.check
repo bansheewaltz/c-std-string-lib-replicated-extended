@@ -1,11 +1,11 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 
 #suite trim
 #test trim_test1
   char buff1[] = "areYOU ok?";
   char buff2[] = "";
   char buff3[] = "areYOU ok?";
-  char *result = s21_trim(buff1, buff2);
+  char *result = x_trim(buff1, buff2);
   ck_assert_str_eq(result, buff3);
   if (result) {
     free(result);
@@ -15,7 +15,7 @@
   char buff1[] = "  are YOU ok  ?";
   char buff2[] = " ";
   char buff3[] = "are YOU ok  ?";
-  char *result = s21_trim(buff1, buff2);
+  char *result = x_trim(buff1, buff2);
   ck_assert_str_eq(result, buff3);
   if (result) {
     free(result);
@@ -25,7 +25,7 @@
   char buff1[] = "";
   char buff2[] = "";
   char *buff3 = "";
-  char *result = s21_trim(buff1, buff2);
+  char *result = x_trim(buff1, buff2);
   ck_assert_str_eq(result, buff3);
   if (result) {
     free(result);
@@ -35,7 +35,7 @@
   char buff1[] = "areYOU ok !!?";
   char buff2[] = " ?!!";
   char buff3[] = "areYOU ok";
-  char *result = s21_trim(buff1, buff2);
+  char *result = x_trim(buff1, buff2);
   ck_assert_str_eq(result, buff3);
   if (result) {
     free(result);
@@ -45,7 +45,7 @@
   char buff1[] = "areYOU ok?";
   char buff2[] = "areYOU";
   char buff3[] = " ok?";
-  char *result = s21_trim(buff1, buff2);
+  char *result = x_trim(buff1, buff2);
   ck_assert_str_eq(result, buff3);
   if (result) {
     free(result);
@@ -55,7 +55,7 @@
   char buff1[] = "are YOU ok?";
   char buff2[] = "      ";
   char buff3[] = "are YOU ok?";
-  char *result = s21_trim(buff1, buff2);
+  char *result = x_trim(buff1, buff2);
   ck_assert_str_eq(result, buff3);
   if (result) {
     free(result);

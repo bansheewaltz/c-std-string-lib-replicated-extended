@@ -1,14 +1,14 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 
 #suite strlen
 #test t1
-    ck_assert_uint_eq(strlen("asdap"), s21_strlen("asdap"));
+    ck_assert_uint_eq(strlen("asdap"), x_strlen("asdap"));
 
 #test t2
-    ck_assert_uint_eq(strlen("sadlkjfhalskjdfhlkajsdhflkasjdfh"), s21_strlen("sadlkjfhalskjdfhlkajsdhflkasjdfh"));
+    ck_assert_uint_eq(strlen("sadlkjfhalskjdfhlkajsdhflkasjdfh"), x_strlen("sadlkjfhalskjdfhlkajsdhflkasjdfh"));
 
 #test t3
-    ck_assert_uint_eq(strlen(""), s21_strlen(""));
+    ck_assert_uint_eq(strlen(""), x_strlen(""));
 
 #test t4
-    ck_assert_uint_eq(strlen("hi\0there"), s21_strlen("hi\0there"));
+    ck_assert_uint_eq(strlen("hi\0there"), x_strlen("hi\0there"));

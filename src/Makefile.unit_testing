@@ -11,8 +11,8 @@ COV_INF := $(BLD)/coverage_info
 TST_REPORT_R := $(REPORTS)/tests_report_raw.txt
 COV_REPORT := gcov_report.html
 # project files
-T_SRCS := $(SRCS:$(SRC)/s21_%.c=$(SRC_B)/%_test.c)
-T_EXES := $(SRCS:$(SRC)/s21_%.c=$(BIN)/%_test)
+T_SRCS := $(SRCS:$(SRC)/x_%.c=$(SRC_B)/%_test.c)
+T_EXES := $(SRCS:$(SRC)/x_%.c=$(BIN)/%_test)
 # compilation parameters
 LDLIBS += $(shell pkg-config --libs-only-l check)
 LDFLAGS += $(shell pkg-config --libs-only-L check)
@@ -31,15 +31,15 @@ test:
 	$(info *** linker parameters: $(COVFLAG) $(LDFLAGS) $(LDLIBS))
 	$(MAKE) -f Makefile.unit_testing $(T_EXES)
 
-$(BIN)/%_test: $(OBJ)/s21_%.o $(OBJ)/%_test.o | $(COV_INF) $(REPORTS)
+$(BIN)/%_test: $(OBJ)/x_%.o $(OBJ)/%_test.o | $(COV_INF) $(REPORTS)
 	$(dir_guard)
 	$(CC) $(DBGFLAGS) $(COVFLAG) $^ $(LDFLAGS) $(LDLIBS) -o $@
-	-mv $(OBJ)/s21_$*.gcno $(COV_INF) 2> /dev/null
+	-mv $(OBJ)/x_$*.gcno $(COV_INF) 2> /dev/null
 	-(echo && ./$@) | tee -a $(TST_REPORT_R) | sed 's/.*[FE]:.\{1,8\}:/\t/g'
-	mv $(OBJ)/s21_$*.gcda $(COV_INF)
+	mv $(OBJ)/x_$*.gcda $(COV_INF)
 
-$(OBJ)/s21_%.o: CFLAGS = $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(COVFLAG) $(DEFINES) $(INCFLAGS)
-$(OBJ)/s21_%.o: $(SRC)/s21_%.c | $(OBJ)
+$(OBJ)/x_%.o: CFLAGS = $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(COVFLAG) $(DEFINES) $(INCFLAGS)
+$(OBJ)/x_%.o: $(SRC)/x_%.c | $(OBJ)
 	$(CC) -c $(CFLAGS) $< -o $@
 
 $(OBJ)/%_test.o: CFLAGS = $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(shell pkg-config --cflags check) -I$(INC) -I$(T_INC)

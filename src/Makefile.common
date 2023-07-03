@@ -1,4 +1,4 @@
-PROJNAME := s21_string
+PROJNAME := x_string
 # end directories
 BUILD := build
 REPORTS := reports

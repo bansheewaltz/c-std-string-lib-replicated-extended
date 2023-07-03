@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 
 #suite memmcpy
 #test classic
@@ -7,7 +7,7 @@
     char exp[10] = "";
 
     memcpy(exp, src, strlen(src));
-    s21_memcpy(res, src, strlen(src));
+    x_memcpy(res, src, strlen(src));
     ck_assert_str_eq(res, exp);
 
 
@@ -17,7 +17,7 @@
     char exp[6] = "";
 
     memcpy(exp, src, strlen(src));
-    s21_memcpy(res, src, strlen(src));
+    x_memcpy(res, src, strlen(src));
     ck_assert_str_eq(res, exp);
 
 
@@ -27,7 +27,7 @@
     char exp[5] = "";
 
     memcpy(exp, src, strlen(src));
-    s21_memcpy(res, src, strlen(src));
+    x_memcpy(res, src, strlen(src));
     ck_assert_str_eq(res, exp);
 
 
@@ -37,7 +37,7 @@
     char exp[5] = "";
 
     memcpy(exp, src, 0);
-    s21_memcpy(res, src, 0);
+    x_memcpy(res, src, 0);
     ck_assert_str_eq(res, exp);
 
 
@@ -47,7 +47,7 @@
     char exp[6] = "12345";
 
     memcpy(exp, src, strlen(src));
-    s21_memcpy(res, src, strlen(src));
+    x_memcpy(res, src, strlen(src));
     ck_assert_str_eq(res, exp);
 
 /* compilation error
@@ -57,7 +57,7 @@ test src_is_dest
     char exp[6] = "12345";
 
     memcpy(src, src, strlen(src));
-    s21_memcpy(res, res, strlen(src));
+    x_memcpy(res, res, strlen(src));
     ck_assert_str_eq(res, exp);
 */ 
 
@@ -68,5 +68,5 @@ test src_is_dest
     int n = 5;
 
     memcpy(exp, src, n);
-    s21_memcpy(res, src, n);
+    x_memcpy(res, src, n);
     ck_assert_str_eq(res, exp);

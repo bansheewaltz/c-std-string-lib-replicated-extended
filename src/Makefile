@@ -34,7 +34,7 @@ ifneq ($(shell which valgrind), )
 endif
 endif
 
-s21_string.a: $(OBJS)
+x_string.a: $(OBJS)
 	ar -rsc $@ $^
 
 $(OBJ)/%.o: %.c $(HDRS)
@@ -59,8 +59,8 @@ re: clean
 
 
 .PHONY: lib
-lib: libs21_string.a
-libs21_string.a: s21_string.a
+lib: libx_string.a
+libx_string.a: x_string.a
 	$(MK) $(LIB)
 	cp $< $(LIB)/$@
 
@@ -89,7 +89,7 @@ endif
 	bash $(SCRIPTS)/run_docker_image.sh
 
 .PHONY: test1
-test1: s21_string.a test
+test1: x_string.a test
 	@$(MAKE) -s -f Makefile.memcheck $@
 
 .PHONY: brew
@@ -97,5 +97,5 @@ brew:
 	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
 
 # testf:
-# 	gcc -g $(WFLAGS) $(INCFLAGS) lib/s21_sprintf.c $(LDFLAGS) $(LDLIBS)
+# 	gcc -g $(WFLAGS) $(INCFLAGS) lib/x_sprintf.c $(LDFLAGS) $(LDLIBS)
 # 	./a.out

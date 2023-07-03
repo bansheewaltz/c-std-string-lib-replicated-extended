@@ -1,28 +1,28 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 
 #suite strncmp
 #test test1
-   ck_assert_int_eq(strncmp("", "", 5), s21_strncmp("", "", 5));
+   ck_assert_int_eq(strncmp("", "", 5), x_strncmp("", "", 5));
 
 
 #test test2
     ck_assert_int_eq(strncmp("3dd3d", "3dd3d", 5),
-                   s21_strncmp("3dd3d", "3dd3d", 5));
+                   x_strncmp("3dd3d", "3dd3d", 5));
 
 
 #test test3
-    ck_assert_int_eq(strncmp("3", "3", 2), s21_strncmp("3", "3", 2));
+    ck_assert_int_eq(strncmp("3", "3", 2), x_strncmp("3", "3", 2));
 
 
 #test test4
    ck_assert_int_eq(strncmp("3dd3sdfgsdd", "dsfg3dd3d", 0),
-                   s21_strncmp("3dd3sdfgsdd", "dsfg3dd3d", 0));
+                   x_strncmp("3dd3sdfgsdd", "dsfg3dd3d", 0));
 
 #test test5
-    ck_assert_int_eq(strncmp("1234", "13", 2), s21_strncmp("1234", "13", 2));
+    ck_assert_int_eq(strncmp("1234", "13", 2), x_strncmp("1234", "13", 2));
 
 #test test6
-    ck_assert_int_eq(strncmp("", "13", 2), s21_strncmp("", "13", 2));
+    ck_assert_int_eq(strncmp("", "13", 2), x_strncmp("", "13", 2));
 
 #test test7
-    ck_assert_int_eq(strncmp("1234", "", 2), s21_strncmp("1234", "", 2));
+    ck_assert_int_eq(strncmp("1234", "", 2), x_strncmp("1234", "", 2));

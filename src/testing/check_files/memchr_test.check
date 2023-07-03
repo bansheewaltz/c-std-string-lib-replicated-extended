@@ -1,9 +1,9 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 
 #suite memchr
 #test t1
-ck_assert_pstr_eq(memchr("1234567890", '5', 7), s21_memchr("1234567890", '5', 7));
+ck_assert_pstr_eq(memchr("1234567890", '5', 7), x_memchr("1234567890", '5', 7));
 #test t2
-ck_assert_pstr_eq(memchr("1234567890", '9', 7), s21_memchr("1234567890", '9', 7));
+ck_assert_pstr_eq(memchr("1234567890", '9', 7), x_memchr("1234567890", '9', 7));
 #test t3
-ck_assert_pstr_eq(memchr("123567890", '4', 7), s21_memchr("123567890", '4', 7));
+ck_assert_pstr_eq(memchr("123567890", '4', 7), x_memchr("123567890", '4', 7));

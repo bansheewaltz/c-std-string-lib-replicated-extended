@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 #include "float.h"
 
 #suite sprintf
@@ -9,7 +9,7 @@
     int val = 17;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -21,7 +21,7 @@
     int val = 17;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -33,7 +33,7 @@
     int val = 17;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);;
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -45,7 +45,7 @@
     int val = 17;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -57,7 +57,7 @@
     int val = 17;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -69,7 +69,7 @@
     int val = 17;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -82,7 +82,7 @@ test star_width_int
     int val = 17;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 */
@@ -95,7 +95,7 @@ test star_width_int
     int val = 17;
 
     int ret_exp = sprintf(exp, format, 5, val);
-    int ret_res = s21_sprintf(res, format, 5, val);
+    int ret_res = x_sprintf(res, format, 5, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -107,7 +107,7 @@ test star_width_int
     int val = 17;
 
     int ret_exp = sprintf(exp, format, 5, val, -10431, 13, 5311, 0, -581813581);
-    int ret_res = s21_sprintf(res, format, 5, val, -10431, 13, 5311, 0, -581813581);
+    int ret_res = x_sprintf(res, format, 5, val, -10431, 13, 5311, 0, -581813581);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -119,7 +119,7 @@ test star_width_int
     long int val = 178518581899;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -131,7 +131,7 @@ test star_width_int
     short int val = 1758;
     
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -143,7 +143,7 @@ test star_width_int
     long val = 8581385185;
 
     int ret_exp = sprintf(exp, format, 5, val);
-    int ret_res = s21_sprintf(res, format, 5, val);
+    int ret_res = x_sprintf(res, format, 5, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -155,7 +155,7 @@ test star_width_int
     int val = 0;
     
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -167,7 +167,7 @@ test star_width_int
     int val = 0;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -179,7 +179,7 @@ test star_width_int
     unsigned int val = 14140;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -190,7 +190,7 @@ test star_width_int
     char *format = "%15u";
     unsigned int val = 14140;
 
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     int ret_exp = sprintf(exp, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -203,7 +203,7 @@ test star_width_int
     unsigned int val = 14140;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -215,7 +215,7 @@ test star_width_int
     unsigned int val = 14140;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -227,7 +227,7 @@ test star_width_int
     unsigned int val = 14140;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -239,7 +239,7 @@ test star_width_int
     unsigned short int val = 14140;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -250,7 +250,7 @@ test star_width_int
     char *format = "%lu";
     unsigned long int val = 949149114140;
 
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     int ret_exp = sprintf(exp, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -263,7 +263,7 @@ test star_width_int
     unsigned long int val = 949149114140;
 
     int ret_exp = sprintf(exp, format, val, (unsigned)14, (unsigned short)1441, (unsigned)14414, (unsigned)9681);
-    int ret_res = s21_sprintf(res, format, val, 14, 1441, 14414, 9681);
+    int ret_res = x_sprintf(res, format, val, 14, 1441, 14414, 9681);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -275,7 +275,7 @@ test star_width_int
     int val = 14140;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -287,7 +287,7 @@ test star_width_int
     int val = 14140;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -299,7 +299,7 @@ test star_width_int
     int val = 14140;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -311,7 +311,7 @@ test star_width_int
     int val = 14140;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -322,7 +322,7 @@ test star_width_int
 
     char *format = "%o";
     int ret_exp = sprintf(exp, format, 0);
-    int ret_res = s21_sprintf(res, format, 0);
+    int ret_res = x_sprintf(res, format, 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -334,7 +334,7 @@ test star_width_int
     int val = 57175;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -346,7 +346,7 @@ test star_width_int
     short int val = 14140;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -358,7 +358,7 @@ test star_width_int
     long int val = 949149114140;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -370,7 +370,7 @@ test star_width_int
     long int val = 949149114140;
 
     int ret_exp = sprintf(exp, format, val, (unsigned)14, (unsigned short)1441, (unsigned)14414, (unsigned)9681);
-    int ret_res = s21_sprintf(res, format, val, 14, 1441, 14414, 9681);
+    int ret_res = x_sprintf(res, format, val, 14, 1441, 14414, 9681);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -381,7 +381,7 @@ test star_width_int
     char *format = "%lo";
     long int val = 84518;
 
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     int ret_exp = sprintf(exp, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -393,7 +393,7 @@ test star_width_int
     char *format = "%u";
 
     int ret_exp = sprintf(exp, format, (unsigned)0);
-    int ret_res = s21_sprintf(res, format, 0);
+    int ret_res = x_sprintf(res, format, 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -405,7 +405,7 @@ test star_width_int
     unsigned val = 858158158;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -417,7 +417,7 @@ test star_width_int
     unsigned val = 858158158;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -429,7 +429,7 @@ test star_width_int
     unsigned val = 858158158;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -441,7 +441,7 @@ test star_width_int
     unsigned val = 858158158;
 
     int ret_exp = sprintf(exp, format, val, val, val, val, val, val);
-    int ret_res = s21_sprintf(res, format, val, val, val, val, val, val);
+    int ret_res = x_sprintf(res, format, val, val, val, val, val, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -453,7 +453,7 @@ test star_width_int
     unsigned val = 858158158;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -465,7 +465,7 @@ test star_width_int
     unsigned val = 0;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -477,7 +477,7 @@ test star_width_int
     unsigned val = 18571;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -489,7 +489,7 @@ test star_width_int
     unsigned short val = 12352;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -501,7 +501,7 @@ test star_width_int
     unsigned long val = 18571757371571;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -513,7 +513,7 @@ test star_width_int
     unsigned val = 1;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -525,7 +525,7 @@ test star_width_int
     unsigned val = 1;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -537,7 +537,7 @@ test star_width_int
     char val = 'X';
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -549,7 +549,7 @@ test star_width_int
     char val = 'c';
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -561,7 +561,7 @@ test star_width_int
     char val = 'c';
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -573,7 +573,7 @@ test star_width_int
     char val = 'c';
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -585,7 +585,7 @@ test star_width_int
     char val = 'c';
 
     int ret_exp = sprintf(exp, format, val, 'c', 'a', 'b', 'b');
-    int ret_res = s21_sprintf(res, format, val, 'c', 'a', 'b', 'b');
+    int ret_res = x_sprintf(res, format, val, 'c', 'a', 'b', 'b');
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -597,7 +597,7 @@ test star_width_int
     char val = 'c';
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -609,7 +609,7 @@ test star_width_int
     char *val = "I LOVE STRINGS AND TESTS AND SCHOOL21 NO JOKE";
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -621,7 +621,7 @@ test star_width_int
     char *val = "I LOVE STRINGS AND TESTS AND SCHOOL21 NO JOKE";
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -633,7 +633,7 @@ test star_width_int
     char *val = "17 IS MY FAVORITE NUMBER";
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -645,7 +645,7 @@ test star_width_int
     char *val = "17 IS MY FAVORITE NUMBER";
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -657,7 +657,7 @@ test star_width_int
     char *val = "17 IS MY FAVORITE NUMBER THIS IS SUPPOSED TO BE A VERY LONG STRING";
     
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -672,7 +672,7 @@ test star_width_int
     char *s3 = "HAHAABOBASUCKER";
 
     int ret_exp = sprintf(exp, format, val, s1, s2, s3);
-    int ret_res = s21_sprintf(res, format, val, s1, s2, s3);
+    int ret_res = x_sprintf(res, format, val, s1, s2, s3);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -683,7 +683,7 @@ test star_width_int
     char *format = "%p";
 
     int ret_exp = sprintf(exp, format, format);
-    int ret_res = s21_sprintf(res, format, format);
+    int ret_res = x_sprintf(res, format, format);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -694,7 +694,7 @@ test star_width_int
     char *format = "%15p";
 
     int ret_exp = sprintf(exp, format, format);
-    int ret_res = s21_sprintf(res, format, format);
+    int ret_res = x_sprintf(res, format, format);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -705,7 +705,7 @@ test star_width_int
     char *format = "%.5p";
 
     int ret_exp = sprintf(exp, format, format);
-    int ret_res = s21_sprintf(res, format, format);
+    int ret_res = x_sprintf(res, format, format);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -718,7 +718,7 @@ test null_ptr
     char *ptr = NULL;
 
     int ret_exp = sprintf(exp, format, ptr);
-    int ret_res = s21_sprintf(res, format, ptr);
+    int ret_res = x_sprintf(res, format, ptr);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 */
@@ -730,7 +730,7 @@ test null_ptr
     char *format = "%120s";
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -742,7 +742,7 @@ test null_ptr
     char *format = "Hello, my sexy little aboba abobushka abobina %n";
 
     int ret_exp = sprintf(exp, format, &ret);
-    int ret_res = s21_sprintf(res, format, &ret);
+    int ret_res = x_sprintf(res, format, &ret);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -754,7 +754,7 @@ test null_ptr
     long double val = 513515.131513515151351;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -766,7 +766,7 @@ test null_ptr
     long double val = 15.35;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -778,7 +778,7 @@ test null_ptr
     long double val = 15.35;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -790,7 +790,7 @@ test null_ptr
     long double val = 15.35;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
     
@@ -802,7 +802,7 @@ test null_ptr
     long double val = 15.35;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -814,7 +814,7 @@ test null_ptr
     long double val = -15.35581134;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -826,7 +826,7 @@ test null_ptr
     long double val = 72537572375.1431341;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -838,7 +838,7 @@ test null_ptr
     float val = 0;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -855,7 +855,7 @@ test null_ptr
     long double val5 = 95919539159.53151351131;
 
     int ret_exp = sprintf(exp, format, val, val1, val2, val3, val4, val5);
-    int ret_res = s21_sprintf(res, format, val, val1, val2, val3, val4, val5);
+    int ret_res = x_sprintf(res, format, val, val1, val2, val3, val4, val5);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -867,7 +867,7 @@ test null_ptr
     long double val = 15.35;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -879,7 +879,7 @@ test null_ptr
     long double val = 15.35;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -891,7 +891,7 @@ test null_ptr
     long double val = 15.000009121;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -903,7 +903,7 @@ test null_ptr
     long double val = 0.000000000000000123;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -915,7 +915,7 @@ test null_ptr
     long double val = -15.35581134;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -927,7 +927,7 @@ test null_ptr
     long double val = 72537572375.1431341;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -939,7 +939,7 @@ test null_ptr
     float val = 0;
     
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -951,7 +951,7 @@ test null_ptr
     float val = 0;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -968,7 +968,7 @@ test null_ptr
     long double val5 = 95919539159.53151351131;
 
     int ret_exp = sprintf(exp, format, val, val1, val2, val3, val4, val5);
-    int ret_res = s21_sprintf(res, format, val, val1, val2, val3, val4, val5);
+    int ret_res = x_sprintf(res, format, val, val1, val2, val3, val4, val5);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -980,7 +980,7 @@ test null_ptr
     long double val = 4134121;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -990,7 +990,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "abc");
-    int ret_res = s21_sprintf(res, "abc");
+    int ret_res = x_sprintf(res, "abc");
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1000,7 +1000,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "abc");
-    int ret_res = s21_sprintf(res, "abc"); 
+    int ret_res = x_sprintf(res, "abc"); 
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1010,7 +1010,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%c", '\t');
-    int ret_res = s21_sprintf(res, "%c", '\t');
+    int ret_res = x_sprintf(res, "%c", '\t');
     ck_assert_str_eq(exp, res);ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1020,7 +1020,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%c%c%c%c%c", '\t', '\n', '0', 'S', 's');
-    int ret_res = s21_sprintf(res, "%c%c%c%c%c", '\t', '\n', '0', 'S', 's');
+    int ret_res = x_sprintf(res, "%c%c%c%c%c", '\t', '\n', '0', 'S', 's');
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1030,7 +1030,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%s", "Drop Sega PLS");
-    int ret_res = s21_sprintf(res, "%s", "Drop Sega PLS");
+    int ret_res = x_sprintf(res, "%s", "Drop Sega PLS");
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1040,7 +1040,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%s%s%s%s%s", "Drop", " ", "Sega", " ", "PLS");
-    int ret_res = s21_sprintf(res, "%s%s%s%s%s", "Drop", " ", "Sega", " ", "PLS");
+    int ret_res = x_sprintf(res, "%s%s%s%s%s", "Drop", " ", "Sega", " ", "PLS");
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1050,7 +1050,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%d", 666);
-    int ret_res = s21_sprintf(res, "%d", 666); 
+    int ret_res = x_sprintf(res, "%d", 666); 
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1060,7 +1060,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%d%d%d%d", -999, 0, 666, -100);
-    int ret_res = s21_sprintf(res, "%d%d%d%d", -999, 0, 666, -100);
+    int ret_res = x_sprintf(res, "%d%d%d%d", -999, 0, 666, -100);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1070,7 +1070,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%i", -0);
-    int ret_res = s21_sprintf(res, "%i", -0); 
+    int ret_res = x_sprintf(res, "%i", -0); 
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1080,7 +1080,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%i%i%i%i", -999, 0, 666, -100);
-    int ret_res = s21_sprintf(res, "%i%i%i%i", -999, 0, 666, -100);
+    int ret_res = x_sprintf(res, "%i%i%i%i", -999, 0, 666, -100);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1090,7 +1090,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%f", 0.0001);
-    int ret_res = s21_sprintf(res, "%f", 0.0001);
+    int ret_res = x_sprintf(res, "%f", 0.0001);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1099,7 +1099,7 @@ test null_ptr
     char exp[BUFF_SIZE];
     char res[BUFF_SIZE];
 
-    int ret_res = s21_sprintf(res, "%f%f%f%f", -999.666, 0.0001, 666.999, -100.001);
+    int ret_res = x_sprintf(res, "%f%f%f%f", -999.666, 0.0001, 666.999, -100.001);
     int ret_exp = sprintf(exp, "%f%f%f%f", -999.666, 0.0001, 666.999, -100.001);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1110,7 +1110,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%u", (unsigned)100);
-    int ret_res = s21_sprintf(res, "%u", 100);
+    int ret_res = x_sprintf(res, "%u", 100);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1120,7 +1120,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%u%u%u%u", (unsigned)999, (unsigned)0, (unsigned)666, (unsigned)100);
-    int ret_res = s21_sprintf(res, "%u%u%u%u", 999, 0, 666, 100);
+    int ret_res = x_sprintf(res, "%u%u%u%u", 999, 0, 666, 100);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1130,7 +1130,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%8c", '\t');
-    int ret_res = s21_sprintf(res, "%8c", '\t');
+    int ret_res = x_sprintf(res, "%8c", '\t');
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1140,7 +1140,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%-8c", '\t');
-    int ret_res = s21_sprintf(res, "%-8c", '\t');
+    int ret_res = x_sprintf(res, "%-8c", '\t');
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1150,7 +1150,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%3c%-11c%10c%-2c%c", '\t', '\n', '0', 'S', 's');
-    int ret_res = s21_sprintf(res, "%3c%-11c%10c%-2c%c", '\t', '\n', '0', 'S', 's');
+    int ret_res = x_sprintf(res, "%3c%-11c%10c%-2c%c", '\t', '\n', '0', 'S', 's');
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1160,17 +1160,17 @@ test null_ptr
     char res[BUFF_SIZE];
     
     int ret_exp = sprintf(exp, "%x", (unsigned)INT_MIN);
-    int ret_res = s21_sprintf(res, "%x", (unsigned)INT_MIN);
+    int ret_res = x_sprintf(res, "%x", (unsigned)INT_MIN);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%x", 0);
-    ret_res = s21_sprintf(res, "%x", 0);
+    ret_res = x_sprintf(res, "%x", 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
     
     ret_exp = sprintf(exp, "%x", INT_MAX);
-    ret_res = s21_sprintf(res, "%x", INT_MAX);
+    ret_res = x_sprintf(res, "%x", INT_MAX);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1179,18 +1179,18 @@ test null_ptr
     char exp[BUFF_SIZE];
     char res[BUFF_SIZE];
 
-    int ret_res = s21_sprintf(res, "%X", (unsigned)INT_MIN);
+    int ret_res = x_sprintf(res, "%X", (unsigned)INT_MIN);
     int ret_exp = sprintf(exp, "%X", (unsigned)INT_MIN);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
-    ret_res = s21_sprintf(res, "%X", 0);
+    ret_res = x_sprintf(res, "%X", 0);
     ret_exp = sprintf(exp, "%x", 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%X", INT_MAX);
-    ret_res = s21_sprintf(res, "%X", INT_MAX);
+    ret_res = x_sprintf(res, "%X", INT_MAX);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1200,7 +1200,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%x%x%x%x%x", 12340987, 135, 0, -1230, -123213123);
-    int ret_res = s21_sprintf(res, "%x%x%x%x%x", 12340987, 135, 0, -1230, -123213123);
+    int ret_res = x_sprintf(res, "%x%x%x%x%x", 12340987, 135, 0, -1230, -123213123);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1209,7 +1209,7 @@ test null_ptr
     char exp[BUFF_SIZE];
     char res[BUFF_SIZE];
 
-    int ret_res = s21_sprintf(res, "%X%X%X%X%X", 12340987, 135, 0, -1230, -123213123);
+    int ret_res = x_sprintf(res, "%X%X%X%X%X", 12340987, 135, 0, -1230, -123213123);
     int ret_exp = sprintf(exp, "%X%X%X%X%X", 12340987, 135, 0, -1230, -123213123);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1220,17 +1220,17 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%-3x", (unsigned)INT_MIN);
-    int ret_res = s21_sprintf(res, "%-3x", (unsigned)INT_MIN);
+    int ret_res = x_sprintf(res, "%-3x", (unsigned)INT_MIN);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%-3x", 0);
-    ret_res = s21_sprintf(res, "%-3x", 0);
+    ret_res = x_sprintf(res, "%-3x", 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%-3x", INT_MAX);
-    ret_res = s21_sprintf(res, "%-3x", INT_MAX);
+    ret_res = x_sprintf(res, "%-3x", INT_MAX);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1240,17 +1240,17 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%13x", (unsigned)INT_MIN);
-    int ret_res = s21_sprintf(res, "%13x", (unsigned)INT_MIN);
+    int ret_res = x_sprintf(res, "%13x", (unsigned)INT_MIN);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%13x", 0);
-    ret_res = s21_sprintf(res, "%13x", 0);
+    ret_res = x_sprintf(res, "%13x", 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%13x", INT_MAX);
-    ret_res = s21_sprintf(res, "%13x", INT_MAX);
+    ret_res = x_sprintf(res, "%13x", INT_MAX);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1260,17 +1260,17 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%-60X", (unsigned)INT_MIN);
-    int ret_res = s21_sprintf(res, "%-60X", INT_MIN);
+    int ret_res = x_sprintf(res, "%-60X", INT_MIN);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
-    ret_res = s21_sprintf(res, "%-60X", 0);
+    ret_res = x_sprintf(res, "%-60X", 0);
     ret_exp = sprintf(exp, "%-60X", 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%-60X", INT_MAX);
-    ret_res = s21_sprintf(res, "%-60X", INT_MAX);
+    ret_res = x_sprintf(res, "%-60X", INT_MAX);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1280,17 +1280,17 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%7X", (unsigned)INT_MIN);
-    int ret_res = s21_sprintf(res, "%7X", (unsigned)INT_MIN);
+    int ret_res = x_sprintf(res, "%7X", (unsigned)INT_MIN);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%7X", 0);
-    ret_res = s21_sprintf(res, "%7X", 0);
+    ret_res = x_sprintf(res, "%7X", 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
     
     ret_exp = sprintf(exp, "%7X", INT_MAX);
-    ret_res = s21_sprintf(res, "%7X", INT_MAX);
+    ret_res = x_sprintf(res, "%7X", INT_MAX);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1299,7 +1299,7 @@ test null_ptr
     char exp[BUFF_SIZE];
     char res[BUFF_SIZE];
 
-    int ret_res = s21_sprintf(res, "%2x%-7x%9x%11x%0x", 12340987, 100, 0, 1, -661799);
+    int ret_res = x_sprintf(res, "%2x%-7x%9x%11x%0x", 12340987, 100, 0, 1, -661799);
     int ret_exp = sprintf(exp, "%2x%-7x%9x%11x%0x", 12340987, 100, 0, 1, -661799);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1310,7 +1310,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%2X%-7X%9X%11X%0X", 12340987, 100, 0, 1, -661799);
-    int ret_res = s21_sprintf(res, "%2X%-7X%9X%11X%0X", 12340987, 100, 0, 1, -661799);
+    int ret_res = x_sprintf(res, "%2X%-7X%9X%11X%0X", 12340987, 100, 0, 1, -661799);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1320,17 +1320,17 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%#x", (unsigned)INT_MIN);
-    int ret_res = s21_sprintf(res, "%#x", INT_MIN);
+    int ret_res = x_sprintf(res, "%#x", INT_MIN);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%#x", 0);
-    ret_res = s21_sprintf(res, "%#x", 0);
+    ret_res = x_sprintf(res, "%#x", 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%#x", INT_MAX);
-    ret_res = s21_sprintf(res, "%#x", INT_MAX);
+    ret_res = x_sprintf(res, "%#x", INT_MAX);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1340,17 +1340,17 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%#X", (unsigned)INT_MIN);
-    int ret_res = s21_sprintf(res, "%#X", INT_MIN);
+    int ret_res = x_sprintf(res, "%#X", INT_MIN);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%#X", 0);
-    ret_res = s21_sprintf(res, "%#X", 0);
+    ret_res = x_sprintf(res, "%#X", 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%#X", INT_MAX);
-    ret_res = s21_sprintf(res, "%#X", INT_MAX);
+    ret_res = x_sprintf(res, "%#X", INT_MAX);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1360,7 +1360,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%#x%#x%3x%#32x%#-1x", 87, 1222224535, -13, -0, 123213123);
-    int ret_res = s21_sprintf(res, "%#x%#x%3x%#32x%#-1x", 87, 1222224535, -13, -0, 123213123);
+    int ret_res = x_sprintf(res, "%#x%#x%3x%#32x%#-1x", 87, 1222224535, -13, -0, 123213123);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1369,7 +1369,7 @@ test null_ptr
     char exp[BUFF_SIZE];
     char res[BUFF_SIZE];
 
-    int ret_res = s21_sprintf(res, "%#X%#X%3X%#32X%#-1X", 87, 1222224535, -13, -0, 123213123);
+    int ret_res = x_sprintf(res, "%#X%#X%3X%#32X%#-1X", 87, 1222224535, -13, -0, 123213123);
     int ret_exp = sprintf(exp, "%#X%#X%3X%#32X%#-1X", 87, 1222224535, -13, -0, 123213123);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1380,17 +1380,17 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%*x", 11, (unsigned)INT_MIN);
-    int ret_res = s21_sprintf(res, "%*x", 11, INT_MIN);
+    int ret_res = x_sprintf(res, "%*x", 11, INT_MIN);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%*x", 11, 0);
-    ret_res = s21_sprintf(res, "%*x", 11, 0);
+    ret_res = x_sprintf(res, "%*x", 11, 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%*x", 11, INT_MAX);
-    ret_res = s21_sprintf(res, "%*x", 11, INT_MAX);
+    ret_res = x_sprintf(res, "%*x", 11, INT_MAX);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1400,17 +1400,17 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%*X", 11, (unsigned)INT_MIN);
-    int ret_res = s21_sprintf(res, "%*X", 11, INT_MIN);
+    int ret_res = x_sprintf(res, "%*X", 11, INT_MIN);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%*X", 11, 0);
-    ret_res = s21_sprintf(res, "%*X", 11, 0);
+    ret_res = x_sprintf(res, "%*X", 11, 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%*X", 11, INT_MAX);
-    ret_res = s21_sprintf(res, "%*X", 11, INT_MAX);
+    ret_res = x_sprintf(res, "%*X", 11, INT_MAX);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1420,7 +1420,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%#*x%*x%-12x%3x%*x", 9, 127312897, -0, -1, 199, -123978, 3, -1251);
-    int ret_res = s21_sprintf(res, "%#*x%*x%-12x%3x%*x", 9, 127312897, 0, -1, 199, -123978, 3, -1251);
+    int ret_res = x_sprintf(res, "%#*x%*x%-12x%3x%*x", 9, 127312897, 0, -1, 199, -123978, 3, -1251);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1430,7 +1430,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%#*X%*X%-12X%3X%*X", 9, 127312897, 0, -1, 199, -123978, 3, -1251);
-    int ret_res = s21_sprintf(res, "%#*X%*X%-12X%3X%*X", 9, 127312897, 0, -1, 199, -123978, 3, -1251);
+    int ret_res = x_sprintf(res, "%#*X%*X%-12X%3X%*X", 9, 127312897, 0, -1, 199, -123978, 3, -1251);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1440,7 +1440,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%*.6x", 11, 0);
-    int ret_res = s21_sprintf(res, "%*.6x", 11, 0);
+    int ret_res = x_sprintf(res, "%*.6x", 11, 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1450,7 +1450,7 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%*.6X", 11, (unsigned)INT_MIN);
-    int ret_res = s21_sprintf(res, "%*.6X", 11, INT_MIN);
+    int ret_res = x_sprintf(res, "%*.6X", 11, INT_MIN);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1462,7 +1462,7 @@ test null_ptr
     int ret_exp = sprintf(
         res, "%#3.*x%#3x%-7.*x%#-1.8x%4.3x%#2.15x%*.*x%*.1x%3x%-1x", 3, 126714,
         4444444, 0, 6423235, 0, 666, 999, 13, 5, 419, 9, 41, -41, 33);
-    int ret_res = s21_sprintf(
+    int ret_res = x_sprintf(
         exp, "%#3.*x%#3x%-7.*x%#-1.8x%4.3x%#2.15x%*.*x%*.1x%3x%-1x", 3, 126714,
         4444444, 0, 6423235, 0, 666, 999, 13, 5, 419, 9, 41, -41, 33);
     ck_assert_str_eq(exp, res);
@@ -1475,7 +1475,7 @@ test null_ptr
 
     int ret_exp = sprintf(exp, "%#3.*X%#3x%-7.*X%#-1.8X%4.3X%#2.15x%*.*X%*.1X%3X%-1X", 3,
         -126714, 4444444, 0, 6423235, 0, 666, 999, 13, 5, -419, 9, 41, -41, 33);
-    int ret_res = s21_sprintf(res, "%#3.*X%#3x%-7.*X%#-1.8X%4.3X%#2.15x%*.*X%*.1X%3X%-1X", 3, 
+    int ret_res = x_sprintf(res, "%#3.*X%#3x%-7.*X%#-1.8X%4.3X%#2.15x%*.*X%*.1X%3X%-1X", 3, 
         -126714, 4444444, 0, 6423235, 0, 666, 999, 13, 5, -419, 9, 41, -41, 33);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1486,29 +1486,29 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%hx", (unsigned short)-11);
-    int ret_res = s21_sprintf(res, "%hx", -11);
+    int ret_res = x_sprintf(res, "%hx", -11);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%hx", (unsigned short)0);
-    ret_res = s21_sprintf(res, "%hx", 0);
+    ret_res = x_sprintf(res, "%hx", 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%hx", (unsigned short)11);
-    ret_res = s21_sprintf(res, "%hx", 11);
+    ret_res = x_sprintf(res, "%hx", 11);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     long unsigned val = INT_MAX;
     ret_exp = sprintf(exp, "%lx", val);
-    ret_res = s21_sprintf(res, "%lx", val);
+    ret_res = x_sprintf(res, "%lx", val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     long unsigned v = 0;
     ret_exp = sprintf(exp, "%lx", v);
-    ret_res = s21_sprintf(res, "%lx", v); 
+    ret_res = x_sprintf(res, "%lx", v); 
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1518,28 +1518,28 @@ test null_ptr
     char res[BUFF_SIZE];
 
     int ret_exp = sprintf(exp, "%hx", (unsigned short)-11);
-    int ret_res = s21_sprintf(res, "%hx", -11);
+    int ret_res = x_sprintf(res, "%hx", -11);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%hx", (unsigned short)0);
-    ret_res = s21_sprintf(res, "%hx", 0);
+    ret_res = x_sprintf(res, "%hx", 0);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     ret_exp = sprintf(exp, "%hx", (unsigned short)11);
-    ret_res = s21_sprintf(res, "%hx", 11);
+    ret_res = x_sprintf(res, "%hx", 11);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     long unsigned val = INT_MAX;
-    ret_res = s21_sprintf(res, "%lx", val);
+    ret_res = x_sprintf(res, "%lx", val);
     ret_exp = sprintf(exp, "%lx", val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
     long unsigned v = 0;
-    ret_res = s21_sprintf(res, "%lx", v);
+    ret_res = x_sprintf(res, "%lx", v);
     ret_exp = sprintf(exp, "%lx", v);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1551,7 +1551,7 @@ test null_ptr
     char format[] = "%10ld";
 
     int ret_exp = sprintf(exp, format, 1);
-    int ret_res = s21_sprintf(res, format, 1);
+    int ret_res = x_sprintf(res, format, 1);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1562,7 +1562,7 @@ test null_ptr
     char format[] = "%1.1f";
 
     int ret_exp = sprintf(exp, format, 1.1);
-    int ret_res = s21_sprintf(res, format, 1.1);
+    int ret_res = x_sprintf(res, format, 1.1);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1573,7 +1573,7 @@ test null_ptr
     char format[] = "%8.3c";
 
     int ret_exp = sprintf(exp, format, 'a');
-    int ret_res = s21_sprintf(res, format, 'a');
+    int ret_res = x_sprintf(res, format, 'a');
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1585,7 +1585,7 @@ test null_ptr
     int val = 10000;
 
     int ret_exp = sprintf(exp, format, val);
-    int ret_res = s21_sprintf(res, format, val);
+    int ret_res = x_sprintf(res, format, val);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1596,7 +1596,7 @@ test null_ptr
     char format[] = "%7.7f";
 
     int ret_exp = sprintf(exp, format, 11.123456);
-    int ret_res = s21_sprintf(res, format, 11.123456);
+    int ret_res = x_sprintf(res, format, 11.123456);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1607,7 +1607,7 @@ test null_ptr
     char format[] = "%7.4s";
 
     int ret_exp = sprintf(exp, format, "aboba floppa");
-    int ret_res = s21_sprintf(res, format, "aboba floppa");
+    int ret_res = x_sprintf(res, format, "aboba floppa");
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1618,7 +1618,7 @@ test null_ptr
     char format[] = "%6.6u";
 
     int ret_exp = sprintf(exp, format, 12341151);
-    int ret_res = s21_sprintf(res, format, 12341151);
+    int ret_res = x_sprintf(res, format, 12341151);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1629,7 +1629,7 @@ test null_ptr
     char format[] = "%li%ld%lu";
 
     int ret_exp = sprintf(exp, format, 666666666666, 777, 111);
-    int ret_res = s21_sprintf(res, format, 666666666666, 777, 111);
+    int ret_res = x_sprintf(res, format, 666666666666, 777, 111);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1640,7 +1640,7 @@ test null_ptr
     char format[] = "%hi%hd%hu";
 
     int ret_exp = sprintf(exp, format, 666, -777, 111);
-    int ret_res = s21_sprintf(res, format, 666, -777, 111);
+    int ret_res = x_sprintf(res, format, 666, -777, 111);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1651,7 +1651,7 @@ test null_ptr
     char format[] = "%+li%+lu%+d%+lf";
 
     int ret_exp = sprintf(exp, format, -123, 321, -5555, -1213.123);
-    int ret_res = s21_sprintf(res, format, -123, 321, -5555, -1213.123);
+    int ret_res = x_sprintf(res, format, -123, 321, -5555, -1213.123);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1662,7 +1662,7 @@ test null_ptr
     char format[] = "%-11.11li%-35.5lu%-3.5ld%33.19Lf";
     long double k = 333.33213;
 
-    int ret_res = s21_sprintf(res, format, 66666666666, 5555555555, 44444444444, k);
+    int ret_res = x_sprintf(res, format, 66666666666, 5555555555, 44444444444, k);
     int ret_exp = sprintf(exp, format, 66666666666, 5555555555, 44444444444, k);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1673,7 +1673,7 @@ test null_ptr
     char res[BUFF_SIZE];
     char format[] = "% 0.0li% 0.0lu% 0.0ld % 0.0lf";
 
-    int ret_res = s21_sprintf(res, format, 1, 222, 33333333333, -166513.1232);
+    int ret_res = x_sprintf(res, format, 1, 222, 33333333333, -166513.1232);
     int ret_exp = sprintf(exp, format, 1, 222, 33333333333, -166513.1232);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1684,7 +1684,7 @@ test null_ptr
     char res[BUFF_SIZE];
     char format[] = "% 0.0hi% 0.0hu% 0.0hd % 0.0hf";
 
-    int ret_res = s21_sprintf(res, format, 1, 222, 33333333333, -166513.1232);
+    int ret_res = x_sprintf(res, format, 1, 222, 33333333333, -166513.1232);
     int ret_exp = sprintf(exp, format, 1, 222, 33333333333, -166513.1232);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1696,7 +1696,7 @@ test null_ptr
     char format[] = "% c";
 
     int ret_exp = sprintf(exp, format, 'a');
-    int ret_res = s21_sprintf(res, format, 'a');
+    int ret_res = x_sprintf(res, format, 'a');
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1707,7 +1707,7 @@ test null_ptr
     char format[] = "% s";
 
     int ret_exp = sprintf(exp, format, "aboba likes floppa");
-    int ret_res = s21_sprintf(res, format, "aboba likes floppa");
+    int ret_res = x_sprintf(res, format, "aboba likes floppa");
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1718,7 +1718,7 @@ test null_ptr
     char format[] = "% s% c";
 
     int ret_exp = sprintf(exp, format, "", 'f');
-    int ret_res = s21_sprintf(res, format, "", 'f');
+    int ret_res = x_sprintf(res, format, "", 'f');
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1729,7 +1729,7 @@ test null_ptr
     char format[] = "%210s";
 
     int ret_exp = sprintf(exp, format, "AHHAHAHA\0AHHAHAHAH");
-    int ret_res = s21_sprintf(res, format, "AHHAHAHA\0AHHAHAHAH");
+    int ret_res = x_sprintf(res, format, "AHHAHAHA\0AHHAHAHAH");
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1740,7 +1740,7 @@ test null_ptr
     char format[] = "%-115s";
 
     int ret_exp = sprintf(exp, format, "Nick her");
-    int ret_res = s21_sprintf(res, format, "Nick her");
+    int ret_res = x_sprintf(res, format, "Nick her");
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1752,7 +1752,7 @@ test null_ptr
 
     int ret_exp = sprintf(exp, format, 'f', 21, 42, 666.666,
         "Lorem ipsum dolor sit amet. Aut quam ducimus.", 11);
-    int ret_res = s21_sprintf(res, format, 'f', 21, 42, 666.666,
+    int ret_res = x_sprintf(res, format, 'f', 21, 42, 666.666,
         "Lorem ipsum dolor sit amet. Aut quam ducimus.", 11);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1764,7 +1764,7 @@ test null_ptr
     char format[] = "%.f";
 
     int ret_exp = sprintf(exp, format, 121.123);
-    int ret_res = s21_sprintf(res, format, 121.123);
+    int ret_res = x_sprintf(res, format, 121.123);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1775,7 +1775,7 @@ test null_ptr
     char *format = "%%%c";
 
     int ret_exp = sprintf(exp, format, 'a');
-    int ret_res = s21_sprintf(res, format, 'a');
+    int ret_res = x_sprintf(res, format, 'a');
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1786,7 +1786,7 @@ test null_ptr
     char *format = "%%%%%%%%%c";
 
     int ret_exp = sprintf(exp, format, 'a');
-    int ret_res = s21_sprintf(res, format, 'a');
+    int ret_res = x_sprintf(res, format, 'a');
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1797,7 +1797,7 @@ test null_ptr
     int n1;
     int n2;
     
-    int ret_res = s21_sprintf(res, "%d%n", 123, &n1);
+    int ret_res = x_sprintf(res, "%d%n", 123, &n1);
     int ret_exp = sprintf(exp, "%d%n", 123, &n2);
     ck_assert_int_eq(ret_exp, ret_res);
     ck_assert_str_eq(exp, res);
@@ -1810,7 +1810,7 @@ test null_ptr
     char format[] = "%-.f";
 
     int ret_exp = sprintf(exp, format, 111.111);
-    int ret_res = s21_sprintf(res, format, 111.111);
+    int ret_res = x_sprintf(res, format, 111.111);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1821,7 +1821,7 @@ test null_ptr
     char format[] = "%-.1d";
 
     int ret_exp = sprintf(exp, format, 111);
-    int ret_res = s21_sprintf(res, format, 111);
+    int ret_res = x_sprintf(res, format, 111);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1832,7 +1832,7 @@ test null_ptr
     char format[] = "%e";
     double x = 111;
 
-    int ret_res = s21_sprintf(res, format, x);
+    int ret_res = x_sprintf(res, format, x);
     int ret_exp = sprintf(exp, format, x);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1843,7 +1843,7 @@ test null_ptr
     char res[BUFF_SIZE];
     char format[] = "%e%e%e%e";
 
-    int ret_res = s21_sprintf(res, format, 11.111, 222.2222, 666., -555.125);
+    int ret_res = x_sprintf(res, format, 11.111, 222.2222, 666., -555.125);
     int ret_exp = sprintf(exp, format, 11.111, 222.2222, 666., -555.125);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1855,7 +1855,7 @@ test null_ptr
     char format[] = "%Le";
     long double x = 122.1231;
 
-    int ret_res = s21_sprintf(res, format, x);
+    int ret_res = x_sprintf(res, format, x);
     int ret_exp = sprintf(exp, format, x);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
@@ -1867,7 +1867,7 @@ test null_ptr
     char format[] = "%.10e";
 
     int ret_exp = sprintf(exp, format, 111.184314818);
-    int ret_res = s21_sprintf(res, format, 111.184314818);
+    int ret_res = x_sprintf(res, format, 111.184314818);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1878,7 +1878,7 @@ test null_ptr
     char format[] = "%5.3e%3.2e%lf";
 
     int ret_exp = sprintf(exp, format, 0.000111, 111.555, 1.999);
-    int ret_res = s21_sprintf(res, format, 0.000111, 111.555, 1.999);
+    int ret_res = x_sprintf(res, format, 0.000111, 111.555, 1.999);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1889,7 +1889,7 @@ test null_ptr
     char format[] = "%E";
 
     int ret_exp = sprintf(exp, format, 0.666666);
-    int ret_res = s21_sprintf(res, format, 0.666666);
+    int ret_res = x_sprintf(res, format, 0.666666);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1900,7 +1900,7 @@ test null_ptr
     char format[] = "%E%E%E";
 
     int ret_exp = sprintf(exp, format, 0.0000999, 111.9999, 6.666);
-    int ret_res = s21_sprintf(res, format, 0.0000999, 111.9999, 6.666);
+    int ret_res = x_sprintf(res, format, 0.0000999, 111.9999, 6.666);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1914,7 +1914,7 @@ test null_ptr
     long double c = 848181;
 
     int ret_exp = sprintf(exp, format, 123.123, a, b, c);
-    int ret_res = s21_sprintf(res, format, 123.123, a, b, c);
+    int ret_res = x_sprintf(res, format, 123.123, a, b, c);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1925,7 +1925,7 @@ test null_ptr
     char format[] = "%#e Floppa %#E%#f";
 
     int ret_exp = sprintf(exp, format, 123.111, 0.0000999, 0.555);
-    int ret_res = s21_sprintf(res, format, 123.111, 0.0000999, 0.555);
+    int ret_res = x_sprintf(res, format, 123.111, 0.0000999, 0.555);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1937,7 +1937,7 @@ test null_ptr
     long double a = 7.9418438184;
 
     int ret_exp = sprintf(exp, format, a);
-    int ret_res = s21_sprintf(res, format, a);
+    int ret_res = x_sprintf(res, format, a);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1949,7 +1949,7 @@ test null_ptr
     int value = 5;
     
     int ret_exp = sprintf(exp, format, &value);
-    int ret_res = s21_sprintf(res, format, &value);
+    int ret_res = x_sprintf(res, format, &value);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1960,7 +1960,7 @@ test null_ptr
     char format[] = "%.5o";
 
     int ret_exp = sprintf(exp, format, 12345);
-    int ret_res = s21_sprintf(res, format, 12345);
+    int ret_res = x_sprintf(res, format, 12345);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1972,7 +1972,7 @@ test null_ptr
     long hex = 314818438141;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1984,7 +1984,7 @@ test null_ptr
     double hex = 0.50300;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -1996,7 +1996,7 @@ test null_ptr
     double hex = 5131.43141;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2008,7 +2008,7 @@ test null_ptr
     double hex = 0.123000;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2020,7 +2020,7 @@ test null_ptr
     double hex = 0.123000;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2032,7 +2032,7 @@ test null_ptr
     double hex = 0.123000;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2044,7 +2044,7 @@ test null_ptr
     double hex = 0.123000;
     
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2056,7 +2056,7 @@ test null_ptr
     double hex = 0.0004;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2068,7 +2068,7 @@ test null_ptr
     double hex = 0;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2080,7 +2080,7 @@ test null_ptr
     double hex = 0;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2092,7 +2092,7 @@ test null_ptr
     double hex = 0.0000005;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2104,7 +2104,7 @@ test null_ptr
     double hex = 0.0000005;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2116,7 +2116,7 @@ test null_ptr
     double hex = 0.005;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2128,7 +2128,7 @@ test null_ptr
     long double hex = 0.000005;
 
     int ret_exp = sprintf(exp, format, hex);
-    int ret_res = s21_sprintf(res, format, hex);
+    int ret_res = x_sprintf(res, format, hex);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2145,7 +2145,7 @@ test null_ptr
     double hex5 = 0.8481481;
 
     int ret_exp = sprintf(exp, format, hex, hex1, hex2, hex3, hex4, hex5);
-    int ret_res = s21_sprintf(res, format, hex, hex1, hex2, hex3, hex4, hex5);
+    int ret_res = x_sprintf(res, format, hex, hex1, hex2, hex3, hex4, hex5);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2158,7 +2158,7 @@ test wide_char
     unsigned long w = L'汉';
 
     int ret_exp = sprintf(exp, format, w);
-    int ret_res = s21_sprintf(res, format, w);
+    int ret_res = x_sprintf(res, format, w);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2170,7 +2170,7 @@ test width_char
     char w = L'森';
 
     int ret_exp = sprintf(exp, format, w);
-    int ret_res = s21_sprintf(res, format, w);
+    int ret_res = x_sprintf(res, format, w);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2182,7 +2182,7 @@ test minus_wide_char
     unsigned long w = L'森';
 
     int ret_exp = sprintf(exp, format, w);
-    int ret_res = s21_sprintf(res, format, w);
+    int ret_res = x_sprintf(res, format, w);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2194,7 +2194,7 @@ test wide_string
     wchar_t w[] = L"森我爱菠萝";
 
     int ret_exp = sprintf(exp, format, w);
-    int ret_res = s21_sprintf(res, format, w);
+    int ret_res = x_sprintf(res, format, w);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2206,7 +2206,7 @@ test wide_string1
     wchar_t w[] = L"森我爱菠萝";
 
     int ret_exp = sprintf(exp, format, w);
-    int ret_res = s21_sprintf(res, format, w);
+    int ret_res = x_sprintf(res, format, w);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2218,7 +2218,7 @@ test wide_string2
     wchar_t w[] = L"森我爱菠萝";
 
     int ret_exp = sprintf(exp, format, w);
-    int ret_res = s21_sprintf(res, format, w);
+    int ret_res = x_sprintf(res, format, w);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 
@@ -2230,7 +2230,7 @@ test wide_string3
     wchar_t w[] = L"森我爱菠萝";
 
     int ret_exp = sprintf(exp, format, w);
-    int ret_res = s21_sprintf(res, format, w);
+    int ret_res = x_sprintf(res, format, w);
     ck_assert_str_eq(exp, res);
     ck_assert_int_eq(ret_exp, ret_res);
 */

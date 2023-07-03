@@ -1,18 +1,18 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 
 #suite memset
 #test n_3_empty_dest
     char str[10] = "";
     char exp[10] = "";
-    s21_memset(str, 'a', 3);
-    s21_memset(exp, 'a', 3);
+    x_memset(str, 'a', 3);
+    x_memset(exp, 'a', 3);
     ck_assert_str_eq(str, exp);
 
 #test n_Full_empty_dest
     int s = 10;
     char str[10] = "";
     char exp[10] = "";
-    s21_memset(str, 'a', s - 1);
+    x_memset(str, 'a', s - 1);
     memset(exp, 'a', s - 1);
     ck_assert_str_eq(str, exp);
 
@@ -20,7 +20,7 @@
 test n_0_empty_dest
     char str[10] = "";
     char exp[10] = "";
-    s21_memset(str, 'a', 0);
+    x_memset(str, 'a', 0);
     memset(exp, 'a', 0);
     ck_assert_str_eq(str, exp);
 
@@ -28,7 +28,7 @@ test n_0_empty_dest
 test n_0
     char str[10] = "dag";
     char exp[10] = "dag";
-    s21_memset(str, 'a', 0);
+    x_memset(str, 'a', 0);
     memset(exp, 'a', 0);
     ck_assert_str_eq(str, exp);
 */
@@ -36,6 +36,6 @@ test n_0
 #test n_3
     char str[10] = "adf";
     char exp[10] = "adf";
-    s21_memset(str, 'a', 3);
+    x_memset(str, 'a', 3);
     memset(exp, 'a', 3);
     ck_assert_str_eq(str, exp);

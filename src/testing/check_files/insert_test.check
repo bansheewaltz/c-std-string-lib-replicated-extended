@@ -1,11 +1,11 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 
 #suite insert
 #test insert_test1
   char buff1[] = "are YOU ok?";
   char buff2[] = "Yes, I am";
   char buff3[] = "are YOU ok?Yes, I am";
-  char *result = s21_insert(buff1, buff2, 11);
+  char *result = x_insert(buff1, buff2, 11);
   ck_assert_str_eq(result, buff3);
 
   if (result) {
@@ -16,7 +16,7 @@
   char buff1[] = "";
   char buff2[] = "";
   char *buff3 = NULL;
-  char *result = s21_insert(buff1, buff2, 11);
+  char *result = x_insert(buff1, buff2, 11);
   ck_assert_ptr_eq(result, buff3);
   if (result) {
     free(result);
@@ -26,7 +26,7 @@
   char buff1[] = "----------";
   char buff2[] = "+";
   char buff3[] = "+----------";
-  char *result = s21_insert(buff1, buff2, 0);
+  char *result = x_insert(buff1, buff2, 0);
   ck_assert_str_eq(result, buff3);
   if (result) {
     free(result);
@@ -36,33 +36,33 @@
   char buff1[] = "areYOU ok?";
   char buff2[] = " ";
   char buff3[] = "are YOU ok?";
-  char *result = s21_insert(buff1, buff2, 3);
+  char *result = x_insert(buff1, buff2, 3);
   ck_assert_str_eq(result, buff3);
   if (result) {
     free(result);
   }
 
 #test null_pointers
-  char *result = s21_insert(s21_NULL, s21_NULL, 3);
-  ck_assert(result == s21_NULL);
+  char *result = x_insert(x_NULL, x_NULL, 3);
+  ck_assert(result == x_NULL);
   if (result) {
     free(result);
   }
 
 
 #test null_second_pointer
-  char *result = s21_insert(s21_NULL, "123", 3);
-  ck_assert(result == s21_NULL);
+  char *result = x_insert(x_NULL, "123", 3);
+  ck_assert(result == x_NULL);
   if (result) {
     free(result);
   }
 
 #test null_str
-  char *str = s21_NULL;
+  char *str = x_NULL;
   char src[] = "Space  ";
-  s21_size_t index = 0;
+  x_size_t index = 0;
   char expected[] = "Space  ";
-  char *got = (char *)s21_insert(src, str, index);
+  char *got = (char *)x_insert(src, str, index);
   ck_assert_str_eq(got, expected);
   if (got) {
     free(got);

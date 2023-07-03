@@ -1,4 +1,4 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 
 #suite strcat
 #test classic
@@ -6,7 +6,7 @@
     char src[10] = "456";
     char *exp = "123456";
 
-    s21_strcat(dest, src);
+    x_strcat(dest, src);
     char *res = dest;
 
     ck_assert_str_eq(res, exp);
@@ -16,7 +16,7 @@
     char src[10] = "456";
     char *exp = "456";
 
-    s21_strcat(dest, src);
+    x_strcat(dest, src);
     char *res = dest;
 
     ck_assert_str_eq(res, exp);

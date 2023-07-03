@@ -8,8 +8,8 @@ T_INC := $(TST)/headers
 # filenames specification
 TST_REPORT_R := $(REPORTS)/memcheck_report_raw.log
 # project files
-T_SRCS := $(SRCS:$(SRC)/s21_%.c=$(SRC_B)/%_test.c)
-T_EXES := $(SRCS:$(SRC)/s21_%.c=$(BIN)/%_test)
+T_SRCS := $(SRCS:$(SRC)/x_%.c=$(SRC_B)/%_test.c)
+T_EXES := $(SRCS:$(SRC)/x_%.c=$(BIN)/%_test)
 # compilation parameters
 CK_FORK=no# proper way of memory usage checking when using 'check' framework
 LDLIBS += $(shell pkg-config --libs-only-l check)
@@ -33,7 +33,7 @@ memcheck:
 	$(MAKE) -f Makefile.memcheck $(T_EXES)
 	echo -e "\n\nyou can check saved $(MEMCHECK) logs at $(TST_REPORT_R)"
 
-$(BIN)/%_test: $(SRC)/s21_%.c $(SRC_B)/%_test.c | $(REPORTS)
+$(BIN)/%_test: $(SRC)/x_%.c $(SRC_B)/%_test.c | $(REPORTS)
 	$(dir_guard)
 	$(CC) $(CFLAGS) $^ $(LDFLAGS) $(LDLIBS) -o $@
 	-(echo && $(MEM) $(MEMFLAGS) $@) 2> >(bash $(SCRIPTS)/format_memcheck.sh)
@@ -50,7 +50,7 @@ $(REPORTS):
 .PHONY: test1
 test1:
 	echo
-	gcc $(WFLAGS) -g -I. testing/src/s21_string_test.c s21_string.a $(shell pkg-config --cflags --libs check) -o build/unit_testing/bin/additional_tests
+	gcc $(WFLAGS) -g -I. testing/src/x_string_test.c x_string.a $(shell pkg-config --cflags --libs check) -o build/unit_testing/bin/additional_tests
 ifneq ($(shell which valgrind 2> /dev/null), )
 	valgrind $(MEMFLAGS) build/unit_testing/bin/additional_tests 2> reports/memcheck_additional_report.txt | grep -v Passed | sed 's/.*additional_tests://g'
 	echo -e "\n\nyou can check saved $(MEMCHECK) logs at reports/memcheck_additional_report.txt"	

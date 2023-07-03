@@ -1,793 +1,793 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 
 #suite sscanf
 
 #test d
 char src[] = "123.1";
 char format[] = "%d";
-int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test hd
 char src[] = "123.1";
 char format[] = "%hd";
-short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test ld
 char src[] = "123.1";
 char format[] = "%ld";
-long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test d3_prec
 char src[] = "123321";
 char format[] = "%*3d%3d";
-int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test hd3_prec
 char *src = "123.1";
 char *format = "%*3hd%3hd";
-short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test ld3_prec
 char src[] = "123321";
 char format[] = "%*3ld%3ld";
-long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test i_decimal
 char src[] = "2147483647";
 char format[] = "%i";
-int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test i_octal
 char src[] = "012345678";
 char format[] = "%i";
-int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test i_hexadecimal
 char src[] = "0xa123b9fg";
 char format[] = "%i";
-int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test hi_decimal
 char src[] = "2147483647";
 char format[] = "%hi";
-short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test hi_octal
 char src[] = "012345678";
 char format[] = "%hi";
-short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test hi_hexadecimal
 char src[] = "0xa123b9fg";
 char format[] = "%hi";
-short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test li_decimal
 char src[] = "2147483647";
 char format[] = "%li";
-long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test li_octal
 char src[] = "012345678";
 char format[] = "%li";
-long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test li_hexadecimal
 char src[] = "0xa123b9fg";
 char format[] = "%li";
-long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test i3_decimal_prec
 char src[] = "2147483647";
 char format[] = "%*3i%3i";
-int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test i3_octal_prec
 char src[] = "01200345678";
 char format[] = "%*3i%3i";
-int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test i3_hexadecimal_prec
 char src[] = "0xa0x123b9fg";
 char format[] = "%*3i%3i";
-int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test hi3_decimal_prec
 char src[] = "2147483647";
 char format[] = "%*3hi%3hi";
-short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test hi3_octal_prec
 char src[] = "012345678";
 char format[] = "%*3hi%3hi";
-short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test hi3_hexadecimal_prec
 char src[] = "0xa123b9fg";
 char format[] = "%*3hi%3hi";
-short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test li3_decimal_prec
 char src[] = "2147483647";
 char format[] = "%*3li%3li";
-long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test li3_octal_prec
 char src[] = "0120345678";
 char format[] = "%*3li%3li";
-long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test li3_hexadecimal_prec
 char src[] = "0xa0x123b9fg";
 char format[] = "%*3li%3li";
-long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test ho
 char src[] = "02147";
 char format[] = "%ho";
-unsigned short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test o
 char src[] = "012345678";
 char format[] = "%o";
-unsigned int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test lo
 char src[] = "01234567";
 char format[] = "%lo";
-unsigned long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test ho4_prec
 char src[] = "02147";
 char format[] = "%*4ho%4ho";
-unsigned short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test o4_prec
 char src[] = "012345678";
 char format[] = "%*4o%4o";
-unsigned int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test lo4_prec
 char src[] = "01234567";
 char format[] = "%*4lo%4lo";
-unsigned long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test u
 char src[] = "123.1";
 char format[] = "%u";
-unsigned int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test hu
 char src[] = "123.1";
 char format[] = "%hu";
-unsigned short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test lu
 char src[] = "123.1";
 char format[] = "%lu";
-unsigned long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test u5_prec
 char *src = "12345134";
 char *format = "%*5u%5u";
-unsigned int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test hu5_prec
 char *src = "12345134";
 char *format = "%*5hu%5hu";
-unsigned short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test lu5_prec
 char *src = "12345134";
 char *format = "%*5lu%5lu";
-unsigned long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test x
 char src[] = "0xa123b9fg";
 char format[] = "%x";
-unsigned int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test hx
 char src[] = "0xa123b9fg";
 char format[] = "%hx";
-unsigned short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test lx
 char src[] = "0Xa123b9fg";
 char format[] = "%lx";
-unsigned long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test x3_prec
 char src[] = "0xa0X123b9fg";
 char format[] = "%*3x%3x";
-unsigned int num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned int num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test hx3_prec
 char src[] = "0Xa0x123b9fg";
 char format[] = "%*3hx%3hx";
-unsigned short num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned short num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test lx3_prec
 char src[] = "0Xa0x123b9fg";
 char format[] = "%*3lx%3lx";
-unsigned long num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+unsigned long num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_int_eq(num, s21_num);
+ck_assert_int_eq(num, x_num);
 
 #test f
 double delta = 1e-6;
 char src[] = "0.123456";
 char format[] = "%f";
-float num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+float num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
+ck_assert_float_eq_tol(num, x_num, delta);
 
 #test lf
 double delta = 1e-6;
 char src[] = "0.123456789";
 char format[] = "%lf";
-double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_double_eq_tol(num, s21_num, delta);
+ck_assert_double_eq_tol(num, x_num, delta);
 
 #test Lf
 double delta = 1e-6;
 char src[] = "0.123456789123456";
 char format[] = "%Lf";
-long double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_ldouble_eq_tol(num, s21_num, delta);
+ck_assert_ldouble_eq_tol(num, x_num, delta);
 
 #test f_NaN
 char src[] = "NaN";
 char format[] = "%f";
-float s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
-ck_assert_float_nan(s21_num);
+float x_num = 0; 
+x_sscanf(src, format, &x_num);
+ck_assert_float_nan(x_num);
 
 #test f_INF
 char src[] = "INF";
 char format[] = "%f";
-float s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
-ck_assert_float_infinite(s21_num);
+float x_num = 0; 
+x_sscanf(src, format, &x_num);
+ck_assert_float_infinite(x_num);
 
 #test lf_NaN
 char src[] = "NaN";
 char format[] = "%lf";
-double s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
-ck_assert_double_nan(s21_num);
+double x_num = 0; 
+x_sscanf(src, format, &x_num);
+ck_assert_double_nan(x_num);
 
 #test lf_INF
 char src[] = "INF";
 char format[] = "%lf";
-double s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
-ck_assert_double_infinite(s21_num);
+double x_num = 0; 
+x_sscanf(src, format, &x_num);
+ck_assert_double_infinite(x_num);
 
 #test Lf_NaN
 char src[] = "NaN";
 char format[] = "%Lf";
-long double s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
-ck_assert_ldouble_nan(s21_num);
+long double x_num = 0; 
+x_sscanf(src, format, &x_num);
+ck_assert_ldouble_nan(x_num);
 
 #test Lf_INF
 char src[] = "INF";
 char format[] = "%Lf";
-long double s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
-ck_assert_ldouble_infinite(s21_num);
+long double x_num = 0; 
+x_sscanf(src, format, &x_num);
+ck_assert_ldouble_infinite(x_num);
 
 #test f3_prec
 double delta = 1e-6;
 char src[] = "0.120.3456";
 char format[] = "%*3f%3f";
-float num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+float num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
+ck_assert_float_eq_tol(num, x_num, delta);
 
 #test lf3_prec
 double delta = 1e-6;
 char src[] = "0.120.3456789";
 char format[] = "%*3lf%3lf";
-double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_double_eq_tol(num, s21_num, delta);
+ck_assert_double_eq_tol(num, x_num, delta);
 
 #test Lf3_prec
 double delta = 1e-6;
 char src[] = "0.120.3456789123456";
 char format[] = "%*3Lf%3Lf";
-long double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_ldouble_eq_tol(num, s21_num, delta);
+ck_assert_ldouble_eq_tol(num, x_num, delta);
 
 #test e
 double delta = 1e-6;
 char src[] = "0.1234E-10";
 char format[] = "%e";
-float num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+float num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
+ck_assert_float_eq_tol(num, x_num, delta);
 
 #test le
 double delta = 1e-6;
 char src[] = "0.1234E-10";
 char format[] = "%le";
-double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_double_eq_tol(num, s21_num, delta);
+ck_assert_double_eq_tol(num, x_num, delta);
 
 #test Le
 double delta = 1e-6;
 char src[] = "0.123451234E-10";
 char format[] = "%Le";
-long double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_ldouble_eq_tol(num, s21_num, delta);
+ck_assert_ldouble_eq_tol(num, x_num, delta);
 
 #test e_prec
 double delta = 1e-6;
 char src[] = "0.1234E-10 0.5678E-10";
 char format[] = "%*e%e";
-float num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+float num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
+ck_assert_float_eq_tol(num, x_num, delta);
 
 #test le_prec
 double delta = 1e-6;
 char src[] = "0.1234E-10 0.5678E-10";
 char format[] = "%*le%le";
-double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_double_eq_tol(num, s21_num, delta);
+ck_assert_double_eq_tol(num, x_num, delta);
 
 #test Le_prec
 double delta = 1e-6;
 char src[] = "0.123451234E-10 -0.123451234E-10";
 char format[] = "%*Le%Le";
-long double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_ldouble_eq_tol(num, s21_num, delta);
+ck_assert_ldouble_eq_tol(num, x_num, delta);
 
 #test E
 double delta = 1e-6;
 char src[] = "0.1234E-10";
 char format[] = "%E";
-float num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+float num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
+ck_assert_float_eq_tol(num, x_num, delta);
 
 #test lE
 double delta = 1e-6;
 char src[] = "0.1234E-10";
 char format[] = "%lE";
-double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_double_eq_tol(num, s21_num, delta);
+ck_assert_double_eq_tol(num, x_num, delta);
 
 #test LE
 double delta = 1e-6;
 char src[] = "0.123451234E-10";
 char format[] = "%LE";
-long double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_ldouble_eq_tol(num, s21_num, delta);
+ck_assert_ldouble_eq_tol(num, x_num, delta);
 
 #test E_prec
 double delta = 1e-6;
 char src[] = "0.1234E-10 0.5678E-10";
 char format[] = "%*E%E";
-float num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+float num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
+ck_assert_float_eq_tol(num, x_num, delta);
 
 #test lE_prec
 double delta = 1e-6;
 char src[] = "0.1234E-10 0.5678E-10";
 char format[] = "%*lE%lE";
-double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_double_eq_tol(num, s21_num, delta);
+ck_assert_double_eq_tol(num, x_num, delta);
 
 #test LE_prec
 double delta = 1e-6;
 char src[] = "0.123451234E-10 -0.123451234E-10";
 char format[] = "%*LE%LE";
-long double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_ldouble_eq_tol(num, s21_num, delta);
+ck_assert_ldouble_eq_tol(num, x_num, delta);
 
 #test g
 double delta = 1e-6;
 char src[] = "0.1234E-10";
 char format[] = "%g";
-float num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+float num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
+ck_assert_float_eq_tol(num, x_num, delta);
 
 #test lg
 double delta = 1e-6;
 char src[] = "0.1234E-10";
 char format[] = "%lg";
-double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_double_eq_tol(num, s21_num, delta);
+ck_assert_double_eq_tol(num, x_num, delta);
 
 #test Lg
 double delta = 1e-6;
 char src[] = "0.123451234E-10";
 char format[] = "%Lg";
-long double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_ldouble_eq_tol(num, s21_num, delta);
+ck_assert_ldouble_eq_tol(num, x_num, delta);
 
 #test g_prec
 double delta = 1e-6;
 char src[] = "0.1234E-10 0.5678E-10";
 char format[] = "%*g%g";
-float num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+float num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
+ck_assert_float_eq_tol(num, x_num, delta);
 
 #test lg_prec
 double delta = 1e-6;
 char src[] = "0.1234E-10 0.5678E-10";
 char format[] = "%*lg%lg";
-double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_double_eq_tol(num, s21_num, delta);
+ck_assert_double_eq_tol(num, x_num, delta);
 
 #test Lg_prec
 double delta = 1e-6;
 char src[] = "0.123451234E-10 -0.123451234E-10";
 char format[] = "%*Lg%Lg";
-long double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_ldouble_eq_tol(num, s21_num, delta);
+ck_assert_ldouble_eq_tol(num, x_num, delta);
 
 #test G
 double delta = 1e-6;
 char src[] = "0.1234E-10";
 char format[] = "%G";
-float num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+float num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
+ck_assert_float_eq_tol(num, x_num, delta);
 
 #test lG
 double delta = 1e-6;
 char src[] = "0.1234E-10";
 char format[] = "%lG";
-double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_double_eq_tol(num, s21_num, delta);
+ck_assert_double_eq_tol(num, x_num, delta);
 
 #test LG
 double delta = 1e-6;
 char src[] = "0.123451234E-10";
 char format[] = "%LG";
-long double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_ldouble_eq_tol(num, s21_num, delta);
+ck_assert_ldouble_eq_tol(num, x_num, delta);
 
 #test G_prec
 double delta = 1e-6;
 char src[] = "0.1234E-10 0.5678E-10";
 char format[] = "%*G%G";
-float num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+float num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
+ck_assert_float_eq_tol(num, x_num, delta);
 
 #test lG_prec
 double delta = 1e-6;
 char src[] = "0.1234E-10 0.5678E-10";
 char format[] = "%*lG%lG";
-double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_double_eq_tol(num, s21_num, delta);
+ck_assert_double_eq_tol(num, x_num, delta);
 
 #test LG_prec
 double delta = 1e-6;
 char src[] = "0.123451234E-10 -0.123451234E-10";
 char format[] = "%*LG%LG";
-long double num = 0, s21_num = 0; 
-s21_sscanf(src, format, &s21_num);
+long double num = 0, x_num = 0; 
+x_sscanf(src, format, &x_num);
 sscanf(src, format, &num);
-ck_assert_ldouble_eq_tol(num, s21_num, delta);
+ck_assert_ldouble_eq_tol(num, x_num, delta);
 
 #test p
 char src[] = "0Xa0x123b9fg";
 char format[] = "%*3p%p";
-void * p = s21_NULL;
-void * s21_p = s21_NULL;
-s21_sscanf(src, format, &s21_p);
+void * p = x_NULL;
+void * x_p = x_NULL;
+x_sscanf(src, format, &x_p);
 sscanf(src, format, &p);
-ck_assert_ptr_eq(p, s21_p);
+ck_assert_ptr_eq(p, x_p);
 
 #test c
 char src[] = "abc\nd 123.1345643564356";
 char format[] = "%c";
-char letter = '0', s21_letter = '0';
-s21_sscanf(src, format, &s21_letter);
+char letter = '0', x_letter = '0';
+x_sscanf(src, format, &x_letter);
 sscanf(src, format, &letter);
-ck_assert_int_eq(letter, s21_letter);
+ck_assert_int_eq(letter, x_letter);
 
 #test c_from_empty
 char src[] = "";
 char format[] = "%c";
-char letter = '0', s21_letter = '0';
-s21_sscanf(src, format, &s21_letter);
+char letter = '0', x_letter = '0';
+x_sscanf(src, format, &x_letter);
 sscanf(src, format, &letter);
-ck_assert_int_eq(letter, s21_letter);
+ck_assert_int_eq(letter, x_letter);
 
 #test s
 char src[] = " abc\nd 123.1345643564356";
 char format[] = "%s";
 char dst[20] = "";
-char s21_dst[20] = "";
-s21_sscanf(src, format, s21_dst);
+char x_dst[20] = "";
+x_sscanf(src, format, x_dst);
 sscanf(src, format, dst);
-ck_assert_str_eq(dst, s21_dst);
+ck_assert_str_eq(dst, x_dst);
 
 #test s3
 char src[] = " abc\nd 123.1345643564356";
 char format[] = "%3s";
 char dst[20] = "";
-char s21_dst[20] = "";
-s21_sscanf(src, format, s21_dst);
+char x_dst[20] = "";
+x_sscanf(src, format, x_dst);
 sscanf(src, format, dst);
-ck_assert_str_eq(dst, s21_dst);
+ck_assert_str_eq(dst, x_dst);
 
 #test c_prec
 char src[] = "abc\nd 123.1345643564356";
 char format[] = "%*c%c";
-char letter = '0', s21_letter = '0';
-s21_sscanf(src, format, &s21_letter);
+char letter = '0', x_letter = '0';
+x_sscanf(src, format, &x_letter);
 sscanf(src, format, &letter);
-ck_assert_int_eq(letter, s21_letter);
+ck_assert_int_eq(letter, x_letter);
 
 #test s_prec
 char src[] = " abc\nd123.1345643564356";
 char format[] = "%*s%s";
 char dst[20] = "";
-char s21_dst[20] = "";
-s21_sscanf(src, format, s21_dst);
+char x_dst[20] = "";
+x_sscanf(src, format, x_dst);
 sscanf(src, format, dst);
-ck_assert_str_eq(dst, s21_dst);
+ck_assert_str_eq(dst, x_dst);
 
 #test s3_prec
 char src[] = " abc\nd 123.1345643564356";
 char format[] = "%*3s%3s";
 char dst[20] = "";
-char s21_dst[20] = "";
-s21_sscanf(src, format, s21_dst);
+char x_dst[20] = "";
+x_sscanf(src, format, x_dst);
 sscanf(src, format, dst);
-ck_assert_str_eq(dst, s21_dst);
+ck_assert_str_eq(dst, x_dst);
 
 #test n
 char src[] = " abc d 123.1345643564356";
 char format[] = "%s%n";
 char dst[20] = "";
-char s21_dst[20] = "";
+char x_dst[20] = "";
 long n = 0;
-long s21_n = 0;
-s21_sscanf(src, format, s21_dst, &s21_n);
+long x_n = 0;
+x_sscanf(src, format, x_dst, &x_n);
 sscanf(src, format, dst, &n);
-ck_assert_str_eq(dst, s21_dst);
-ck_assert_int_eq(n, s21_n);
+ck_assert_str_eq(dst, x_dst);
+ck_assert_int_eq(n, x_n);
 
 #test combination
 char src[] = " abc d 123.1345643564356";
 char format[] = "%s%s%n%d";
 char dst[20] = "";
-char s21_dst[20] = "";
+char x_dst[20] = "";
 char dst2[20] = "";
-char s21_dst2[20] = "";
+char x_dst2[20] = "";
 long n = 0;
-long s21_n = 0;
+long x_n = 0;
 int num = 0;
-int s21_num = 0;
-s21_sscanf(src, format, s21_dst, s21_dst2, &s21_n, &s21_num);
+int x_num = 0;
+x_sscanf(src, format, x_dst, x_dst2, &x_n, &x_num);
 sscanf(src, format, dst, dst2, &n, &num);
-ck_assert_str_eq(dst, s21_dst);
-ck_assert_int_eq(n, s21_n);
+ck_assert_str_eq(dst, x_dst);
+ck_assert_int_eq(n, x_n);
 
 #test empty_src
 double delta = 1e-6;
 char src[] = "";
 char format[] = "%s %c%f";
-float num = 0, s21_num = 0; 
+float num = 0, x_num = 0; 
 char dst[20] = "";
-char s21_dst[20] = "";
+char x_dst[20] = "";
 char letter = '0';
-char s21_letter = '0';
-s21_sscanf(src, format, s21_dst, &s21_letter, &s21_num);
+char x_letter = '0';
+x_sscanf(src, format, x_dst, &x_letter, &x_num);
 sscanf(src, format, dst, &letter, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
-ck_assert_str_eq(dst, s21_dst);
-ck_assert_int_eq(letter, s21_letter);
+ck_assert_float_eq_tol(num, x_num, delta);
+ck_assert_str_eq(dst, x_dst);
+ck_assert_int_eq(letter, x_letter);
 
 #test empty_src2
 double delta = 1e-6;
 char src[] = "";
 char format[] = "%c%s%f";
-float num = 0, s21_num = 0; 
+float num = 0, x_num = 0; 
 char dst[20] = "";
-char s21_dst[20] = "";
+char x_dst[20] = "";
 char letter = '0';
-char s21_letter = '0';
-s21_sscanf(src, format, &s21_letter, s21_dst, &s21_num);
+char x_letter = '0';
+x_sscanf(src, format, &x_letter, x_dst, &x_num);
 sscanf(src, format, &letter, dst, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
-ck_assert_str_eq(dst, s21_dst);
-ck_assert_int_eq(letter, s21_letter);
+ck_assert_float_eq_tol(num, x_num, delta);
+ck_assert_str_eq(dst, x_dst);
+ck_assert_int_eq(letter, x_letter);
 
 #test percents
 double delta = 1e-6;
 char src[] = "sss aaaaaa 1.192847e-3";
 char format[] = "%c%s%f";
-float num = 0, s21_num = 0; 
+float num = 0, x_num = 0; 
 char dst[20] = "";
-char s21_dst[20] = "";
+char x_dst[20] = "";
 char letter = '0';
-char s21_letter = '0';
-s21_sscanf(src, format, &s21_letter, s21_dst, &s21_num);
+char x_letter = '0';
+x_sscanf(src, format, &x_letter, x_dst, &x_num);
 sscanf(src, format, &letter, dst, &num);
-ck_assert_float_eq_tol(num, s21_num, delta);
-ck_assert_str_eq(dst, s21_dst);
-ck_assert_int_eq(letter, s21_letter);
+ck_assert_float_eq_tol(num, x_num, delta);
+ck_assert_str_eq(dst, x_dst);
+ck_assert_int_eq(letter, x_letter);

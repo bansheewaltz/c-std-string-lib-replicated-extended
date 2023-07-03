@@ -1,9 +1,9 @@
-#include "s21_tests.h"
+#include "x_tests.h"
 
 #suite strrchr
 #test t1
-ck_assert_pstr_eq(strrchr("1534567890", '5'), s21_strrchr("1534567890", '5'));
+ck_assert_pstr_eq(strrchr("1534567890", '5'), x_strrchr("1534567890", '5'));
 #test t2
-ck_assert_pstr_eq(strrchr("1834", '8'), s21_strrchr("1834", '8'));
+ck_assert_pstr_eq(strrchr("1834", '8'), x_strrchr("1834", '8'));
 #test t3 
-ck_assert_pstr_eq(strrchr("234567890", '1'), s21_strrchr("234567890", '1'));
+ck_assert_pstr_eq(strrchr("234567890", '1'), x_strrchr("234567890", '1'));
