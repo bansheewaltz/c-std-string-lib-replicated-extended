@@ -3,7 +3,7 @@
         {
             "name": "Universal",
             "includePath": [
-                "${workspaceFolder}/src/include",
+                "${workspaceFolder}/src",
                 "${workspaceFolder}/src/lib/headers",
                 "${workspaceFolder}/src/testing/headers",
                 "/opt/homebrew/Cellar/check/0.15.2/include",

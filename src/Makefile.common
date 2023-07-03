@@ -12,7 +12,7 @@ MEMCHECK := valgrind
 # paths
 SRC := lib
 TST := testing
-INC := include# public header
+INC := .# public header
 HDR := $(SRC)/headers# private headers
 UTL := $(SRC)/utils
 BLD = $(BUILD)/$(CONFIG)

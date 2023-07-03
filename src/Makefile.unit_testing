@@ -21,15 +21,16 @@ COVFLAG := --coverage
 CK_FORK=no
 # export CK_FORK
 
-$(info )
-$(info *** silently compiling code covered build version for unit testing ***)
-$(info *** compiler parameters for tests .o files: $(WFLAGS) $(STDFLAG) $(shell pkg-config --cflags check) -I$(INC) -I$(T_INC))
-$(info *** compiler parameters for functions .o files: $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(COVFLAG) $(DEFINES) $(INCFLAGS))
-$(info *** linker parameters: $(COVFLAG) $(LDFLAGS) $(LDLIBS))
-
 
 .PHONY: test
-test: $(T_EXES)
+test: 
+	$(info )
+	$(info *** silently compiling code covered build version for unit testing ***)
+	$(info *** compiler parameters for tests .o files: $(WFLAGS) $(STDFLAG) $(shell pkg-config --cflags check) -I$(INC) -I$(T_INC))
+	$(info *** compiler parameters for functions .o files: $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(COVFLAG) $(DEFINES) $(INCFLAGS))
+	$(info *** linker parameters: $(COVFLAG) $(LDFLAGS) $(LDLIBS))
+	$(MAKE) -f Makefile.unit_testing $(T_EXES)
+
 $(BIN)/%_test: $(OBJ)/s21_%.o $(OBJ)/%_test.o | $(COV_INF) $(REPORTS)
 	$(dir_guard)
 	$(CC) $(DBGFLAGS) $(COVFLAG) $^ $(LDFLAGS) $(LDLIBS) -o $@
