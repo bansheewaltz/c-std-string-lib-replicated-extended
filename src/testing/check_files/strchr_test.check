@@ -1,0 +1,19 @@
+#include "s21_tests.h"
+
+#suite strrchr
+#test t1
+ck_assert_pstr_eq(strchr("1234567890", '5'), s21_strchr("1234567890", '5'));
+#test t2
+ck_assert_pstr_eq(strchr("1234", '8'), s21_strchr("1234", '8'));
+#test t3
+ck_assert_pstr_eq(strchr("1234567890", '1'), s21_strchr("1234567890", '1'));
+
+#test tfloppy
+char *str = "floppy";
+char ch = '\0';
+ck_assert_pstr_eq(strchr(str, ch), s21_strchr(str, ch));
+
+#test tnull
+char str[] = "";
+char ch = '\0';
+ck_assert_pstr_eq(strchr(str, ch), s21_strchr(str, ch));

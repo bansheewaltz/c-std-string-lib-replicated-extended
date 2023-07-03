@@ -1,0 +1,8 @@
+#include "s21_tests.h"
+
+#suite strerror
+
+#test-loop(-1, 136) test_strerr
+    char *system = strerror(_i);
+    char *ours = s21_strerror(_i);
+    ck_assert_str_eq(system, ours);

@@ -29,13 +29,13 @@ echo -e "-----------------------------------------------------------------------
 echo -e "Style test\n"
 STYLE_TEST_SCRIPT=tests/style_tests.sh
 OUTPUT=$(bash ${STYLE_TEST_SCRIPT})
-printf 'Style test output:\n %s\n' "$OUTPUT"
+printf 'Style test output:\n%s\n' "$OUTPUT"
 STYLE_TEST_RESULT=${OUTPUT: -1}
-printf 'Style test result: %s\n' "$STYLE_TEST_RESULT"
+printf 'Style test result:%s\n' "$STYLE_TEST_RESULT"
 echo -e "-------------------------------------------------------------------------------\n"
 BUILD_SCRIPT=ci-scripts/build.sh
 OUTPUT=$(bash ${BUILD_SCRIPT} part1)
-printf 'Build output:\n %s\n' "$OUTPUT"
+printf 'Build output:\n%s\n' "$OUTPUT"
 BUILD_RESULT=${OUTPUT: -1}
 printf 'Build result: %s\n' "$BUILD_RESULT"
 echo -e "-------------------------------------------------------------------------------\n"

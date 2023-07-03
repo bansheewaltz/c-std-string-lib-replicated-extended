@@ -1,0 +1,34 @@
+#include "s21_tests.h"
+
+#suite strncat
+#test t_1
+    char dest[50] = "123";
+    char src[50] = "456";
+    char exp[] = "12345";
+
+    s21_strncat(dest, src, 2);
+    char *res = dest;
+
+    ck_assert_str_eq(res, exp);
+
+#test one_char
+    char src[] = "BIGFLOPPA";
+    char res[25] = "BIGFLOPPA";
+    char expected[25] = "BIGFLOPPA";
+    s21_size_t n_byte = 1;
+
+    s21_strncat(res, src, n_byte);
+    strncat(expected, src, n_byte);
+
+    ck_assert_mem_ge(res, expected, n_byte);
+
+#test zero_char
+    char src[] = "BIGFLOPPA";
+    char res[25] = "BIGFLOPPA";
+    char expected[25] = "BIGFLOPPA";
+    s21_size_t n_byte = 0;
+
+    s21_strncat(res, src, n_byte);
+    strncat(expected, src, n_byte);
+
+    ck_assert_mem_ge(res, expected, n_byte);

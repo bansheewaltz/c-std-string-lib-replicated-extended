@@ -1,0 +1,40 @@
+#include "s21_tests.h"
+
+#suite strcmp 
+#test test1
+   ck_assert_int_eq(strcmp("", ""), s21_strcmp("", ""));
+
+
+#test test2
+    ck_assert_int_eq(strcmp("3dd3d", "3dd3d"),
+                   s21_strcmp("3dd3d", "3dd3d"));
+
+
+#test test3
+    ck_assert_int_eq(strcmp("3", ""), s21_strcmp("3", ""));
+
+
+#test test4
+   ck_assert_int_eq(strcmp("3dd3sdfgsdd", "dsfg3dd3d"),
+                   s21_strcmp("3dd3sdfgsdd", "dsfg3dd3d"));
+
+#test test5
+    ck_assert_int_eq(strcmp("", "3"), s21_strcmp("", "3"));
+
+#test test6
+  ck_assert_int_eq(strcmp(" \n\0\0", " a\n\0"), s21_strcmp(" \n\0\0", " a\n\0"));
+
+#test test7
+  ck_assert_int_eq(strcmp("HELLO PRIVET MAMA YA V TESTE", "\0"), s21_strcmp("HELLO PRIVET MAMA YA V TESTE", "\0"));
+
+#test test8
+  ck_assert_int_eq(strcmp("\0", "\0"), s21_strcmp("\0", "\0"));
+
+#test test9
+  ck_assert_int_eq(strcmp("\0", "dsf"), s21_strcmp("\0", "dsf"));
+
+#test test10
+  ck_assert_int_eq(strcmp("HEL\0", "HEL\0"), s21_strcmp("HEL\0", "HEL\0"));
+
+#test test11
+  ck_assert_int_eq(strcmp(" \n\0\0", " dfg"), s21_strcmp(" \n\0\0", " dfg"));
