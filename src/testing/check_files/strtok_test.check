@@ -12,9 +12,8 @@
 
 #test null
     const char s[2] = "-";
-    char *token;
-    token = s21_strtok(s21_NULL, s);
-    ck_assert_ptr_eq(token, s21_NULL);
+    char *s21_token = s21_strtok(s21_NULL, s);
+    ck_assert_ptr_eq(s21_NULL, s21_token);
 
 #test classic
     char str1[] = "     Aboba__+ Flo!ppa_   Roba+";

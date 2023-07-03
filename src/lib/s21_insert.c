@@ -3,28 +3,18 @@
 #include "s21_string.h"
 
 void *s21_insert(const char *src, const char *str, s21_size_t start_index) {
-  char *buff = s21_NULL;
-  if (str != s21_NULL && src != s21_NULL) {
-    s21_size_t n_str = s21_strlen(str);
-    s21_size_t n_src = s21_strlen(src);
-    s21_size_t sum_line = n_str + n_src;
-    if (n_src >= start_index) {
-      buff = (char *)malloc(sizeof(char) * (sum_line + 1));
-    }
-    if (buff) {
-      s21_size_t i = 0, j = 0, k = 0;
-      while (i < sum_line) {
-        if (i >= start_index && j < n_str) {
-          buff[i] = str[j];
-          j++;
-        } else {
-          buff[i] = src[k];
-          k++;
-        }
-        i++;
-      }
-      buff[sum_line] = '\0';
+  char *res = s21_NULL;
+  if (src && str == s21_NULL) {
+    res = calloc(s21_strlen(src) + 1, 1);
+    s21_strcat(res, src);
+  } else if (src && str && s21_strlen(src) >= start_index) {
+    res = malloc((s21_strlen(src) + s21_strlen(str) + 1) * sizeof(char));
+    if (res) {
+      s21_strncpy(res, src, start_index);
+      *(res + start_index) = '\0';
+      s21_strcat(res, str);
+      s21_strcat(res, src + start_index);
     }
   }
-  return buff;
+  return res;
 }

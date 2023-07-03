@@ -1,9 +1,17 @@
 # Makefile author: dondarri@student.21-school.ru
-CONFIG := release
+CONFIG ?= debug
 ### many variables are stored in a shared makefile
 include Makefile.common
 # build parameters
-CFLAGS = $(WFLAGS) $(STDFLAG) $(INCFLAGS)
+ifeq ($(CONFIG), debug)
+	DBGFLAGS := -g
+	CFLAGS := $(DBGFLAGS) $(WFLAGS) $(STDFLAG) $(INCFLAGS)
+else
+	CFLAGS := $(WFLAGS) $(STDFLAG) $(INCFLAGS)
+endif
+ifeq ($(OS), Alpine)
+	CFLAGS := $(DBGFLAGS) $(INCFLAGS)
+endif
 # Makefile search paths
 vpath %.c $(SRC) $(UTL)
 vpath lib%.a $(LIB)
@@ -79,6 +87,10 @@ ifeq (, $(shell which docker))
 endif
 	$(MAKE) clean_build
 	bash $(SCRIPTS)/run_docker_image.sh
+
+.PHONY: test1
+test1: s21_string.a test
+	@$(MAKE) -s -f Makefile.memcheck $@
 
 .PHONY: brew
 brew:

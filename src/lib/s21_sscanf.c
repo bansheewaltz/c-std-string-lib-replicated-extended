@@ -45,7 +45,9 @@ int s21_sscanf(const char *restrict s, const char *restrict format, ...) {
       options.width = 0;
       options.length = '\0';
       options.specifier = '\0';
-      f_ptr++;
+      while (*f_ptr == '%') {
+        f_ptr++;
+      }
       if (*f_ptr == '*') {
         options.precission = 0;
         f_ptr++;
@@ -151,6 +153,9 @@ int s21_sscanf(const char *restrict s, const char *restrict format, ...) {
             int *n_ptr = va_arg(ptrs, int *);
             *n_ptr = s_ptr - s;
           }
+          break;
+
+        default:
           break;
       }
     }

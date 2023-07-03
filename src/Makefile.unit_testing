@@ -23,7 +23,7 @@ CK_FORK=no
 
 
 .PHONY: test
-test: 
+test:
 	$(info )
 	$(info *** silently compiling code covered build version for unit testing ***)
 	$(info *** compiler parameters for tests .o files: $(WFLAGS) $(STDFLAG) $(shell pkg-config --cflags check) -I$(INC) -I$(T_INC))
@@ -50,7 +50,6 @@ $(SRC_B)/%_test.c: $(CHK)/%_test.check
 	$(dir_guard)
 	checkmk clean_mode=1 $< > $@
 	$(format_the_file)
-
 
 # directories creation
 $(OBJ):
